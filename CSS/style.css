@@ -5,29 +5,29 @@
 
 
 @font-face {
-    font-family: "Pretendard";
-    src: url("../assets/fonts/Pretendard/Pretendard-Regular.woff2") format("woff2");
+    font-family: "Freesentation";
+    src: url("../assets/fonts/Freesentation/Freesentation-4Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Pretendard";
-    src: url("../assets/fonts/Pretendard/Pretendard-Medium.woff2") format("woff2");
+    font-family: "Freesentation";
+    src: url("../assets/fonts/Freesentation/Freesentation-5Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Pretendard";
-    src: url("../assets/fonts/Pretendard/Pretendard-SemiBold.woff2") format("woff2");
+    font-family: "Freesentation";
+    src: url("../assets/fonts/Freesentation/Freesentation-6SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Pretendard";
-    src: url("../assets/fonts/Pretendard/Pretendard-Bold.woff2") format("woff2");
+    font-family: "Freesentation";
+    src: url("../assets/fonts/Freesentation/Freesentation-7Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
 }
@@ -54,7 +54,7 @@ html, body {
 }
 
 body {
-    font-family: "Pretendard", sans-serif;
+    font-family: "Freesentation", sans-serif;
     min-height: 100vh;
 }
 
