@@ -3,31 +3,32 @@
 ====================== */
 
 
+/* CSS의 url() 상대경로는 style.css 위치를 기준으로 계산 */
 
 @font-face {
     font-family: "Freesentation";
-    src: url("../assets/fonts/Freesentation/Freesentation-4Regular.ttf") format("truetype");
+    src: url("../assets/00_common/fonts/Freesentation/Freesentation-4Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Freesentation";
-    src: url("../assets/fonts/Freesentation/Freesentation-5Medium.ttf") format("truetype");
+    src: url("../assets/00_common/fonts/Freesentation/Freesentation-5Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Freesentation";
-    src: url("../assets/fonts/Freesentation/Freesentation-6SemiBold.ttf") format("truetype");
+    src: url("../assets/00_common/fonts/Freesentation/Freesentation-6SemiBold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Freesentation";
-    src: url("../assets/fonts/Freesentation/Freesentation-7Bold.ttf") format("truetype");
+    src: url("../assets/00_common/fonts/Freesentation/Freesentation-7Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
 }
@@ -48,81 +49,56 @@ html {
     scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: "Freesentation", sans-serif;
     min-height: 100vh;
+
+    font-family: "Freesentation", sans-serif;
+    font-weight: 400;
 }
 
-img, video {
+img,
+video {
     display: block;
     max-width: 100%;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
     font: inherit;
+}
+
+button {
+    border: 0;
+    padding: 0;
+    background: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 
 
 /* ======================
-    아래는 웹 기획이 나오면 삭제
+    아래는 디자인 시스템 확정 후 설정
 ====================== */
 
 
 
-.test {
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* 데스크톱용 그리드 시스템 */
-.grid_container {
-
-    /* 바깥 여백 */
+/* .grid_container {
     width: calc(100% - 80px);
-
-    /* 콘텐츠 최대 폭 */
     max-width: 1440px;
-
-    /* 박스 가운데 */
     margin: 0 auto;
 
-    /* 그리드 사용 */
     display: grid;
-
-    /* 12칼럼 */
     grid-template-columns: repeat(12, 1fr);
-
-    /* 24거터 */
     column-gap: 24px;
-
-
-    /* outline: 1px solid red; */
-}
-
-.test h1, .test p {
-    margin: 0;
-}
-
-
-.test h1 {
-    font-weight: 700;
-
-    /* grid-column: 1 / 7; */
-}
-
-.test p {
-    font-weight: 400;
-
-    /* grid-column: 7 / 13; */
-}
+} */
