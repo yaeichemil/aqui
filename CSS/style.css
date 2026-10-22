@@ -27,10 +27,31 @@
 }
 
 @font-face {
-    font-family: "Freesentation";
-    src: url("../assets/00_common/fonts/Freesentation/Freesentation-7Bold.ttf") format("truetype");
-    font-weight: 700;
+    font-family: "Helvetica Neue";
+    src: url("../assets/00_common/fonts/HelveticaNeue/HelveticaNeueRoman.otf") format("opentype");
+    font-weight: 400;
     font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("../assets/00_common/fonts/HelveticaNeue/HelveticaNeueMedium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("../assets/00_common/fonts/HelveticaNeue/HelveticaNeueItalic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("../assets/00_common/fonts/HelveticaNeue/HelveticaNeueMediumItalic.otf") format("opentype");
+    font-weight: 500;
+    font-style: italic;
 }
 
 
@@ -49,7 +70,7 @@
 
     /* 배경 */
     --bg-light: #FAFAFA;
-    --bg-dark: #222222;
+    --bg-dark: #0D0908;
 
     /* 폰트 */
     --font-ko: "Freesentation", sans-serif;
