@@ -36,6 +36,29 @@
 
 
 /* ======================
+    디자인 시스템
+====================== */
+
+
+
+:root {
+    /* 레이아웃 */
+    --content-width: 1800px;
+    --page-margin: 60px;
+    --grid-gutter: 20px;
+
+    /* 배경 */
+    --bg-light: #FAFAFA;
+    --bg-dark: #222222;
+
+    /* 폰트 */
+    --font-ko: "Freesentation", sans-serif;
+    --font-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+
+/* ======================
     전체 설정
 ====================== */
 
@@ -58,8 +81,10 @@ body {
 body {
     min-height: 100vh;
 
-    font-family: "Freesentation", sans-serif;
+    font-family: var(--font-ko);
     font-weight: 400;
+
+    background-color: var(--bg-light);
 }
 
 img,
@@ -88,17 +113,17 @@ a {
 
 
 /* ======================
-    아래는 디자인 시스템 확정 후 설정
+    공통 레이아웃
 ====================== */
 
-
-
-/* .grid_container {
-    width: calc(100% - 80px);
-    max-width: 1440px;
+.grid_container {
+    /* 콘텐츠 영역 너비 */
+    /* 1920 - (60*2) = 1800 */
+    width: calc(100% - (var(--page-margin) * 2));
+    max-width: var(--content-width);
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 24px;
-} */
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+}
