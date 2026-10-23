@@ -15,10 +15,28 @@
     <main id="main">
 
 
+
+
+
         <!-- 01_hero -->
        <section id="hero" class="section hero">
 
+
+        <button
+            type="button"
+            class="hero_playbutton">
+
+            <img src="./assets/01_hero/aqui_hero_thumbnail.png"
+            alt="aqui_hero_thumbnail"
+            class="hero_thumbnail"
+        >
+        </button>
+
+
        </section>
+
+
+
 
 
         <!-- 02_overview -->
@@ -27,10 +45,16 @@
        </section>
 
 
+
+
+
         <!-- 03_brand -->
        <section id="brand" class="section brand">
 
        </section>
+
+
+
 
 
         <!-- 04_kkamsik -->
@@ -39,16 +63,93 @@
        </section>
 
 
+
+
+
         <!-- 05_device -->
        <section id="device" class="section device">
 
+
+        <div class="device_visual">
+            <img
+                src="./assets/05_device/device_NFC_temp.png"
+                alt="aqui NFC device"
+                class="nfc_device"
+            >
+        </div>
+
+
        </section>
+
+
+
+
+
+    <!--
+       device → before-service transition
+            1. photo strip fade out
+            2. NFC visual scale down + move right
+            3. Chapter 1 title/text reveal from bottom
+            - title first
+            - body text after
+    -->
+
+
+
 
 
         <!-- 06_before-service -->
        <section id="before-service" class="section before-service">
 
+
+        <div class="before-service_inner grid_container">
+
+            <!-- chapter information -->
+            <div class="before-service_chapter">
+                <p class="chapter_index">Chapter. 1</p>
+                <p class="chapter_copy">사별 전 아키 서비스 카피</p>
+            </div>
+
+
+            <!-- 1) NFC device -->
+             <div class="before-service_step before-service_nfc">
+
+                <div class="before-service_text">
+
+                    <div class="service_heading">
+                        <h3 class="service_title">NFC 진입</h3>
+                        <span class="service_number">(1)</span>
+                    </div>
+
+                    <span class="service_slash">/</span>
+
+                    <p class="service_desc">
+                        깜식이 아키 서비스로 NFC 진입을 어떻게 할 거냐면요깜식이 아키 서비
+                        스로 NFC 진입을 어떻게 할 거냐면요깜식이 아키 서비스로 NFC 진입
+                        을 어떻게 할 거냐면요깜식이 아키 서비스로 NFC 진입을 어떻게 할 거
+                        냐면요깜식이 아키 서비스로 NFC 진입을 어떻게 할 거냐면요
+                    </p>
+
+                </div>
+
+
+                <div class="before-service_visual">
+                    <img
+                        src="./assets/05_device/device_NFC_temp.png"
+                        alt="aqui NFC device"
+                        class="before-service_nfc_img"
+                    >
+                </div>
+
+             </div>
+
+        </div>
+
+
        </section>
+
+
+
 
 
         <!-- 07_bridge -->
@@ -57,37 +158,51 @@
        </section>
 
 
-        <!-- 08_change -->
-       <section id="change" class="section change">
-
-       </section>
 
 
-       <!-- 09_after-service -->
+
+       <!-- 08_after-service -->
        <section id="after-service" class="section after-service">
 
        </section>
 
 
-        <!-- 10_memory -->
+
+
+
+        <!-- 09_memory -->
        <section id="memory" class="section memory">
 
        </section>
 
 
-        <!-- 11_application -->
+
+
+
+        <!-- 10_application -->
        <section id="application" class="section application">
 
        </section>
 
 
-        <!-- 12_footer -->
+
+
+
+        <!-- 11_footer -->
        <footer id="footer" class="footer">
         
        </footer>
 
 
+
+
+
     </main>
+
+
+    <!-- top button -->
+    <button type="button" id="topBtn" class="topBtn" aria-label="back to top of page">
+    </button>
 
 
     <script src="./JavaScript/main.js"></script>
