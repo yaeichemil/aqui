@@ -203,7 +203,7 @@ p {
 }
 
 .hero_media {
-    /* button + video <- 얘네를 겹치기 위함 */
+    /* button + video <- 얘네를 겹치기 위함 (button absolute) */
     position: relative;
 
     width: 100%;
@@ -253,6 +253,89 @@ p {
     opacity: 1;
 }
 
+
+
+/* ======================
+    03_brand
+====================== */
+
+
+
+.brand {
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: var(--bg-light);
+}
+
+.brand_inner {
+    /* 
+        height: 100vh; ) 무조건 viewport 높이
+        min-height: 100vh; ) 최소한 viewport 하나는 차지하되,
+                            콘텐츠가 많으면 세로로 더 길어질 수 있음
+    */
+    min-height: 100vh;
+}
+
+.brand_intro {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+.brand_typography {
+    grid-column: 1 / 2;
+
+    font-family: var(--font-en);
+    font-weight: 300;
+
+    font-size: clamp(12px, 0.95vw, 18.18px);
+}
+
+.brand_service {
+    grid-column: 4 / 11;
+
+    font-family: var(--font-en);
+}
+
+.brand_service_title {
+    font-weight: 300;
+
+    /* clamp (최솟값, 유동값, 최대값) */
+    font-size: clamp(36px, 3.02vw, 57.97px);
+    line-height: 1.035;
+}
+
+.brand_identity {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+.brand_identity_media {
+    grid-column: 1 / 8;
+}
+
+.brand_identity_info {
+    grid-column: 10 / 13;
+
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+.brand_symbol {
+    grid-column: 10 / 11;
+}
+
+.brand_name {
+    grid-column: 11 / 12;
+}
+
+.brand_meaning {
+    grid-column: 11 / 13;
+}
 
 
 /* ======================
