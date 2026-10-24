@@ -22,15 +22,28 @@
        <section id="hero" class="section hero">
 
 
-        <button
-            type="button"
-            class="hero_playbutton">
+        <div class="hero_media">
 
-            <img src="./assets/01_hero/aqui_hero_thumbnail.png"
-            alt="aqui_hero_thumbnail"
-            class="hero_thumbnail"
-        >
-        </button>
+            <video
+                class="hero_video"
+                src="./assets/01_hero/temp/hero_after_temp.mp4"
+                controls
+                playsinline
+            ></video>
+
+            <img
+                class="hero_thumbnail"
+                src="./assets/01_hero/temp/hero_thumbnail_temp.png"
+                alt=""
+            >
+
+        </div>
+
+
+        <!-- 스크롤 유도 표지 어셋 오면 작업 -->
+        <div class="scroll_indicator" aria-hidden="true">
+
+        </div>
 
 
        </section>
@@ -42,6 +55,63 @@
         <!-- 02_overview -->
        <section id="overview" class="section overview">
 
+        <!-- grid container ) common 12 columns grid -->
+        <div class="overview_inner grid_container">
+
+
+            <div class="overview_intro">
+
+                <span class="overview_number">(01)</span>
+
+                <div class="overview_symbol">
+                    <!-- 브랜드 심볼 어셋 오면 작업 -->
+                </div>
+
+
+                <div class="overview_copy">
+                    <p class="overview_lead">
+                        반려동물과의 이별은 누군가의 일상 전체를 흔들기도 합니다.<br>
+                        그리고 그 슬픔은 생각보다 오래, 다양한 모습으로 남습니다.
+                    </p>
+
+                    <p class="overview_description">
+                        (추가 설명 3줄. 이후 뉴스와 이어지도록.)<br>
+                        (추가 설명 3줄. 이후 뉴스와 이어지도록.)<br>
+                        (추가 설명 3줄. 이후 뉴스와 이어지도록.)
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="overview_gallery">
+
+                <!--
+                    뉴스 링크 받으면 연결
+
+                    href ) (실제 뉴스 기사 주소)
+                    target ) _blank
+                    rel ) noopener noreferrer
+                -->
+                <a class="overview_item overview_item_01">
+                    <!-- 반려동물 추억 이미지 01 -->
+                    <img
+                        class="overview_img"
+                        src=""
+                        alt=""
+                    >
+
+                    <!-- hover 시 뉴스 카피 노출 -->
+                    <div class="overview_news">
+
+                    </div>
+                </a>
+
+            </div>
+
+
+        </div>
+
        </section>
 
 
@@ -50,6 +120,74 @@
 
         <!-- 03_brand -->
        <section id="brand" class="section brand">
+
+        <div class="brand_inner grid_container">
+
+            
+            <!-- 위쪽 (서비스 소개) -->
+            <div class="brand_intro">
+
+                <div class="brand_typography">
+                    <p>AQUI INTRODUCE</p>
+
+                    <p>
+                        ENGENGENG<br>
+                        ENGENGENG<br>
+                        ENGENGENG
+                    </p>
+                </div>
+
+                <div class="brand_service">
+
+                    <h2 class="brand_service_title">
+                        사별 전 마지막 돌봄부터<br>
+                        사별 이후까지 이어지는 펫로스 케어 서비스
+                    </h2>
+
+                    <p class="brand_service_description">
+                        <!-- 샘플용. 추후 카피 변경 예정 -->
+
+                        아키에서 반려동물의 상태 변화와 일상을 기록하고, 사별 직후 필요한<br>
+                        절차와 준비할 일을 확인할 수 있습니다. 함께 남긴 기록은 이별 뒤에도<br>
+                        보관되며, 원하는 때 다시 꺼내볼 수 있습니다.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 아래쪽 (브랜드 이름, 로고 소개) -->
+            <div class="brand_identity">
+                <div class="brand_identity_media">
+                    <!-- 로고 영상 추후에 추가 -->
+                </div>
+
+                <div class="brand_identity_info">
+
+                    <div class="brand_symbol">
+                        <!-- 브랜드 심볼 어셋 오면 작업 -->
+                    </div>
+
+                    <h3 class="brand_name">
+                        아키(aquí)
+                    </h3>
+
+                    <span class="brand_slash">/</span>
+
+
+                    <p class="brand_meaning">
+                        aquí(아키)는 스페인어로 '여기'를 뜻합니다.<br>
+                        함께한 시간을 소중히 간직하고, 반려동물을<br>
+                        아끼는 마음을 담아 지었습니다.
+                    </p>
+
+                </div>
+            </div>
+
+
+        </div>
 
        </section>
 
@@ -60,6 +198,58 @@
         <!-- 04_kkamsik -->
        <section id="kkamsik" class="section kkamsik">
 
+        <!-- 고정 구역 (background, chapter) -->
+        <div class="kkamsik_sticky">
+
+            <div class="kkamsik_background">
+                <!-- 깜식이 풀스크린 배경 이미지 (추후 추가) -->
+            </div>
+
+
+            <!-- 12칼럼 활용 예정이라서 분리 -->
+            <div class="kkamsik_sticky_inner grid_container">
+                <p class="kkamsik_chapter">
+                    Chapter. 1
+                </p>
+            </div>
+
+        </div>
+
+
+
+        <!-- 스크롤 구역 (copy, image) -->
+        <div class="kkamsik_scroll">
+
+            <div class="kkamsik_scroll_inner grid_container">
+
+                <!-- 스크롤 영역의 그리드 구조 (10~12칼럼) -->
+                <div class="kkamsik_content">
+
+                    <div class="kkamsik_intro">
+                        <h2 class="kkamsik_title">
+                            깜식 제목 카피
+                        </h2>
+
+                        <p class="kkamsik_description">
+                            <!-- 깜식이 소개 카피 추후 추가 -->
+                        </p>
+                    </div>
+
+
+                    <!-- 깜식이 성장 사진들 -->
+                    <div class="kkamsik_growth">
+
+                        <figure class="kkamsik_growth_item">
+                            <!-- 깜식이 성장 사진 추후 추가 (4~5장 예정) -->
+                        </figure>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
        </section>
 
 
@@ -69,30 +259,27 @@
         <!-- 05_device -->
        <section id="device" class="section device">
 
+        <div class="device_intro">
 
-        <div class="device_visual">
-            <img
-                src="./assets/05_device/device_NFC_temp.png"
-                alt="aqui NFC device"
-                class="nfc_device"
-            >
+            <!-- 풀스크린 -> 오른쪽 영역으로 축소될 영역 -->
+            <div class="device_media">
+                <!-- NFC 3D 사진 어셋 추후 추가 -->
+            </div>
+
+            <!-- NFC 비주얼이 viewport를 다 차지한 뒤 나올 소개 카피 -->
+            <div class="device_intro_copy grid_container">
+                <p class="device_intro_copy_left">
+                    디바이스 소개 카피
+                </p>
+
+                <p class="device_intro_copy_right">
+                    디바이스 소개 카피
+                </p>
+            </div>
+
         </div>
 
-
        </section>
-
-
-
-
-
-    <!--
-       device → before-service transition
-            1. photo strip fade out
-            2. NFC visual scale down + move right
-            3. Chapter 1 title/text reveal from bottom
-            - title first
-            - body text after
-    -->
 
 
 
@@ -101,50 +288,99 @@
         <!-- 06_before-service -->
        <section id="before-service" class="section before-service">
 
-
         <div class="before-service_inner grid_container">
 
-            <!-- chapter information -->
-            <div class="before-service_chapter">
-                <p class="chapter_index">Chapter. 1</p>
-                <p class="chapter_copy">사별 전 아키 서비스 카피</p>
+            <!-- 왼쪽 ) 서비스 설명 영역 -->
+            <div class="before-service_content">
+                
+
+                <!-- 1 ) NFC -->
+                <div class="before-service_step before-service_step_nfc">
+                    <div class="before-service_header">
+                        <span class="before-service_number">001</span>
+
+                        <h2 class="before-service_title">
+                            NFC 진입
+                        </h2>
+                    </div>
+
+                    <div class="before-service_description">
+                        <!-- 서비스 설명 카피 추후 추가 -->
+                    </div>
+                </div>
+
+
+                <!-- 2 ) main -->
+                <div class="before-service_step before-service_step_main">
+                    <div class="before-service_header">
+                        <span class="before-service_number">002</span>
+
+                        <h2 class="before-service_title">
+                            메인화면
+                        </h2>
+                    </div>
+
+                    <div class="before-service_description">
+                        <!-- 서비스 설명 카피 추후 추가 -->
+                    </div>
+                </div>
+
+
+                <!-- 3 ) care log -->
+                <div class="before-service_step before-service_step_carelog">
+                    <div class="before-service_header">
+                        <span class="before-service_number">003</span>
+
+                        <h2 class="before-service_title">
+                            케어로그
+                        </h2>
+                    </div>
+
+                    <div class="before-service_description">
+                        <!-- 서비스 설명 카피 추후 추가 -->
+                    </div>
+                </div>
+
+
+                <!-- 4 ) archive -->
+                <div class="before-service_step before-service_step_archive">
+                    <div class="before-service_header">
+                        <span class="before-service_number">004</span>
+
+                        <h2 class="before-service_title">
+                            아카이브
+                        </h2>
+                    </div>
+
+                    <div class="before-service_description">
+                        <!-- 서비스 설명 카피 추후 추가 -->
+                    </div>
+                </div>
+
+
+
+                <span class="before-service_slash">/</span>
+
             </div>
 
 
-            <!-- 1) NFC device -->
-             <div class="before-service_step before-service_nfc">
 
-                <div class="before-service_text">
-
-                    <div class="service_heading">
-                        <h3 class="service_title">NFC 진입</h3>
-                        <span class="service_number">(1)</span>
-                    </div>
-
-                    <span class="service_slash">/</span>
-
-                    <p class="service_desc">
-                        깜식이 아키 서비스로 NFC 진입을 어떻게 할 거냐면요깜식이 아키 서비
-                        스로 NFC 진입을 어떻게 할 거냐면요깜식이 아키 서비스로 NFC 진입
-                        을 어떻게 할 거냐면요깜식이 아키 서비스로 NFC 진입을 어떻게 할 거
-                        냐면요깜식이 아키 서비스로 NFC 진입을 어떻게 할 거냐면요
-                    </p>
-
+            <!-- 오른쪽 ) 앱 프로토타입 영역 -->
+            <div class="before-service_media">
+                <div class="before-service_media_item before-service_media_main">
+                    <!-- 메인 화면 프로토타입 추후 추가 -->
                 </div>
 
-
-                <div class="before-service_visual">
-                    <img
-                        src="./assets/05_device/device_NFC_temp.png"
-                        alt="aqui NFC device"
-                        class="before-service_nfc_img"
-                    >
+                <div class="before-service_media_item before-service_media_carelog">
+                    <!-- 케어로그 화면 프로토타입 추후 추가 -->
                 </div>
 
-             </div>
+                <div class="before-service_media_item before-service_media_archive">
+                    <!-- 아카이브 화면 프로토타입 추후 추가 -->
+                </div>
+            </div>
 
         </div>
-
 
        </section>
 
@@ -155,6 +391,23 @@
         <!-- 07_bridge -->
        <section id="bridge" class="section bridge">
 
+        <div class="bridge_inner">
+            
+            <p class="bridge_copy">
+                <!-- 카피 추후 수정 -->
+                함께한 날들을 뒤로 하고, 우리는 이별을 맞았습니다.
+            </p>
+
+            <div class="bridge_media">
+                <!-- 브릿지 영상 추후 추가 -->
+            </div>
+
+            <div class="scroll_indicator" aria-hidden="true">
+                <!-- 추후 추가 (* hero 섹션과 같은 종류) -->
+            </div>
+
+        </div>
+
        </section>
 
 
@@ -163,6 +416,192 @@
 
        <!-- 08_after-service -->
        <section id="after-service" class="section after-service">
+
+        <div class="after-service_inner">
+            <div class="after-service_intro">
+                
+
+                <div class="after-service_intro_media">
+                    <!-- 깜식이 빈 자리 흑백 이미지 추후 추가 -->
+                </div>
+
+
+                <p class="after-service_chapter">Chapter. 2</p>
+
+
+                <div class="after-service_intro_copy">
+                    <h2 class="after-service_intro_title">
+                        <!-- 추후 추가 -->
+                    </h2>
+
+                    <p class="after-service_intro_description">
+                        <!-- 추후 추가 -->
+                    </p>
+                </div>
+
+
+            </div>
+
+
+            <!-- 5 ) 사별 직후 3일 케어 -->
+            <div class="after-service_immediate">
+
+                <div class="after-service_header">
+                    <span class="after-service_number">005</span>
+
+                    <h2 class="after-service_title">
+                        사별 직후 3일 케어
+                    </h2>
+                </div>
+
+                <div class="after-service_description">
+                    <!-- 추후 카피 추가 예정 -->
+                </div>
+
+
+                <span class="after-service_slash">/</span>
+
+
+                <div class="after-service_immediate_media">
+                    <!-- 앱 프로토타입 추가 예정 -->
+                </div>
+
+            </div>
+
+
+            <!-- 6 ) 에필로그 -->
+            <div class="after-service_epilogue">
+
+                <div class="after-service_header">
+                    <span class="after-service_number">006</span>
+
+                    <h2 class="after-service_title">
+                        에필로그
+                    </h2>
+                </div>
+
+
+                <!-- 에필로그 - 장례 준비 -->
+                <div class="after-service_epilogue_item after-service_funeral">
+                    
+                    <div class="after-service_epilogue_media">
+                        <!-- 장례 준비 목업 추가 예정 -->
+                    </div>
+
+                    <div class="after-service_epilogue_copy">
+                        <!-- 장례 준비 카피 추가 예정 -->
+                    </div>
+
+                </div>
+
+                <!-- 에필로그 - 보호자 이야기 (커뮤니티) -->
+                <div class="after-service_epilogue_item after-service_support">
+
+                    <div class="after-service_epilogue_copy">
+                        <!-- 보호자 이야기 / 상담 설명 카피 추가 예정 -->
+                    </div>
+
+                    <div class="after-service_epilogue_media">
+                        <!-- 보호자 이야기 / 상담 프로토타입 추가 예정 -->
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- transition ) 아카이브 전 깜식이 사진 -->
+            <div class="after-service_transition">
+                <!-- 깜식이 흑백 이미지 추후 추가 -->
+            </div>
+
+
+
+            <!-- 7 ) 아카이브 -->
+            <div class="after-service_archive">
+
+                <div class="after-service_header">
+                    <span class="after-service_number">007</span>
+
+                    <h2 class="after-service_title">
+                        아카이브
+                    </h2>
+                </div>
+
+                <div class="after-service_description">
+                    <!-- 아카이브 설명 카피 추후 추가 -->
+                </div>
+
+
+                <!-- 아카이브 - 함께한 순간 -->
+                <div class="after-service_archive_item after-service_moments">
+
+                    <div class="after-service_archive_media">
+                        <!-- 함께한 순간 기록물 추후 추가 -->
+                    </div>
+
+                    <div class="after-service_archive_copy">
+                        <span class="after-service_archive_label">(B)</span>
+
+                        <div class="after-service_archive_text">
+                            <!-- 함께한 순간 카피 추후 추가 -->
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- 아카이브 - 버킷리스트 -->
+                <div class="after-service_archive_item after-service_bucketlist">
+
+                    <div class="after-service_archive_media">
+                        <!-- 버킷리스트 기록물 추후 추가 -->
+                    </div>
+
+                    <div class="after-service_archive_copy">
+                        <span class="after-service_archive_label">(A)</span>
+
+                        <div class="after-service_archive_text">
+                            <!-- 버킷리스트 기능 설명 추후 추가 -->
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- 아카이브 - 돌봄 기록 -->
+                <div class="after-service_archive_item after-service_care">
+
+                    <div class="after-service_archive_media">
+                        <!-- 돌봄 기록 화면 추후 추가 -->
+                    </div>
+
+                </div>
+
+
+                <!-- 아카이브 한정 감동 멘트 카피 -->
+                <p class="after-service_archive_message">
+                    <!-- 아카이브 마무리 카피 추후 추가 -->
+                </p>
+
+
+                <!-- 아카이브 - 마지막 구간 (사진 + 질문답변)-->
+                <div class="after-service_archive_closing">
+
+                    <div class="after-service_archive_photo">
+                        <!-- 깜식이 일상 흑백 사진 추가 예정 -->
+                    </div>
+
+                    <div class="after-service_archive_qa">
+                        <!-- 질문 답변 프로토타입 추가예정 -->
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
 
        </section>
 
@@ -173,6 +612,10 @@
         <!-- 09_memory -->
        <section id="memory" class="section memory">
 
+        <div class="memory_media">
+            <!-- 디바이스 키링 서랍 보관 영상 추가 예정 -->
+        </div>
+
        </section>
 
 
@@ -182,6 +625,16 @@
         <!-- 10_application -->
        <section id="application" class="section application">
 
+        <div class="application_inner">
+            <div class="application_device">
+                <!-- 디바이스 키링 360도 회전 영상 추가 예정 -->
+            </div>
+
+            <div class="application_form">
+                <!-- 디바이스 신청 폼 제작 예정 (시안 기다림) -->
+            </div>
+        </div>
+
        </section>
 
 
@@ -190,6 +643,10 @@
 
         <!-- 11_footer -->
        <footer id="footer" class="footer">
+
+        <div class="footer_inner">
+            <!-- 구체적인 내용 오면 작업 -->
+        </div>
         
        </footer>
 

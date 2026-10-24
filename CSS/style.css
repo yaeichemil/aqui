@@ -5,6 +5,8 @@
 
 /* CSS의 url() 상대경로는 style.css 위치를 기준으로 계산 */
 
+
+/* ko ) freesentation */
 @font-face {
     font-family: "Freesentation";
     src: url("../assets/00_common/fonts/Freesentation/Freesentation-4Regular.ttf") format("truetype");
@@ -27,6 +29,13 @@
 }
 
 
+/* en ) helvetica neue */
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("../assets/00_common/fonts/HelveticaNeue/HelveticaNeueLight.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
 
 @font-face {
     font-family: "Helvetica Neue";
@@ -57,6 +66,22 @@
 }
 
 
+/* en (serif) ) instrument serif */
+@font-face {
+    font-family: "Instrument Serif";
+    src: url("../assets/00_common/fonts/InstrumentSerif-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Instrument Serif";
+    src: url("../assets/00_common/fonts/InstrumentSerif-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+
 
 /* ======================
     디자인 시스템
@@ -72,11 +97,12 @@
 
     /* 배경 */
     --bg-light: #FAFAFA;
-    --bg-dark: #0D0908;
+    --bg-dark: #191313;
 
     /* 폰트 */
     --font-ko: "Freesentation", sans-serif;
     --font-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-serif: "Instrument Serif", serif;
     --letter-spacing: -0.04em;
 }
 
@@ -201,31 +227,7 @@ p {
 
 
 
-.device {
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    background-color: #D9D9D9; /* 임시 */
-}
 
-.device_visual {
-    width: 100%;
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nfc_device {
-    display: block;
-
-    width: 50%;
-    max-width: 960px;
-    height: auto;
-
-    object-fit: contain;
-}
 
 
 
@@ -235,99 +237,3 @@ p {
 
 
 
-.before-service {
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--bg-light);
-}
-
-.before-service_inner {
-    min-height: 100vh;
-    position: relative;
-}
-
-
-/* chapter information */
-.before-service_chapter {
-    grid-column: 1 / 7;
-
-    display: grid;
-    grid-template-columns: subgrid;
-
-    padding-top: 61px;
-    font-weight: 500;
-}
-
-.chapter_index {
-    grid-column: 1 / 3;
-}
-
-.chapter_copy {
-    grid-column: 3 / 7;
-}
-
-
-/* service step */
-.before-service_step {
-    grid-column: 1 / -1;
-
-    display: grid;
-    grid-template-columns: subgrid;
-
-    min-height: 100vh;
-}
-
-.before-service_text {
-    grid-column: 2 / 6;
-
-    display: grid;
-    grid-template-columns: subgrid;
-
-    padding-top: 151px;
-}
-
-.service_heading {
-    grid-column: 2 / -1;
-
-    display: flex;
-    align-items: flex-start;
-}
-
-.service_title {
-    font-size: 35px;
-    font-weight: 600;
-}
-
-.service_number {
-    margin-left: 8px;
-    font-size: 17.38px;
-}
-
-.service_slash {
-   grid-column: 1 / -1;
-
-   margin-top: 96px;
-}
-
-.service_desc {
-    grid-column: 1 / -1;
-
-   margin-top: 96px;
-}
-
-
-/* visual */
-.before-service_visual {
-    /* -1 ) 그리드 맨 끝까지 */
-    grid-column: 8 / -1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.before-service_nfc_img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
