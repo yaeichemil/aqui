@@ -29,6 +29,54 @@
 }
 
 
+/* ko ) SUIT */
+
+/* ExtraLight - 200 */
+@font-face {
+    font-family: "SUIT";
+    src: url("../assets/00_common/fonts/SUIT/SUIT-ExtraLight.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Light - 300 */
+@font-face {
+    font-family: "SUIT";
+    src: url("../assets/00_common/fonts/SUIT/SUIT-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Regular - 400 */
+@font-face {
+    font-family: "SUIT";
+    src: url("../assets/00_common/fonts/SUIT/SUIT-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Medium - 500 */
+@font-face {
+    font-family: "SUIT";
+    src: url("../assets/00_common/fonts/SUIT/SUIT-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* SemiBold - 600 */
+@font-face {
+    font-family: "SUIT";
+    src: url("../assets/00_common/fonts/SUIT/SUIT-SemiBold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 /* en ) helvetica neue */
 @font-face {
     font-family: "Helvetica Neue";
@@ -69,14 +117,14 @@
 /* en (serif) ) instrument serif */
 @font-face {
     font-family: "Instrument Serif";
-    src: url("../assets/00_common/fonts/InstrumentSerif-Regular.ttf") format("truetype");
+    src: url("../assets/00_common/fonts/InstrumentSerif/InstrumentSerif-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Instrument Serif";
-    src: url("../assets/00_common/fonts/InstrumentSerif-Italic.ttf") format("truetype");
+    src: url("../assets/00_common/fonts/InstrumentSerif/InstrumentSerif-Italic.ttf") format("truetype");
     font-weight: 400;
     font-style: italic;
 }
@@ -96,11 +144,11 @@
     --grid-gutter: 20px;
 
     /* 배경 */
-    --bg-light: #FAFAFA;
+    --bg-light: #FEFEFE;
     --bg-dark: #191313;
 
     /* 폰트 */
-    --font-ko: "Freesentation", sans-serif;
+    --font-ko: "SUIT", sans-serif;
     --font-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-serif: "Instrument Serif", serif;
     --letter-spacing: -0.04em;
@@ -110,7 +158,7 @@
 
 /* ======================
     전체 설정
-====================== */
+====================== */ 
 
 
 
@@ -256,6 +304,285 @@ p {
 
 
 /* ======================
+    02_overview
+====================== */
+
+
+
+.overview {
+    position: relative;
+    width: 100%;
+
+    background-color: var(--bg-dark);
+
+    background-image: url("../assets/02_overview/temp/overview_background_graphic_temp.png");
+    background-repeat: repeat-y;
+    background-position: center top;
+    background-size: 100% auto;
+
+    color: #FFFFFF;
+}
+
+.overview::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 60vh;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(250, 250, 250, 0),
+        #fefefe
+    );
+
+    pointer-events: none;
+}
+
+
+/* overview 전체 레이아웃용 */
+.overview_inner {
+    position: relative;
+    align-content: start;
+
+    padding-bottom: 60vh;
+}
+
+
+/* Overview 상단 소개 영역 */
+.overview_intro {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+
+    padding-top: clamp(100px, 12vh, 160px);
+    padding-bottom: clamp(100px, 14vh, 180px);
+}
+
+
+/* 왼쪽 브랜드 정보 */
+.overview_label {
+    grid-column: 1 / 3;
+
+    font-family: var(--font-en);
+    font-weight: 300;
+
+    font-size: clamp(12px, 0.947vw, 18.18px);
+    line-height: 1;
+}
+
+
+/* 메인 카피 영역 */
+.overview_heading {
+    grid-column: 5 / 12;
+
+    min-width: 0;
+}
+
+
+/* 메인 영문 카피 */
+.overview_title {
+    font-family: var(--font-en);
+    font-weight: 300;
+
+    font-size: clamp(36px, 3.02vw, 57.97px);
+    line-height: 1.035;
+    letter-spacing: -0.04em;
+}
+
+
+/* 한글 본문 전체 */
+.overview_lead {
+    margin-top: 24px;
+
+    font-family: var(--font-ko);
+    font-weight: 400;
+
+    font-size: clamp(17px, 1.46vw, 25px);
+    line-height: 1.357;
+
+    color: #FFBEBE;
+}
+
+
+/* 첫 번째 문장 */
+.overview_lead_first {
+    margin-left: calc((100% + var(--grid-gutter)) / 7);
+}
+
+
+/* 나머지 문장 */
+.overview_lead_rest {
+    margin-left: 0;
+}
+
+
+
+.overview_gallery {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+
+    grid-auto-rows: clamp(150px, 12.29vw, 235.89px);
+    row-gap: clamp(12px, 1.04vw, 20px);
+
+    padding-bottom: 0;
+}
+
+
+/* 일반 이미지 및 뉴스 이미지 공통 */
+.overview_item,
+.overview_news_item {
+    position: relative;
+    display: block;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+}
+
+
+/* 이미지 공통 */
+.overview_img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* 뉴스 이미지 */
+.overview_news {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+
+/* 뉴스 이미지 내부 */
+.overview_news img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* 뉴스 이미지 hover */
+.overview_news_item:hover .overview_news {
+    opacity: 1;
+}
+
+
+/* 1 row */
+
+/* 뉴스 아이템 01 */
+.overview_news_item_01 {
+    grid-column: 1 / 4;
+    grid-row: 1;
+}
+
+/* 이미지 01 */
+.overview_item_01 {
+    grid-column: 5 / 7;
+    grid-row: 1;
+}
+
+/* 이미지 02 */
+.overview_item_02 {
+    grid-column: 7 / 8;
+    grid-row: 1;
+}
+
+/* 이미지 03 */
+.overview_item_03 {
+    grid-column: 10 / 13;
+    grid-row: 1;
+}
+
+
+/* 2 row */
+
+/* 이미지 04 */
+.overview_item_04 {
+    grid-column: 4 / 7;
+    grid-row: 2;
+}
+
+/* 이미지 05 */
+.overview_item_05 {
+    grid-column: 9 / 11;
+    grid-row: 2;
+}
+
+
+/* 3 row */
+
+/* 이미지 06 */
+.overview_item_06 {
+    grid-column: 1 / 2;
+    grid-row: 3;
+}
+
+/* 이미지 07 */
+.overview_item_07 {
+    grid-column: 3 / 6;
+    grid-row: 3;
+}
+
+/* 이미지 08 */
+.overview_item_08 {
+    grid-column: 8 / 10;
+    grid-row: 3;
+}
+
+/* 이미지 09 */
+.overview_item_09 {
+    grid-column: 10 / 13;
+    grid-row: 3;
+}
+
+
+/* 4 row */
+
+/* 이미지 10 */
+.overview_item_10 {
+    grid-column: 1 / 4;
+    grid-row: 4;
+}
+
+/* 이미지 11 */
+.overview_item_11 {
+    grid-column: 5 / 7;
+    grid-row: 4;
+}
+
+/* 이미지 12 */
+.overview_item_12 {
+    grid-column: 9 / 11;
+    grid-row: 4;
+}
+
+/* 이미지 13 */
+.overview_item_13 {
+    grid-column: 11 / 13;
+    grid-row: 4;
+}
+
+
+/* ======================
     03_brand
 ====================== */
 
@@ -326,16 +653,150 @@ p {
 }
 
 .brand_symbol {
-    grid-column: 10 / 11;
+    grid-column: 1 / 2;
 }
 
 .brand_name {
-    grid-column: 11 / 12;
+    grid-column: 2 / 3;
+}
+
+.brand_slash {
+    grid-column: 2 / 3;
+    grid-row: 2;
 }
 
 .brand_meaning {
-    grid-column: 11 / 13;
+    grid-column: 2 / 4;
 }
+
+
+
+/* ======================
+    04_kkamsik
+====================== */
+
+
+
+.kkamsik {
+    position: relative;
+    width: 100%;
+}
+
+/* 왼쪽 고정 영역 */
+.kkamsik_sticky {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+/* 깜식이 배경 이미지 영역 */
+.kkamsik_background {
+    position: absolute;
+    inset: 0;
+
+    background-color: #D9D9D9;
+}
+
+/* Chapter 텍스트 */
+.kkamsik_sticky_inner {
+    position: relative;
+    height: 100%;
+}
+
+.kkamsik_chapter {
+    grid-column: 1 / 3;
+
+    padding-top: 70px;
+    padding-left: 30px;
+
+    font-family: var(--font-serif);
+    font-style: italic;
+
+    font-size: 113px;
+    line-height: 1;
+
+    white-space: nowrap;
+    color: white;
+}
+
+/* 오른쪽 스크롤 영역 */
+.kkamsik_scroll {
+    position: relative;
+    margin-top: -100vh;
+}
+
+/* 스크롤 콘텐츠 그리드 */
+.kkamsik_scroll_inner {
+    min-height: 200vh;
+}
+
+.kkamsik_content {
+    grid-column: 10 / 13;
+
+    position: relative;
+
+    padding: 70px 0 120px 24px;
+    background-color: #A0A0A0;
+}
+
+.kkamsik_content::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+
+    width: var(--page-margin);
+    background-color: #A0A0A0;
+}
+
+.kkamsik_intro {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: calc(100vh - 60px);
+}
+
+.kkamsik_title {
+    font-family: var(--font-ko);
+    font-weight: 500;
+
+   font-size: clamp(28px, 2.6vw, 50px);
+    line-height: 1.2;
+}
+
+.kkamsik_description {
+    align-self: center;
+
+    font-family: var(--font-ko);
+    font-weight: 400;
+
+    font-size: clamp(14px, 1.2vw, 23px);
+    line-height: 28px;
+}
+
+
+/* 깜식이 성장 사진 영역 */
+.kkamsik_growth {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+/* placeholder (삭제 예정) */
+.kkamsik_growth_item {
+    width: 100%;
+    aspect-ratio: 1 / 0.85;
+
+    margin: 0;
+    background-color: #323232;
+}
+
 
 
 /* ======================
@@ -354,3 +815,797 @@ p {
 
 
 
+
+
+
+
+
+/* =========================================
+   08_after-service
+========================================= */
+
+.after-service {
+    width: 100%;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    overflow: clip;
+}
+
+.after-service_inner {
+    width: 100%;
+}
+
+/* 공통 텍스트 */
+.after-service p,
+.after-service h2,
+.after-service figure {
+    margin: 0;
+}
+
+.after-service img {
+    display: block;
+    max-width: 100%;
+}
+
+/* 네모 기호 + 제목 */
+.after-service_archive_intro_title,
+.after-service_epilogue_title,
+.after-service_archive_title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+
+    font-family: var(--font-en);
+    font-size: clamp(22px, 2vw, 36px);
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.after-service_archive_intro_mark,
+.after-service_epilogue_mark,
+.after-service_archive_mark {
+    font-size: 0.65em;
+    line-height: 1;
+}
+
+/* 본문 공통 */
+.after-service_archive_intro_description,
+.after-service_epilogue_description,
+.after-service_archive_description,
+.after-service_archive_qa_copy {
+    font-family: var(--font-ko);
+    font-size: clamp(13px, 0.95vw, 17px);
+    font-weight: 400;
+    line-height: 1.7;
+    word-break: keep-all;
+}
+
+.after-service_archive_intro_description p + p,
+.after-service_epilogue_description p + p,
+.after-service_archive_qa_copy p + p {
+    margin-top: 24px;
+}
+
+/* =========================================
+   01. Chapter. 2 Intro
+========================================= */
+
+.after-service_intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+}
+
+.after-service_intro_media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.after-service_intro_media img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+.after-service_intro::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.32) 0%,
+        rgba(0, 0, 0, 0) 45%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+
+    pointer-events: none;
+}
+
+.after-service_intro_inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    align-items: start;
+}
+
+.after-service_chapter {
+    grid-column: 1 / 3;
+
+    padding-top: 70px;
+    padding-left: 30px;
+
+    font-family: var(--font-serif);
+    font-style: italic;
+
+    font-size: 113px;
+    line-height: 1;
+
+    white-space: nowrap;
+    color: white;
+}
+
+/* 텍스트 박스 (매트 글래스 질감) */
+.after-service_intro_copy {
+    grid-column: 10 / 13;
+    align-self: center;
+
+    /* 1920px 기준 시안 크기 */
+    width: 500px;
+    height: min(955px, calc(100vh - 80px));
+
+    /* 12컬럼 그리드의 오른쪽 마진 무시 */
+    justify-self: end;
+    margin-right: calc(-1 * var(--page-margin));
+
+    /* 내부 텍스트 여백 */
+    padding: 48px 40px;
+    box-sizing: border-box;
+
+    /* 배경 */
+    background: rgba(167, 167, 167, 0.34);
+
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+
+    /* 내부 텍스트 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    color: #191313;
+}
+
+.after-service_intro_title {
+    margin-bottom: 28px !important;
+
+    font-family: var(--font-ko);
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 1.35;
+    word-break: keep-all;
+
+    color: #191313;
+}
+
+.after-service_intro_description {
+    font-family: var(--font-ko);
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.6;
+    word-break: keep-all;
+
+    color: #191313;
+}
+
+/* =========================================
+   02. Archive Intro
+========================================= */
+
+.after-service_archive_intro {
+    width: 100%;
+    padding: clamp(110px, 12vh, 180px) 0;
+}
+
+.after-service_archive_intro_inner {
+    row-gap: 100px;
+}
+
+/* 상단 제목 + 설명 */
+.after-service_archive_intro_header {
+    grid-column: 1 / 13;
+
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    align-items: start;
+}
+
+/* Archive 제목 */
+.after-service_archive_intro_title {
+    grid-column: 1 / 5;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+
+    font-family: var(--font-en);
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 60px;
+}
+
+/* 제목 앞 네모 */
+.after-service_archive_intro_mark {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+
+    flex-shrink: 0;
+
+    margin-top: 12px;
+
+    background-color: currentColor;
+
+    font-size: 0;
+    line-height: 0;
+}
+
+/* 오른쪽 설명 */
+.after-service_archive_intro_description {
+    grid-column: 7 / 12;
+    min-width: 0;
+}
+
+/* 한글 + 영어 공통 */
+.after-service_archive_intro_description p {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 45px;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+
+/* 한글 */
+.after-service_archive_intro_description p:first-child {
+    font-family: var(--font-ko);
+}
+
+/* 영어 */
+.after-service_archive_intro_description p:last-child {
+    font-family: var(--font-en);
+}
+
+/* 두 문단 사이 간격 */
+.after-service_archive_intro_description p + p {
+    margin-top: 12px;
+}
+
+/* 하단 이미지 영역 */
+.after-service_archive_intro_gallery {
+    grid-column: 1 / 13;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--grid-gutter);
+
+    min-width: 0;
+}
+
+/* 이미지 박스 공통 */
+.after-service_archive_intro_main,
+.after-service_archive_intro_side {
+    width: 100%;
+    min-width: 0;
+
+    aspect-ratio: 920 / 1004;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    background-color: var(--bg-light);
+}
+
+/* 왼쪽 목업 */
+.after-service_archive_intro_main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 임시 목업 이미지 */
+.after-service_archive_intro_main img {
+    display: block;
+
+    width: 48%;
+    height: 85%;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   03. Epilogue
+========================================= */
+
+.after-service_epilogue {
+    width: 100%;
+    padding: clamp(100px, 12vh, 180px) 0;
+}
+
+.after-service_epilogue_inner {
+    align-items: start;
+}
+
+/* 왼쪽 고정 텍스트 영역 */
+.after-service_epilogue_info {
+    grid-column: 1 / 6;
+
+    position: sticky;
+    top: clamp(100px, 16vh, 180px);
+
+    align-self: start;
+    min-width: 0;
+}
+
+/* 제목 앞 네모 */
+.after-service_epilogue_mark {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+
+    margin-top: 12px;
+
+    background-color: currentColor;
+
+    font-size: 0;
+    line-height: 0;
+}
+
+.after-service_epilogue_title {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(32px, 2.5vw, 48px);
+
+    margin-bottom: clamp(40px, 3.125vw, 60px) !important;
+
+    font-family: var(--font-en);
+    font-size: clamp(28px, 2.083vw, 40px);
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* 에필로그 본문 */
+.after-service_epilogue_description {
+    max-width: 100%;
+}
+
+/* 에필로그 본문 */
+.after-service_epilogue_description p {
+    font-size: clamp(20px, 1.667vw, 32px);
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+
+/* 한글 */
+.after-service_epilogue_description p:first-child {
+    font-family: var(--font-ko);
+}
+
+/* 영문 */
+.after-service_epilogue_description p:last-child {
+    font-family: var(--font-en);
+}
+
+/* 한글과 영문 사이 간격 */
+.after-service_epilogue_description p + p {
+    margin-top: 12px;
+}
+
+.after-service_epilogue_gallery {
+    grid-column: 7 / 13;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(18px, 2vw, 38px);
+    row-gap: clamp(70px, 10vh, 150px);
+
+    align-items: start;
+    min-width: 0;
+}
+
+.after-service_epilogue_phone {
+    width: 100%;
+    min-width: 0;
+}
+
+.after-service_epilogue_phone:nth-child(even) {
+    margin-top: clamp(100px, 16vh, 220px);
+}
+
+.after-service_epilogue_phone img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.after-service_epilogue_phone figcaption {
+    margin-top: 20px;
+
+    font-family: var(--font-ko);
+    font-size: clamp(12px, 0.9vw, 16px);
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+/* =========================================
+   04. Transition
+========================================= */
+
+.after-service_transition {
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+
+    background-color: #777777;
+}
+
+/* =========================================
+   05. Archive Overview
+========================================= */
+
+.after-service_archive {
+    width: 100%;
+}
+
+.after-service_archive_overview {
+    width: 100%;
+    padding: clamp(110px, 12vh, 180px) 0;
+}
+
+.after-service_archive_overview_inner {
+    row-gap: 100px;
+}
+
+/* 상단 제목 + 설명 */
+.after-service_archive_info {
+    grid-column: 1 / 13;
+
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+
+    align-items: start;
+}
+
+/* Archive 제목 */
+.after-service_archive_title {
+    grid-column: 1 / 5;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+
+    font-family: var(--font-en);
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 60px;
+}
+
+/* 제목 앞 네모 */
+.after-service_archive_mark {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+
+    margin-top: 12px;
+
+    background-color: currentColor;
+
+    font-size: 0;
+    line-height: 0;
+}
+
+/* 오른쪽 본문 */
+.after-service_archive_description {
+    grid-column: 7 / 12;
+    min-width: 0;
+}
+
+/* 한글 + 영어 공통 */
+.after-service_archive_description p {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 45px;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+
+/* 한글 */
+.after-service_archive_description p:first-child {
+    font-family: var(--font-ko);
+}
+
+/* 영어 */
+.after-service_archive_description p:last-child {
+    font-family: var(--font-en);
+}
+
+/* 문단 사이 간격 */
+.after-service_archive_description p + p {
+    margin-top: 12px;
+}
+
+/* =========================================
+   Archive Gallery
+========================================= */
+
+.after-service_archive_gallery {
+    grid-column: 1 / 13;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--grid-gutter);
+
+    align-items: stretch;
+    min-width: 0;
+}
+
+/* 왼쪽 영상 목업 박스 */
+.after-service_archive_video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    aspect-ratio: 920 / 1158;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    background-color: var(--bg-light);
+}
+
+/* 왼쪽 임시 폰 목업 */
+.after-service_archive_video img {
+    display: block;
+
+    width: 48%;
+    height: 85%;
+
+    object-fit: contain;
+}
+
+/* 오른쪽 콘텐츠 박스 묶음 */
+.after-service_archive_side {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+
+    gap: var(--grid-gutter);
+    min-width: 0;
+    min-height: 0;
+}
+
+/* 오른쪽 위 + 아래 박스 */
+.after-service_archive_side_top,
+.after-service_archive_side_bottom {
+    min-width: 0;
+    min-height: 0;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    background-color: var(--bg-light);
+}
+
+/* =========================================
+   06. Archive Closing
+========================================= */
+
+.after-service_archive_closing {
+    width: 100%;
+    padding: 0 0 clamp(110px, 12vh, 180px);
+}
+
+.after-service_archive_closing_inner {
+    align-items: start;
+    row-gap: 0;
+}
+
+
+/* 오른쪽 본문 */
+.after-service_archive_qa_copy {
+    grid-column: 7 / 12;
+    grid-row: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    padding-bottom: 100px;
+    align-self: start;
+}
+
+/* 한글 + 영어 공통 */
+.after-service_archive_qa_copy p {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 45px;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+
+/* 한글 */
+.after-service_archive_qa_copy .after-service_description_ko {
+    font-family: var(--font-ko);
+}
+
+/* 영어 */
+.after-service_archive_qa_copy .after-service_description_en {
+    font-family: var(--font-en);
+}
+
+/* 문단 사이 간격 */
+.after-service_archive_qa_copy p + p {
+    margin-top: 12px;
+}
+
+
+/* 왼쪽 강아지 사진 */
+.after-service_archive_photo {
+    grid-column: 1 / 7;
+    grid-row: 2;
+
+    position: relative;
+    width: 100%;
+    min-width: 0;
+
+    aspect-ratio: 920 / 1289.92;
+
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.after-service_archive_background {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* 돌봄 기록 카드 공통 */
+.after-service_archive_card {
+    position: absolute;
+
+    width: 36.76%;
+    height: auto;
+
+    filter: drop-shadow(
+        0 12px 20px rgba(0, 0, 0, 0.15)
+    );
+}
+
+
+/* 카드 01 */
+.after-service_archive_card_01 {
+    top: 4.94%;
+    left: 55.80%;
+    z-index: 3;
+}
+
+
+/* 카드 02 */
+.after-service_archive_card_02 {
+    top: 15.94%;
+    left: 5.11%;
+    z-index: 2;
+}
+
+
+/* 카드 03 */
+.after-service_archive_card_03 {
+    top: 54.03%;
+    left: 55.80%;
+    z-index: 4;
+}
+
+
+/* 오른쪽 앱 목업 */
+.after-service_archive_qa_media {
+    grid-column: 7 / 13;
+    grid-row: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+
+    background-color: var(--bg-light);
+
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.after-service_archive_qa_media img {
+    display: block;
+
+    width: 48%;
+    max-height: 85%;
+    height: auto;
+
+    object-fit: contain;
+}
+
+.after-service_archive_qa_copy {
+    width: 100%;
+    max-width: none;
+    align-self: start;
+}
+
+.after-service_archive_qa_copy .after-service_description_ko,
+.after-service_archive_qa_copy .after-service_description_en {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 45px;
+}
+
+.after-service_archive_qa_copy .after-service_description_en {
+    margin-top: 12px;
+}
+
+
+/* =========================================
+   Desktop Width Adjustments
+========================================= */
+
+@media (max-width: 1440px) {
+
+    .after-service_epilogue_info {
+        grid-column: 1 / 6;
+    }
+
+    .after-service_epilogue_gallery {
+        grid-column: 6 / 13;
+    }
+
+    .after-service_archive_qa {
+        grid-column: 8 / 13;
+    }
+
+}
+
+@media (max-width: 1280px) {
+
+    .after-service_intro_copy {
+        grid-column: 7 / 13;
+    }
+
+    .after-service_epilogue_info {
+        grid-column: 1 / 6;
+    }
+
+    .after-service_epilogue_gallery {
+        grid-column: 6 / 13;
+    }
+
+}
