@@ -315,8 +315,8 @@ p {
 
     background-color: var(--bg-dark);
 
-    background-image: url("../assets/02_overview/temp/overview_background_graphic_temp.png");
-    background-repeat: repeat-y;
+    background-image: url("../assets/02_overview/overview_background_graphic.png");
+    background-repeat: no-repeat;
     background-position: center top;
     background-size: 100% auto;
 
@@ -359,8 +359,8 @@ p {
     display: grid;
     grid-template-columns: subgrid;
 
-    padding-top: clamp(240px, 12vh, 300px);
-    padding-bottom: clamp(100px, 14vh, 180px);
+    padding-top: clamp(150px, 12.5vw, 240px);
+    padding-bottom: clamp(95px, 7.875vw, 151px);
 }
 
 
@@ -390,7 +390,7 @@ p {
     font-family: var(--font-ko);
     font-weight: 400;
 
-    font-size: clamp(24px, 3.02vw, 38px);
+    font-size: clamp(23px, 1.979vw, 38px);
     line-height: 1.035;
     letter-spacing: -0.04em;
 }
@@ -398,12 +398,12 @@ p {
 
 /* 한글 본문 전체 */
 .overview_lead {
-    margin-top: 68px;
+    margin-top: clamp(40px, 3.542vw, 68px);
 
     font-family: var(--font-en);
     font-weight: 300;
 
-    font-size: clamp(17px, 1.46vw, 25px);
+    font-size: clamp(15px, 1.302vw, 25px);
     line-height: 1.357;
 
     color: var(--bg-light);
@@ -583,91 +583,159 @@ p {
 }
 
 
+/* 작은 데스크톱에서는 시안의 강제 줄바꿈을 해제하고 자연스럽게 줄바꿈 */
+/* @media (max-width: 1600px) {
+    .overview_title br,
+    .overview_lead_rest br {
+        display: none;
+    }
+} */
+
+
+
+
+
 /* ======================
     03_brand
 ====================== */
 
 
-
 .brand {
     width: 100%;
     min-height: 100vh;
-
     background-color: var(--bg-light);
+    color: #191313;
 }
 
+/* 1920 기준 12칼럼은 기존 .grid_container를 그대로 사용 */
 .brand_inner {
-    /* 
-        height: 100vh; ) 무조건 viewport 높이
-        min-height: 100vh; ) 최소한 viewport 하나는 차지하되,
-                            콘텐츠가 많으면 세로로 더 길어질 수 있음
-    */
     min-height: 100vh;
+    align-content: start;
+    /* 04 Kkamsik 앞 여백 : 다른 해상도에서도 비율 조절 */
+    padding-bottom: clamp(160px, 17.7vw, 340px);
 }
 
+/* 위쪽 브랜드 서비스 소개 */
 .brand_intro {
     grid-column: 1 / -1;
-
     display: grid;
     grid-template-columns: subgrid;
+    align-items: start;
+    /* 1920 피그마에서 카피 시작 위치 약 y=345 */
+    padding-top: clamp(210px, 17.97vw, 345px);
 }
 
 .brand_typography {
     grid-column: 1 / 2;
-
+    min-width: 0;
+    padding-top: clamp(5px, 0.52vw, 10px);
     font-family: var(--font-en);
     font-weight: 300;
-
-    font-size: clamp(12px, 0.95vw, 18.18px);
+    font-size: clamp(11px, 0.947vw, 18.18px);
+    line-height: 1;
+    letter-spacing: -0.04em;
 }
 
+/* 바깥쪽 5~11칼럼 / 내부 7칼럼 : 카피 시작 위치를 6칼럼에 맞춤 */
 .brand_service {
-    grid-column: 4 / 11;
-
-    font-family: var(--font-en);
+    grid-column: 5 / 12;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    min-width: 0;
 }
 
 .brand_service_title {
-    font-weight: 300;
-
-    /* clamp (최솟값, 유동값, 최대값) */
-    font-size: clamp(36px, 3.02vw, 57.97px);
-    line-height: 1.035;
+    grid-column: 2 / -1;
+    min-width: 0;
+    margin: 0;
+    font-family: var(--font-ko);
+    font-weight: 500;
+    font-size: clamp(22px, 1.771vw, 34px);
+    line-height: 1.353; /* 1920: 34px / 46px */
+    letter-spacing: -0.02em;
+    word-break: keep-all;
 }
 
+.brand_service_title span {
+    display: block;
+}
+
+.brand_service_lead_first,
+.brand_service_lead_rest {
+    min-width: 0;
+    font-family: var(--font-en);
+    font-weight: 300;
+    font-size: clamp(16px, 1.354vw, 26px);
+    line-height: 1.385; /* 1920: 26px / 36px */
+    letter-spacing: 0;
+}
+
+.brand_service_lead_first {
+    grid-column: 2 / -1;
+    margin-top: clamp(7px, 0.521vw, 10px);
+}
+
+/* 두 번째 영문 문단은 한 칼럼 왼쪽에서 시작 */
+.brand_service_lead_rest {
+    grid-column: 1 / -1;
+}
+
+/* 로고 시퀀스 플레이스홀더 + 하단 문구 */
 .brand_identity {
     grid-column: 1 / -1;
-
     display: grid;
     grid-template-columns: subgrid;
+    margin-top: clamp(45px, 3.385vw, 65px);
 }
 
 .brand_identity_media {
-    grid-column: 1 / 8;
+    grid-column: 1 / 8; /* 1920 기준 약 1076px */
+    width: 100%;
+    aspect-ratio: 1076 / 752;
+    overflow: hidden;
+    border-radius: clamp(6px, 0.521vw, 10px);
+    background-color: #D9D9D9;
+}
+
+/* 실제 영상 전달 시 .brand_identity_media 안에 video 하나만 넣으면 됨 */
+.brand_identity_media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .brand_identity_info {
-    grid-column: 10 / 13;
-
+    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: subgrid;
+    align-items: start;
+    margin-top: clamp(24px, 1.98vw, 38px);
 }
 
 .brand_symbol {
     grid-column: 1 / 2;
 }
 
-.brand_name {
-    grid-column: 2 / 3;
+.brand_symbol img {
+    display: block;
+    width: clamp(17px, 1.188vw, 22.81px);
+    height: auto;
 }
 
-.brand_slash {
-    grid-column: 2 / 3;
-    grid-row: 2;
+.brand_description {
+    grid-column: 2 / -1; /* 1920 기준 x≈187px */
+    min-width: 0;
+    font-family: var(--font-ko);
+    font-weight: 400;
+    font-size: clamp(14px, 1.042vw, 20px);
+    line-height: 1.65; /* 1920: 36px */
+    letter-spacing: -0.03em;
+    word-break: keep-all;
 }
 
-.brand_meaning {
-    grid-column: 2 / 4;
+.brand_description p {
+    margin: 0;
 }
 
 
@@ -702,101 +770,204 @@ p {
     background-color: #D9D9D9;
 }
 
-/* Chapter 텍스트 */
+/* ======================
+    04_kkamsik
+====================== */
+
+
+
+.kkamsik {
+    position: relative;
+    width: 100%;
+}
+
+/* 01. 풀스크린으로 고정되는 배경과 Chapter */
+.kkamsik_sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.kkamsik_background {
+    position: absolute;
+    inset: 0;
+    background-color: #D9D9D9;
+}
+
+/* 이미지의 원래 크기 때문에 생기던 회색 띠 방지 */
+.kkamsik_background img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+}
+
 .kkamsik_sticky_inner {
     position: relative;
     height: 100%;
+    z-index: 1;
 }
 
+/* 왼쪽 작은 네모: x30, y35, 10×10 */
+.kkamsik_mark {
+    position: absolute;
+    top: clamp(20px, 3.425vh, 35px);
+    left: 0;
+    width: clamp(8px, 0.521vw, 10px);
+    height: clamp(8px, 0.521vw, 10px);
+    background-color: #fff;
+}
+
+/* Chapter. 1: x30, y274, Instrument Serif Italic 100px */
 .kkamsik_chapter {
-    grid-column: 1 / 3;
-
-    padding-top: 70px;
-    padding-left: 30px;
-
+    grid-column: 1 / 4;
+    position: absolute;
+    top: 26.81%;
+    left: 0;
+    margin: 0;
+    padding: 0;
     font-family: var(--font-serif);
     font-style: italic;
-
-    font-size: 113px;
+    font-weight: 400;
+    font-size: clamp(54px, min(5.208vw, 9.785vh), 100px);
     line-height: 1;
-
+    letter-spacing: -0.04em;
     white-space: nowrap;
-    color: white;
+    color: #fff;
 }
 
-/* 오른쪽 스크롤 영역 */
+/* 02. 같은 첫 화면에서 출발해 위로 이동하는 오른쪽 패널 */
 .kkamsik_scroll {
     position: relative;
     margin-top: -100vh;
+    pointer-events: none;  /* 왼쪽 배경 위를 덮어도 스크롤·클릭 방해 X */
 }
 
-/* 스크롤 콘텐츠 그리드 */
 .kkamsik_scroll_inner {
-    min-height: 200vh;
+    min-height: 0; /* 기존 200vh 강제 높이로 생길 수 있는 빈 구간 제거 */
 }
 
+/* 1920: 10열 시작 x1440에서 거터 20px을 당겨 x1420,
+   오른쪽 바깥 마진 30px까지 확장해 패널 너비 정확히 500px. */
 .kkamsik_content {
     grid-column: 10 / 13;
-
     position: relative;
+    min-width: 0;
+    margin-left: calc(-1 * var(--grid-gutter));
+    margin-right: calc(-1 * var(--page-margin));
+    padding: 0 clamp(26px, 2.083vw, 40px);
 
-    padding: 70px 0 120px 24px;
-    background-color: #A0A0A0;
+    background: rgba(167, 167, 167, 0.34);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    pointer-events: auto;
 }
 
+/* 이전 회색 확장 가상요소는 제거: 이제 패널 자체가 오른쪽 끝까지 닿음 */
 .kkamsik_content::after {
-    content: "";
-
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 100%;
-
-    width: var(--page-margin);
-    background-color: #A0A0A0;
+    content: none;
 }
 
+/* 첫 화면은 정확히 한 뷰포트: 갤러리는 이 아래에서 시작 */
 .kkamsik_intro {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    min-height: calc(100vh - 60px);
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 0;
+    display: block;
 }
 
+/* 패널 안의 장식 네모: 왼쪽 패딩을 40px 줘서 x1460 */
+.kkamsik_content_mark {
+    position: absolute;
+    top: clamp(20px, 3.425vh, 35px);
+    left: 0;
+    width: clamp(8px, 0.521vw, 10px);
+    height: clamp(8px, 0.521vw, 10px);
+    background-color: #fff;
+}
+
+/* 첫 화면 상단: 08 도입부와 동일한 제목 규격 */
 .kkamsik_title {
+    position: absolute;
+    top: 29.75%;
+    left: 0;
+    right: 0;
+    margin: 0;
     font-family: var(--font-ko);
-    font-weight: 500;
-
-   font-size: clamp(28px, 2.6vw, 50px);
-    line-height: 1.2;
+    font-weight: 400; /* SUIT 500이 실제 화면에서 두꺼워 보이면 400 유지 */
+    font-size: clamp(23px, min(1.823vw, 3.425vh), 35px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
 }
 
-.kkamsik_description {
-    align-self: center;
+/* 한·영 카피를 하나의 묶음으로 하단 정렬: 카피 추가 시 위쪽으로 확장 */
+.kkamsik_description_group {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: clamp(24px, 4.403vh, 45px);
+}
 
+/* 한글: 1920 시안 18/26px, x1460 / y약809 */
+.kkamsik_description {
     font-family: var(--font-ko);
     font-weight: 400;
-
-    font-size: clamp(14px, 1.2vw, 23px);
-    line-height: 28px;
+    font-size: clamp(12px, 0.9375vw, 18px);
+    line-height: 1.4444;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
 }
 
+/* 영문: 08과 같은 별도 단락 */
+.kkamsik_description_en {
+    margin-top: clamp(12px, 1.25vw, 24px);
+    font-family: var(--font-en);
+    font-weight: 400;
+    font-size: clamp(12px, 0.9375vw, 18px);
+    line-height: 1.3333;
+    letter-spacing: -0.04em;
+    overflow-wrap: break-word;
+}
 
-/* 깜식이 성장 사진 영역 */
+/* 03. 소개 화면 뒤에 갤러리가 올라옴.
+   04가 막 가득 찼을 때 사진이 먼저 보이지 않도록 작은 여유 확보. */
 .kkamsik_growth {
     display: flex;
     flex-direction: column;
-
-    gap: 24px;
+    gap: clamp(16px, 1.25vw, 24px);
+    padding-top: clamp(55px, 10vh, 110px);
+    padding-bottom: clamp(70px, 10vh, 110px);
 }
 
-/* placeholder (삭제 예정) */
 .kkamsik_growth_item {
+    position: relative;
     width: 100%;
     aspect-ratio: 1 / 0.85;
-
     margin: 0;
-    background-color: #323232;
+    overflow: hidden;
+    background-color: #323232; /* 사진 도착 전 placeholder */
 }
+
+.kkamsik_growth_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 세로가 특히 낮은 노트북에서는 제목과 본문 사이를 확보 */
+@media (max-height: 700px) {
+    .kkamsik_title { top: 26%; }
+    .kkamsik_description_group { bottom: 18px; }
+    .kkamsik_description,
+    .kkamsik_description_en { font-size: clamp(11px, 0.85vw, 16px); }
+}
+
 
 
 
@@ -1021,6 +1192,7 @@ p {
     font-weight: 300;
     letter-spacing: -0.04em;
     overflow-wrap: break-word;
+    color: #464646;
 }
 
 .before-service_dog {
@@ -1255,6 +1427,127 @@ p {
 
 
 
+/* ======================
+    07_bridge
+====================== */
+
+/*
+    흐름
+    0 ~ 100vh : 밝은 배경 -> 검은 배경 (그라디언트)
+    100 ~ 200vh : 검은 배경만 보이는 구간 + 중앙 카피
+    200vh 이후 : 이미지 / 영상 등장
+*/
+.bridge {
+    --bridge_gradient_height: 100vh;
+    --bridge_copy_offset: 32vh;
+    --bridge_dark_gap: 68vh;
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+}
+
+/* 02_overview의 그라디언트와 비슷하게, 전체 화면 높이에 걸쳐 서서히 어두워짐 */
+.bridge::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--bridge_gradient_height);
+    pointer-events: none;
+
+    background: linear-gradient(
+        to bottom,
+        var(--bg-light) 0%,
+        #D2CECE 25%,
+        #807979 55%,
+        #382F2F 82%,
+        var(--bg-dark) 100%
+    );
+}
+
+.bridge_inner {
+    position: relative;
+    width: calc(100% - var(--page-margin) * 2);
+    max-width: var(--content-width);
+    margin: 0 auto;
+
+    /* 그라디언트가 끝난 다음 검은 영역 안에서 카피 등장 */
+    padding-top: calc(var(--bridge_gradient_height) + var(--bridge_copy_offset));
+    padding-bottom: clamp(36px, 3.07vw, 59px);
+}
+
+/* 차분히 밝아지는 안내 카피 */
+.bridge_copy {
+    max-width: 706px;
+    margin: 0 auto;
+
+    font-family: var(--font-ko);
+    font-weight: 400;
+    font-size: clamp(17px, 1.40625vw, 27px);
+    line-height: 1.26;
+    letter-spacing: -0.04em;
+    text-align: center;
+    word-break: keep-all;
+    color: var(--bg-light);
+
+    opacity: 1; /* JS가 실행되지 않아도 카피 표시 */
+}
+
+.bridge.is-motion-ready .bridge_copy {
+    opacity: 0;
+}
+
+.bridge.is-motion-ready .bridge_copy.is-visible {
+    animation: bridge_lightup 1900ms ease-out both;
+}
+
+@keyframes bridge_lightup {
+    0%   { opacity: 0;    filter: blur(2px); }
+    24%  { opacity: 0.17; filter: blur(1.6px); }
+    49%  { opacity: 0.45; filter: blur(0.8px); }
+    76%  { opacity: 0.84; filter: blur(0.2px); }
+    100% { opacity: 1;    filter: blur(0); }
+}
+
+/* 최소 한 뷰포트만큼의 검은 장면이 충분히 나온 다음 이미지 등장 */
+.bridge_media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1860 / 1250;
+    margin-top: calc(var(--bridge_dark_gap) + 60px);
+
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: var(--bg-dark);
+}
+
+.bridge_media_image,
+.bridge_media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bridge.is-motion-ready .bridge_copy,
+    .bridge.is-motion-ready .bridge_copy.is-visible {
+        opacity: 1;
+        animation: none;
+        filter: none;
+    }
+}
+
+
+
+
+
+
+
 
 
 
@@ -1329,16 +1622,18 @@ p {
 
 /* =========================================
    01. Chapter. 2 Intro
+   Figma 기준: 1920 × 1022
+   화면 비율이 달라져도 요소가 과하게 커지지 않도록 조정
 ========================================= */
 
 .after-service_intro {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 650px;
     overflow: hidden;
 }
 
+/* 배경 이미지: 화면 전체를 채우고 비율을 유지 */
 .after-service_intro_media {
     position: absolute;
     inset: 0;
@@ -1353,223 +1648,279 @@ p {
     object-position: center;
 }
 
+/* 기존 배경의 명암 보정은 유지 */
 .after-service_intro::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
-
     background: linear-gradient(
         90deg,
         rgba(0, 0, 0, 0.32) 0%,
         rgba(0, 0, 0, 0) 45%,
         rgba(0, 0, 0, 0.2) 100%
     );
-
     pointer-events: none;
 }
 
+/* 기존 공통 12컬럼 그리드를 유지 */
 .after-service_intro_inner {
     position: relative;
     z-index: 2;
     height: 100%;
-    align-items: start;
 }
 
+/* Figma x30 / y35, 10×10 네모 */
+.after-service_intro_mark,
+.after-service_intro_copy_mark {
+    display: block;
+    position: absolute;
+    top: clamp(20px, 3.425vh, 35px);
+    width: clamp(8px, 0.521vw, 10px);
+    height: clamp(8px, 0.521vw, 10px);
+    background-color: #fff;
+}
+
+.after-service_intro_mark {
+    left: 0;
+}
+
+/* Figma x30 / y274, Instrument Serif Italic 100 */
 .after-service_chapter {
-    grid-column: 1 / 3;
-
-    padding-top: 70px;
-    padding-left: 30px;
-
+    position: absolute;
+    top: 26.81%;
+    left: 0;
+    padding: 0;
     font-family: var(--font-serif);
     font-style: italic;
-
-    font-size: 113px;
+    font-weight: 400;
+    font-size: clamp(54px, min(5.208vw, 9.785vh), 100px);
     line-height: 1;
-
+    letter-spacing: -0.04em;
     white-space: nowrap;
-    color: white;
+    color: #fff;
 }
 
-/* 텍스트 박스 (매트 글래스 질감) */
+/* Figma x1420 / y0, width 500, height = 화면 높이.
+   기존 색상과 matte glass 설정은 그대로 사용합니다. */
 .after-service_intro_copy {
-    grid-column: 10 / 13;
-    align-self: center;
-
-    /* 1920px 기준 시안 크기 */
-    width: 500px;
-    height: min(955px, calc(100vh - 80px));
-
-    /* 12컬럼 그리드의 오른쪽 마진 무시 */
-    justify-self: end;
-    margin-right: calc(-1 * var(--page-margin));
-
-    /* 내부 텍스트 여백 */
-    padding: 48px 40px;
+    position: absolute;
+    top: 0;
+    right: calc(-1 * var(--page-margin));
+    width: min(26.042vw, 500px);
+    height: 100%;
+    min-width: 0;
     box-sizing: border-box;
-
-    /* 배경 */
-    background: rgba(167, 167, 167, 0.34);
-
+    margin: 0;
+    padding: 0;
+    background: rgba(104, 104, 104, 0.34);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
-
-    /* 내부 텍스트 정렬 */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    color: #191313;
+    color: #fff;
 }
 
+/* Figma 패널 안 x40 / y35 */
+.after-service_intro_copy_mark {
+    left: clamp(26px, 2.083vw, 40px);
+}
+
+/* Figma 패널 안 x40 / y304, SUIT Medium 35 */
 .after-service_intro_title {
-    margin-bottom: 28px !important;
-
+    position: absolute;
+    top: 29.75%;
+    left: clamp(26px, 2.083vw, 40px);
+    right: clamp(26px, 2.083vw, 40px);
+    margin: 0;
     font-family: var(--font-ko);
-    font-size: 35px;
     font-weight: 400;
-    line-height: 1.35;
+    font-size: clamp(23px, min(1.823vw, 3.425vh), 35px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
     word-break: keep-all;
-
-    color: #191313;
+    color: #fff;
 }
 
+/* 한·영 본문은 각각 분리하되 한 덩어리로 하단 정렬.
+   카피가 바뀌면 상단 방향으로 자연스럽게 늘어납니다. */
 .after-service_intro_description {
+    position: absolute;
+    left: clamp(26px, 2.083vw, 40px);
+    right: clamp(26px, 2.083vw, 40px);
+    bottom: clamp(24px, 4.403vh, 45px);
+    margin: 0;
+}
+
+/* Figma SUIT Medium 18/26, -4% */
+.after-service_intro_description_ko {
     font-family: var(--font-ko);
-    font-size: 23px;
     font-weight: 400;
-    line-height: 1.6;
-    word-break: keep-all;
-
-    color: #191313;
-}
-
-/* =========================================
-   02. Archive Intro
-========================================= */
-
-.after-service_archive_intro {
-    width: 100%;
-    padding: clamp(110px, 12vh, 180px) 0;
-}
-
-.after-service_archive_intro_inner {
-    row-gap: 100px;
-}
-
-/* 상단 제목 + 설명 */
-.after-service_archive_intro_header {
-    grid-column: 1 / 13;
-
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--grid-gutter);
-    align-items: start;
-}
-
-/* Archive 제목 */
-.after-service_archive_intro_title {
-    grid-column: 1 / 5;
-
-    display: flex;
-    align-items: flex-start;
-    gap: 48px;
-
-    font-family: var(--font-en);
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 60px;
-}
-
-/* 제목 앞 네모 */
-.after-service_archive_intro_mark {
-    display: inline-block;
-
-    width: 12px;
-    height: 12px;
-
-    flex-shrink: 0;
-
-    margin-top: 12px;
-
-    background-color: currentColor;
-
-    font-size: 0;
-    line-height: 0;
-}
-
-/* 오른쪽 설명 */
-.after-service_archive_intro_description {
-    grid-column: 7 / 12;
-    min-width: 0;
-}
-
-/* 한글 + 영어 공통 */
-.after-service_archive_intro_description p {
-    font-size: 32px;
-    font-weight: 300;
-    line-height: 45px;
+    font-size: clamp(12px, 0.9375vw, 18px);
+    line-height: 1.4444;
     letter-spacing: -0.04em;
     word-break: keep-all;
 }
 
-/* 한글 */
-.after-service_archive_intro_description p:first-child {
-    font-family: var(--font-ko);
-}
-
-/* 영어 */
-.after-service_archive_intro_description p:last-child {
+/* Figma Helvetica Neue Regular 18/24, -4% */
+.after-service_intro_description_en {
+    margin-top: clamp(12px, 1.04vw, 20px) !important;
     font-family: var(--font-en);
+    font-weight: 400;
+    font-size: clamp(12px, 0.9375vw, 18px);
+    line-height: 1.3333;
+    letter-spacing: -0.04em;
+    overflow-wrap: break-word;
 }
 
-/* 두 문단 사이 간격 */
-.after-service_archive_intro_description p + p {
-    margin-top: 12px;
+/* 화면 높이가 낮은 데스크톱에서도 본문과 제목이 겹치지 않도록 */
+@media (max-height: 700px) {
+    .after-service_intro_title { top: 26%; }
+    .after-service_intro_description { bottom: 18px; }
+    .after-service_intro_description_ko,
+    .after-service_intro_description_en { font-size: clamp(11px, 0.85vw, 16px); }
 }
 
-/* 하단 이미지 영역 */
-.after-service_archive_intro_gallery {
-    grid-column: 1 / 13;
 
+
+
+/* =========================================
+   02. After Loss Home (기존 Archive Intro)
+   Figma : 1920 × 1700 / 12 columns
+   1920px에서는 시안 크기를 유지하고, 작은 데스크톱에서는 함께 축소
+========================================= */
+
+.after-service_home {
+    width: 100%;
+    padding: clamp(108px, 10.4167vw, 200px) 0 clamp(64px, 5.323vw, 102px);
+    background-color: var(--bg-dark);
+}
+
+/* 영상과 본문 사이 : 1920 기준 약 136px */
+.after-service_home_inner {
+    row-gap: clamp(76px, 7.073vw, 135.8px);
+    align-content: start;
+}
+
+/* 기존 공통 12칼럼에 맞춰 제목과 오른쪽 본문 분리 */
+.after-service_home_header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+    min-width: 0;
+}
+
+/* 왼쪽 네모 : x30, y200 / 12×12 / #D9D9D9 */
+.after-service_home_mark {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    display: block;
+    width: clamp(8px, 0.625vw, 12px);
+    height: clamp(8px, 0.625vw, 12px);
+    margin: 0;
+    flex: none;
+    background-color: #D9D9D9;
+}
+
+/* AFTER LOSS HOME : x187, y200 / SUIT Light 40/40 */
+.after-service_home_title {
+    grid-column: 2 / 6;
+    grid-row: 1;
+    display: block;
+    min-width: 0;
+    margin: 0;
+    font-family: var(--font-ko);
+    font-size: clamp(25px, 2.08333vw, 40px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--bg-light);
+}
+
+/* 오른쪽 카피 : 7칼럼 시작 (1920 기준 x970) */
+.after-service_home_description {
+    grid-column: 7 / 13;
+    grid-row: 1;
+    min-width: 0;
+    font-weight: 300;
+    line-height: 1.40625;
+}
+
+/* 1920 기준 본문 32px / 행간 45px / 텍스트 박스 약 783px */
+.after-service_home_description p {
+    width: 85.0674%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    font-size: clamp(18px, min(1.66667vw, 3.13vh), 32px);
+    font-weight: 300;
+    line-height: 1.40625;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.after-service_home_ko {
+    font-family: var(--font-ko);
+    color: var(--bg-light);
+}
+
+/* 영문 : 1920 기준 x920, y357 / 한글 박스 뒤 22px */
+.after-service_home_description .after-service_home_en {
+    margin-top: clamp(14px, 1.1458vw, 22px);
+    /* margin-left: calc(-1 * min(2.60417vw, 50px)); */
+    font-family: var(--font-en);
+    color: #BDBDBD;
+}
+
+/* 이미지 영역 : x30/x970, y628 / 920×970 / 20px 거터 */
+.after-service_home_gallery {
+    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--grid-gutter);
-
     min-width: 0;
 }
 
-/* 이미지 박스 공통 */
-.after-service_archive_intro_main,
-.after-service_archive_intro_side {
+.after-service_home_main,
+.after-service_home_side {
     width: 100%;
     min-width: 0;
-
-    aspect-ratio: 920 / 1004;
-
-    border-radius: 10px;
+    aspect-ratio: 920 / 970;
+    border-radius: clamp(7px, 0.52083vw, 10px);
     overflow: hidden;
-
-    background-color: var(--bg-light);
 }
 
-/* 왼쪽 목업 */
-.after-service_archive_intro_main {
+/* 왼쪽 : 최종 영상이 오기 전 임시 폰 목업 */
+.after-service_home_main {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
 }
 
-/* 임시 목업 이미지 */
-.after-service_archive_intro_main img {
+.after-service_home_main img,
+.after-service_home_main video {
     display: block;
-
-    width: 48%;
-    height: 85%;
-
+    width: auto;
+    height: 92%;
+    max-width: 88%;
+    max-height: 100%;
     object-fit: contain;
 }
+
+/* 오른쪽 : 임시 이미지 박스. 어셋을 받아도 동일한 컨테이너 사용 */
+.after-service_home_side {
+    background-color: #5B5B5B;
+}
+
+.after-service_home_side img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 
 /* =========================================
@@ -1578,129 +1929,202 @@ p {
 
 .after-service_epilogue {
     width: 100%;
-    padding: clamp(100px, 12vh, 180px) 0;
+    padding: clamp(100px, min(10.4167vw, 19vh), 200px) 0 clamp(74px, 6.25vw, 120px);
+    background-color: var(--bg-dark);
 }
 
 .after-service_epilogue_inner {
     align-items: start;
 }
 
-/* 왼쪽 고정 텍스트 영역 */
+/* 왼쪽 : 1~5칼럼, 섹션 안에서 스크롤 시 고정 */
 .after-service_epilogue_info {
     grid-column: 1 / 6;
-
     position: sticky;
-    top: clamp(100px, 16vh, 180px);
-
+    top: clamp(80px, min(10.4167vw, 19vh), 200px);
     align-self: start;
     min-width: 0;
 }
 
-/* 제목 앞 네모 */
+/* 제목 : 네모 x30 / Epilogue x187 (1920 기준) */
+.after-service_epilogue_title {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    align-items: start;
+    width: 100%;
+    margin: 0 !important;
+
+    font-family: var(--font-en);
+    font-size: clamp(23px, min(2.0833vw, 3.95vh), 40px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+}
+
 .after-service_epilogue_mark {
-    display: inline-block;
-
-    width: 12px;
-    height: 12px;
-    flex-shrink: 0;
-
-    margin-top: 12px;
-
-    background-color: currentColor;
-
+    grid-column: 1;
+    display: block;
+    width: clamp(8px, 0.625vw, 12px);
+    height: clamp(8px, 0.625vw, 12px);
+    margin: 0;
+    background-color: #D9D9D9;
     font-size: 0;
     line-height: 0;
 }
 
-.after-service_epilogue_title {
-    display: flex;
-    align-items: flex-start;
-    gap: clamp(32px, 2.5vw, 48px);
-
-    margin-bottom: clamp(40px, 3.125vw, 60px) !important;
-
-    font-family: var(--font-en);
-    font-size: clamp(28px, 2.083vw, 40px);
-    font-weight: 300;
-    line-height: 1.5;
-}
-
-/* 에필로그 본문 */
+/* 한글 시작 : y365 = 타이틀 y200 + 40 + 125 (1920 기준) */
 .after-service_epilogue_description {
-    max-width: 100%;
+    width: 100%;
+    min-width: 0;
+    margin-top: clamp(70px, min(6.5104vw, 12.3vh), 125px);
 }
 
-/* 에필로그 본문 */
 .after-service_epilogue_description p {
-    font-size: clamp(20px, 1.667vw, 32px);
+    margin: 0;
+    font-size: clamp(17px, min(1.5625vw, 2.95vh), 30px);
     font-weight: 300;
-    line-height: 1.4;
+    line-height: 1.5; /* 30px -> 45px */
     letter-spacing: -0.04em;
+    overflow-wrap: break-word;
+}
+
+.after-service_epilogue_description p:first-child {
+    font-family: var(--font-ko);
+    color: var(--bg-light);
     word-break: keep-all;
 }
 
-/* 한글 */
-.after-service_epilogue_description p:first-child {
-    font-family: var(--font-ko);
-}
-
-/* 영문 */
+/* 영어는 다른 섹션에서 확인한 조금 차분한 회색으로 */
 .after-service_epilogue_description p:last-child {
     font-family: var(--font-en);
+    color: #BDBDBD;
+    word-break: normal;
 }
 
-/* 한글과 영문 사이 간격 */
+/* 두 문단의 박스 사이 간격 : 1920 기준 22px (글자 윤곽 사이로는 더 넓게 보임) */
 .after-service_epilogue_description p + p {
-    margin-top: 12px;
+    margin-top: clamp(14px, 1.1458vw, 22px);
 }
 
-.after-service_epilogue_gallery {
+/* 오른쪽 : 7~12칼럼, 폰 목업 2열 교차 배치 */
+/* 기존 style.css 맨 아래의 max-width:1440px 규칙보다 우선 적용되어
+   1440px 노트북에서도 갑자기 6칼럼으로 커지지 않도록 합니다. */
+.after-service_epilogue_inner > .after-service_epilogue_gallery {
     grid-column: 7 / 13;
-
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: clamp(18px, 2vw, 38px);
-    row-gap: clamp(70px, 10vh, 150px);
-
+    column-gap: clamp(24px, 2.9167vw, 56px);
+    row-gap: clamp(30px, 2.8125vw, 54px);
     align-items: start;
     min-width: 0;
+
+    /* 피그마 내 목업 그룹 : 첫 목업 x20 / y66.47 */
+    --epilogue_phone_inset: clamp(10px, 1.0417vw, 20px);
+    box-sizing: border-box;
+    width: calc(100% + var(--epilogue_phone_inset));
+    padding-left: var(--epilogue_phone_inset);
+    padding-top: clamp(38px, 3.461vw, 66.47px);
 }
 
 .after-service_epilogue_phone {
+    display: block;
     width: 100%;
     min-width: 0;
+    margin: 0;
 }
 
+/* 두 번째 · 네 번째 목업은 아래로 약 251px씩 엇갈림 */
 .after-service_epilogue_phone:nth-child(even) {
-    margin-top: clamp(100px, 16vh, 220px);
+    margin-top: clamp(120px, 13.0875vw, 251.28px);
 }
 
-.after-service_epilogue_phone img {
+/* 기존 임시 목업을 그대로 표시. 최종 영상에도 같은 크기/비율 사용 가능 */
+.after-service_epilogue_phone img,
+.after-service_epilogue_phone video {
+    display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 431.97 / 902.82;
     object-fit: contain;
 }
 
+/* SUIT Light / 26px / line-height 45 / -4% */
 .after-service_epilogue_phone figcaption {
-    margin-top: 20px;
-
+    margin-top: clamp(10px, 0.9375vw, 18px);
     font-family: var(--font-ko);
-    font-size: clamp(12px, 0.9vw, 16px);
-    line-height: 1.5;
+    font-weight: 300;
+    font-size: clamp(15px, min(1.3542vw, 2.55vh), 26px);
+    line-height: 45px;
+    letter-spacing: -0.04em;
+    color: var(--bg-light);
     word-break: keep-all;
 }
+
+
 
 /* =========================================
    04. Transition
 ========================================= */
 
 .after-service_transition {
-    width: 100%;
-    height: 100vh;
-    min-height: 650px;
+    position: relative;
 
-    background-color: #777777;
+    width: 100%;
+    aspect-ratio: 1920 / 790;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    padding-bottom: clamp(45px, 4.7vw, 90px);
+
+    overflow: hidden;
+    background-color: #D9D9D9;
 }
+
+
+/* 중앙 하단 안내 카피 */
+.after-service_transition_copy {
+    position: relative;
+    z-index: 1;
+
+    width: calc(100% - 60px);
+
+    font-family: var(--font-ko);
+    font-weight: 300;
+
+    font-size: clamp(16px, 1.302vw, 25px);
+    line-height: 1.6;
+    letter-spacing: -0.04em;
+
+    text-align: center;
+    word-break: keep-all;
+
+    color: var(--bg-dark);
+}
+
+
+/* 추후 최종 이미지 적용 */
+.after-service_transition img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* 이미지 호버 인터랙션 */
+.after-service_transition:hover img {
+    transform: scale(1.02);
+}
+
 
 /* =========================================
    05. Archive Overview
@@ -1708,152 +2132,150 @@ p {
 
 .after-service_archive {
     width: 100%;
+    background-color: var(--bg-dark);
 }
 
+/* 타이틀 y200 / 노트북에서는 상단 여백도 축소 */
 .after-service_archive_overview {
     width: 100%;
-    padding: clamp(110px, 12vh, 180px) 0;
+    padding: clamp(105px, 10.4167vw, 200px) 0 clamp(90px, 9.375vw, 180px);
 }
 
+/* 1920에서 본문 아래 ~136px 뒤, 이미지 y583 */
 .after-service_archive_overview_inner {
-    row-gap: 100px;
+    align-content: start;
+    row-gap: clamp(76px, 7.0833vw, 136px);
 }
 
-/* 상단 제목 + 설명 */
+/* 왼쪽 제목 / 오른쪽 본문은 같은 행에 배치 */
 .after-service_archive_info {
-    grid-column: 1 / 13;
-
+    grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--grid-gutter);
-
+    grid-template-columns: subgrid;
     align-items: start;
-}
-
-/* Archive 제목 */
-.after-service_archive_title {
-    grid-column: 1 / 5;
-
-    display: flex;
-    align-items: flex-start;
-    gap: 48px;
-
-    font-family: var(--font-en);
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 60px;
-}
-
-/* 제목 앞 네모 */
-.after-service_archive_mark {
-    display: inline-block;
-
-    width: 12px;
-    height: 12px;
-    flex-shrink: 0;
-
-    margin-top: 12px;
-
-    background-color: currentColor;
-
-    font-size: 0;
-    line-height: 0;
-}
-
-/* 오른쪽 본문 */
-.after-service_archive_description {
-    grid-column: 7 / 12;
     min-width: 0;
 }
 
-/* 한글 + 영어 공통 */
-.after-service_archive_description p {
-    font-size: 32px;
+/* 네모 : 1920 기준 x30 y200, 12×12 */
+.after-service_archive_mark {
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    width: clamp(8px, 0.625vw, 12px);
+    height: clamp(8px, 0.625vw, 12px);
+    background-color: #D9D9D9;
+}
+
+/* Archive : 1920 기준 x187 y200, Helvetica Neue Light 40/40 */
+.after-service_archive_title {
+    grid-column: 2 / 6;
+    grid-row: 1;
+    min-width: 0;
+    margin: 0;
+    font-family: var(--font-en);
     font-weight: 300;
-    line-height: 45px;
+    font-size: clamp(25px, 2.08333vw, 40px);
+    line-height: 1;
     letter-spacing: -0.04em;
+    white-space: nowrap;
+    color: var(--bg-light);
+}
+
+/* 소개 카피 : x970, 7~12칼럼 */
+.after-service_archive_description {
+    grid-column: 7 / 13;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.after-service_archive_description p {
+    width: 85.0674%; /* 920px 컬럼 중 피그마 텍스트 박스 약 782.62px */
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    font-size: clamp(18px, min(1.66667vw, 3.13vh), 32px);
+    font-weight: 300;
+    line-height: 1.40625; /* 32px -> 45px */
+    letter-spacing: -0.04em;
+    overflow-wrap: break-word;
+}
+
+.after-service_archive_ko {
+    font-family: var(--font-ko);
+    color: var(--bg-light);
     word-break: keep-all;
 }
 
-/* 한글 */
-.after-service_archive_description p:first-child {
-    font-family: var(--font-ko);
-}
-
-/* 영어 */
-.after-service_archive_description p:last-child {
+.after-service_archive_description .after-service_archive_en {
+    margin-top: clamp(14px, 1.14583vw, 22px);
     font-family: var(--font-en);
+    color: #BDBDBD;
+    word-break: normal;
 }
 
-/* 문단 사이 간격 */
-.after-service_archive_description p + p {
-    margin-top: 12px;
-}
-
-/* =========================================
-   Archive Gallery
-========================================= */
-
+/* 이미지 그룹 : x30/x970, y583, 전체 1860×1158 */
 .after-service_archive_gallery {
-    grid-column: 1 / 13;
-
+    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--grid-gutter);
-
     align-items: stretch;
     min-width: 0;
 }
 
-/* 왼쪽 영상 목업 박스 */
+/* 왼쪽 : 920×1158, 임시 폰 목업 */
 .after-service_archive_video {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     min-width: 0;
-    min-height: 0;
-
     aspect-ratio: 920 / 1158;
-
-    border-radius: 10px;
     overflow: hidden;
-
-    background-color: var(--bg-light);
+    border-radius: clamp(7px, 0.52083vw, 10px);
+    background-color: #D9D9D9;
 }
 
-/* 왼쪽 임시 폰 목업 */
-.after-service_archive_video img {
+.after-service_archive_video img,
+.after-service_archive_video video {
     display: block;
-
-    width: 48%;
-    height: 85%;
-
+    width: auto;
+    height: 88%;
+    max-width: 88%;
+    max-height: 100%;
     object-fit: contain;
 }
 
-/* 오른쪽 콘텐츠 박스 묶음 */
+/* 오른쪽 : 같은 높이를 두 칸으로 나누기 */
 .after-service_archive_side {
     display: grid;
     grid-template-rows: repeat(2, minmax(0, 1fr));
-
     gap: var(--grid-gutter);
     min-width: 0;
     min-height: 0;
 }
 
-/* 오른쪽 위 + 아래 박스 */
 .after-service_archive_side_top,
 .after-service_archive_side_bottom {
     min-width: 0;
     min-height: 0;
-
-    border-radius: 10px;
     overflow: hidden;
-
-    background-color: var(--bg-light);
+    border-radius: clamp(7px, 0.52083vw, 10px);
 }
+
+.after-service_archive_side_top {
+    background-color: #D9D9D9;
+}
+
+/* 사용자 프로젝트 assets/08_after-service의 실제 그라디언트 파일 */
+.after-service_archive_side_bottom {
+    background-color: var(--bg-dark);
+    background-image: url("../assets/08_after-service/after-service_archive_gradient_graphic.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 
 /* =========================================
    06. Archive Closing
@@ -1861,157 +2283,114 @@ p {
 
 .after-service_archive_closing {
     width: 100%;
-    padding: 0 0 clamp(110px, 12vh, 180px);
+    padding-bottom: clamp(100px, 9.375vw, 180px);
 }
 
+/* 본문 아래 이미지 2개가 나란히 이어지는 구조 */
 .after-service_archive_closing_inner {
+    align-content: start;
     align-items: start;
-    row-gap: 0;
+    row-gap: clamp(82px, 8.3333vw, 160px);
 }
 
-
-/* 오른쪽 본문 */
+/* 오른쪽 한글 + 영문 본문 : 7~12칼럼 */
 .after-service_archive_qa_copy {
-    grid-column: 7 / 12;
+    grid-column: 7 / 13;
     grid-row: 1;
-
     width: 100%;
     min-width: 0;
-
-    padding-bottom: 100px;
-    align-self: start;
 }
 
-/* 한글 + 영어 공통 */
 .after-service_archive_qa_copy p {
-    font-size: 32px;
+    width: 85.0674%; /* 1920: 920px 컬럼 내부 약 782.62px */
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    font-size: clamp(18px, min(1.66667vw, 3.13vh), 32px);
     font-weight: 300;
-    line-height: 45px;
+    line-height: 1.40625; /* 1920: 32px / 45px */
     letter-spacing: -0.04em;
+    overflow-wrap: break-word;
+}
+
+.after-service_archive_qa_copy .after-service_description_ko {
+    font-family: var(--font-ko);
+    color: var(--bg-light);
     word-break: keep-all;
 }
 
-/* 한글 */
-.after-service_archive_qa_copy .after-service_description_ko {
-    font-family: var(--font-ko);
-}
-
-/* 영어 */
 .after-service_archive_qa_copy .after-service_description_en {
+    margin-top: clamp(14px, 1.14583vw, 22px);
     font-family: var(--font-en);
+    color: #BDBDBD;
+    word-break: normal;
 }
 
-/* 문단 사이 간격 */
-.after-service_archive_qa_copy p + p {
-    margin-top: 12px;
-}
-
-
-/* 왼쪽 강아지 사진 */
+/* 왼쪽 사진 : 1920 기준 약 920 × 1290 */
 .after-service_archive_photo {
     grid-column: 1 / 7;
     grid-row: 2;
-
     position: relative;
     width: 100%;
     min-width: 0;
-
-    aspect-ratio: 920 / 1289.92;
-
-    border-radius: 10px;
+    aspect-ratio: 920 / 1290;
     overflow: hidden;
+    border-radius: clamp(7px, 0.52083vw, 10px);
+    background-color: #D9D9D9;
 }
 
 .after-service_archive_background {
+    display: block;
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center;
 }
 
-
-/* 돌봄 기록 카드 공통 */
+/* 깜식이 사진 위에 얹는 카드 세 장 */
 .after-service_archive_card {
     position: absolute;
-
     width: 36.76%;
     height: auto;
-
-    filter: drop-shadow(
-        0 12px 20px rgba(0, 0, 0, 0.15)
-    );
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.15));
 }
 
-
-/* 카드 01 */
 .after-service_archive_card_01 {
     top: 4.94%;
     left: 55.80%;
     z-index: 3;
 }
 
-
-/* 카드 02 */
 .after-service_archive_card_02 {
     top: 15.94%;
     left: 5.11%;
     z-index: 2;
 }
 
-
-/* 카드 03 */
 .after-service_archive_card_03 {
     top: 54.03%;
     left: 55.80%;
     z-index: 4;
 }
 
-
-/* 오른쪽 앱 목업 */
+/* 오른쪽 손 + 폰 목업 : 원본 비율을 유지해 박스에 채움 */
 .after-service_archive_qa_media {
     grid-column: 7 / 13;
     grid-row: 2;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     width: 100%;
-    height: 100%;
     min-width: 0;
-
-    background-color: var(--bg-light);
-
-    border-radius: 10px;
+    aspect-ratio: 920 / 1290;
     overflow: hidden;
+    border-radius: clamp(7px, 0.52083vw, 10px);
+    background-color: #BFBFBF;
 }
 
 .after-service_archive_qa_media img {
     display: block;
-
-    width: 48%;
-    max-height: 85%;
-    height: auto;
-
-    object-fit: contain;
-}
-
-.after-service_archive_qa_copy {
     width: 100%;
-    max-width: none;
-    align-self: start;
-}
-
-.after-service_archive_qa_copy .after-service_description_ko,
-.after-service_archive_qa_copy .after-service_description_en {
-    font-size: 32px;
-    font-weight: 300;
-    line-height: 45px;
-}
-
-.after-service_archive_qa_copy .after-service_description_en {
-    margin-top: 12px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 

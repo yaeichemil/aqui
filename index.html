@@ -39,7 +39,7 @@
             >
                 <img
                 class="hero_thumbnail"
-                src="./assets/01_hero/temp/hero_thumbnail_temp.png"
+                src="./assets/01_hero/temp/hero_thumbnail_v2_temp.png"
                 alt=""
                 >
 
@@ -119,7 +119,7 @@
                         <img
                             class="overview_img"
                             src="./assets/02_overview/temp/overview_news_item_01_temp.png"
-                            alt="펫로스 관련 뉴스"
+                            alt="pet-loss news 01"
                         >
 
                     </a>
@@ -273,147 +273,131 @@
 
 
         <!-- 03_brand -->
-       <section id="brand" class="section brand">
+        <section id="brand" class="section brand">
 
-        <div class="brand_inner grid_container">
+            <div class="brand_inner grid_container">
 
-            
-            <!-- 위쪽 (서비스 소개) -->
-            <div class="brand_intro">
 
-                <div class="brand_typography">
-                    <p>
+                <!-- 상단 : 브랜드 소개 -->
+                <div class="brand_intro">
+
+                    <!-- 02 Overview와 동일한 왼쪽 레이블 -->
+                    <p class="brand_typography">
                         THE PET LOSS<br>
                         CARE SERVICE<br>
                         AQUI
                     </p>
-                </div>
 
-                <div class="brand_service">
+                    <div class="brand_service">
+                        <!-- 한글 두 문장 : 디자인상 각각 한 줄로 시작 -->
+                        <h2 class="brand_service_title">
+                            <span>사별 전 마지막 돌봄부터</span>
+                            <span>사별 이후까지 이어지는 펫로스 케어 서비스</span>
+                        </h2>
 
-                    <h2 class="brand_service_title">
-                        WE CARE FOR PEOPLE WHO EXPEREINCE
-                        PET LOSS. I WANT TO CARE DOLDOL. I
-                        MISS DOLDOL. AND 
-                    </h2>
-
-                    <p class="brand_service_description">
-                        <!-- 샘플용. 추후 카피 변경 예정 -->
-
-                        <!-- 아키에서 반려동물의 상태 변화와 일상을 기록하고, 사별 직후 필요한<br>
-                        절차와 준비할 일을 확인할 수 있습니다. 함께 남긴 기록은 이별 뒤에도<br>
-                        보관되며, 원하는 때 다시 꺼내볼 수 있습니다. -->
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- 아래쪽 (브랜드 이름, 로고 소개) -->
-            <div class="brand_identity">
-                <div class="brand_identity_media">
-                    <!-- 로고 영상 추후에 추가 -->
-                </div>
-
-                <div class="brand_identity_info">
-
-                    <div class="brand_symbol">
-                        <img
-                            src="./assets/00_common/icons/aqui_symbol.svg"
-                            alt=""
-                        >
+                        <!-- 확정 전 영어 더미 텍스트 : 위치가 다른 두 문단 -->
+                        <p class="brand_service_lead_first">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        </p>
+                        <p class="brand_service_lead_rest">
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dol
+                        </p>
                     </div>
 
-                    <h3 class="brand_name">
-                        아키(aquí)
-                    </h3>
+                </div>
 
-                    <span class="brand_slash">/</span>
+                <!-- 아래 : 로고 시퀀스 영역 + 브랜드 설명 -->
+                <div class="brand_identity">
 
+                    <!-- 영상 파일 전달 전에는 회색 플레이스홀더만 표시 -->
+                    <div class="brand_identity_media" aria-label="브랜드 로고 시퀀스 영상 영역">
+                        <!-- 나중에 이 안에 video 삽입 -->
+                    </div>
 
-                    <p class="brand_meaning">
-                        aquí(아키)는 스페인어로 '여기'를 뜻합니다.
-                        함께한 시간을 소중히 간직하고, 반려동물을
-                        아끼는 마음을 담아 지었습니다.
-                    </p>
+                    <div class="brand_identity_info">
+                        <div class="brand_symbol">
+                            <img src="./assets/00_common/icons/aqui_symbol_black.svg" alt="">
+                        </div>
+
+                        <div class="brand_description">
+                            <p>아키는 반려동물과 함께하는 시간을 기록하고, 이별 이후 다시 일상을 이어갈 수 있도록 돕는 펫로스 케어 서비스입니다.</p>
+                            <p>반려동물과의 사별을 하나의 사건으로만 보지 않고, 변화하는 보호자의 상황에 맞춰 필요한 경험을 설계합니다.</p>
+                        </div>
+                    </div>
 
                 </div>
+
+
             </div>
 
+        </section>
 
-        </div>
 
-       </section>
 
 
 
 
 
         <!-- 04_kkamsik -->
-       <section id="kkamsik" class="section kkamsik">
+        <section id="kkamsik" class="section kkamsik">
 
-        <!-- 고정 구역 (background, chapter) -->
-        <div class="kkamsik_sticky">
+            <!-- 배경과 Chapter.1은 스크롤하는 동안 고정 -->
+            <div class="kkamsik_sticky">
 
-            <div class="kkamsik_background">
-                <img
-                    src="./assets/04_kkamsik/kkamsik_fullscreen.png"
-                    alt="">
+                <div class="kkamsik_background">
+                    <img src="./assets/04_kkamsik/kkamsik_fullscreen.png" alt="">
+                </div>
+
+                <div class="kkamsik_sticky_inner grid_container">
+                    <span class="kkamsik_mark" aria-hidden="true"></span>
+                    <p class="kkamsik_chapter">Chapter. 1</p>
+                </div>
+
             </div>
 
+            <!-- 오른쪽 소개와 사진은 스크롤하면서 위로 올라가는 구역 -->
+            <div class="kkamsik_scroll">
+                <div class="kkamsik_scroll_inner grid_container">
+                    <div class="kkamsik_content">
 
-            <!-- 12칼럼 활용 예정이라서 분리 -->
-            <div class="kkamsik_sticky_inner grid_container">
-                <p class="kkamsik_chapter">
-                    Chapter. 1
-                </p>
-            </div>
+                        <!-- 첫 화면: 오른쪽 제목 / 한글·영문 본문 -->
+                        <div class="kkamsik_intro">
+                            <span class="kkamsik_content_mark" aria-hidden="true"></span>
 
-        </div>
+                            <h2 class="kkamsik_title">
+                                나의 오랜 친구,<br>
+                                깜식이를 소개합니다.
+                            </h2>
 
+                            <div class="kkamsik_description_group">
+                                <p class="kkamsik_description">
+                                    처음 만나던 날, 품에 쏙 안기던 작은 깜식이. 많은 시간을 함께 보내며
+                                    오랜 친구가 되었지요. 나이가 들어 예전 같지 않은 날도 있지만,
+                                    함께하는 하루가 조금은 더 이어졌으면 해요.
+                                </p>
+                                <p class="kkamsik_description_en">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    t labore et dolore.
+                                </p>
+                            </div>
+                        </div>
 
-        <!-- 스크롤 구역 (copy, image) -->
-        <div class="kkamsik_scroll">
-
-            <div class="kkamsik_scroll_inner grid_container">
-
-                <!-- 스크롤 영역의 그리드 구조 (10~12칼럼) -->
-                <div class="kkamsik_content">
-
-                    <div class="kkamsik_intro">
-                        <h2 class="kkamsik_title">
-                            나의 오랜 친구,<br>
-                            깜식이를 소개합니다
-                        </h2>
-
-                        <p class="kkamsik_description">
-                           품에 안기던 작은 아이가 어느새 오랜 친구가 되었어요.
-                           이제는 나이 들고 몸도 아프지만, 함께하는 하루가 조금 더 이어
-                           졌으면 해요. 이제는 나이 들고 몸도 아프지만, 함께하는 하루가
-                           조금 더 이어졌으면 해요.
-                        </p>
-                    </div>
-
-
-                    <!-- 깜식이 성장 사진들 -->
-                    <div class="kkamsik_growth">
-
-                        <figure class="kkamsik_growth_item"></figure>
-                        <figure class="kkamsik_growth_item"></figure>
-                        <figure class="kkamsik_growth_item"></figure>
-                        <figure class="kkamsik_growth_item"></figure>
-                        <figure class="kkamsik_growth_item"></figure>
+                        <!-- 소개 화면 뒤에 등장하는 갤러리: 최종 이미지 수령 시 figure 안에 img 추가 -->
+                        <div class="kkamsik_growth">
+                            <figure class="kkamsik_growth_item"></figure>
+                            <figure class="kkamsik_growth_item"></figure>
+                            <figure class="kkamsik_growth_item"></figure>
+                            <figure class="kkamsik_growth_item"></figure>
+                            <figure class="kkamsik_growth_item"></figure>
+                        </div>
 
                     </div>
-
                 </div>
             </div>
 
-        </div>
+        </section>
 
-       </section>
 
 
 
@@ -432,11 +416,15 @@
             <div class="device_intro_copy grid_container">
                 <div class="device_intro_copy_text">
                     <!-- 기획팀 최종 문구 확정 전 임시 텍스트 -->
-                    <p class="device_intro_copy_ko">반려동물과 보호자를 연결하는 아키의 NFC 디바이스입니다. 휴대폰에 태그하면 연결된 반려동물의 아키 화면으로 바로 이동해, 함께하는 동안의 기록부터 이후 남겨진 추억까지 만나볼 수 있습니다.</p>
+                    <p class="device_intro_copy_ko">깜식이의 하루에 언제나 함께하는 아키의 NFC 디바이스입니다.</p>
                     <p class="device_intro_copy_en">Aqui's NFC device that connects pets and their owners. Tag your pet and it connects you directly to its Aqui screen.</p>
                 </div>
             </div>
         </section>
+
+
+
+
 
         <!-- 06 Before-service : 왼쪽 고정 마커/사진 + 바뀌는 설명 -->
         <section id="before-service" class="section before-service before-service_scene" aria-label="사별 전 서비스">
@@ -455,20 +443,33 @@
                 <div class="before-service_description_group">
                     <!-- 001 : NFC Keyring -->
                     <div class="before-service_description" data-service-description="0">
-                        <p class="before-service_description_ko">반려동물과 보호자를 연결하는 아키의 NFC 디바이스입니다. 휴대폰에 태그하면 연결된 반려동물의 아키 화면으로 바로 이동해, 함께하는 동안의 기록부터 이후 남겨진 추억까지 만나볼 수 있습니다.</p>
-                        <p class="before-service_description_en">Aqui's NFC device that connects pets and their owners. Tag your pet and it connects you directly to its Aqui screen Move along, from the moments we spent together to the memories left behind You can meet it.</p>
+                        <p class="before-service_description_ko">반려동물의 상태와 일상을 꾸준히 기록할 수 있도록 아키의 NFC 디바이스를 사용합니다. 휴대폰에 가볍게 태그하면 연결된 반려동물의 케어로그로 바로 이동해, 필요한 순간마다 번거로운 과정 없이 기록을 시작할 수 있습니다.</p>
+                        <p class="before-service_description_en">Aqui's NFC device that connects pets and their owners. 
+                                                                Tag your pet and it connects you directly to its Aqui screen 
+                                                                Move along, from the moments we spent together to the memories left behind You can meet it.</p>
                     </div>
 
                     <!-- 002 : HOME -->
                     <div class="before-service_description" data-service-description="1">
-                        <p class="before-service_description_ko">반려동물의 오늘 상태와 작성한 기록을 한눈에 확인합니다. 매일 달라지는 모습을 놓치지 않도록,필요한 정보와 기록을 보기 쉽게 정리합니다.</p>
-                        <p class="before-service_description_en">Check your pet's condition and the records at a glance. To make sure you don't miss the daily changes, with the necessary information and Organize the records for easier viewing.</p>
+                        <p class="before-service_description_ko">사용자가 설정한 반려동물 사진이 홈 화면을 가득 채우고, 오늘의 상태를 묻는 문구와 함께 기록을 바로 시작할 수 있습니다. 처음 마주하는 화면에서 반려동물의 하루를 자연스레 살피도록 돕습니다.</p>
+                        <p class="before-service_description_en">Check your pet's condition and the records at a glance.
+                                                                To make sure you don't miss the daily changes, with 
+                                                                the necessary information and 
+                                                                organize the records 
+                                                                for easier viewing.</p>
                     </div>
 
                     <!-- 003 : CARE LOG -->
                     <div class="before-service_description" data-service-description="2">
-                        <p class="before-service_description_ko">식사, 투약, 활동과 상태 변화를 날짜별로 기록합니다. 쌓인 기록을 바탕으로 반려동물의 변화를 확인하고, 진료 전 필요한 내용을 빠르게 파악할 수 있습니다.</p>
-                        <p class="before-service_description_en">Record meals, medications, activities, and changes in status by date. Check changes in your pet based on accumulated records, You can quickly understand what is needed before the consultation.</p>
+                        <p class="before-service_description_ko">식사, 투약, 활동과 상태 변화를 날짜별로 기록합니다.
+                                                                쌓인 기록을 바탕으로 반려동물의 변화를 확인하고,
+                                                                진료 전 필요한 내용을 빠르게 파악할 수 있습니다.</p>
+                        <p class="before-service_description_en">Record meals, medications, activities, and changes 
+                                                                in status by date.
+                                                                Check changes in your pet based 
+                                                                on accumulated records,
+                                                                You can quickly understand 
+                                                                what is needed before the consultation.</p>
                     </div>
 
                     <!-- 004 : ARCHIVE -->
@@ -485,6 +486,10 @@
                 </div>
             </div>
         </section>
+
+
+
+
 
         <!-- 05부터 06까지 유지되는 SAME NFC 미디어 (기본은 투명 PNG 임시 어셋) -->
         <div class="device_service_media" aria-hidden="true">
@@ -520,27 +525,31 @@
 
 
 
-        <!-- 07_bridge -->
-       <section id="bridge" class="section bridge">
+      <!-- 07_bridge -->
+        <section id="bridge" class="section bridge">
 
-        <div class="bridge_inner">
-            
-            <p class="bridge_copy">
-                <!-- 카피 추후 수정 -->
-                함께한 날들을 뒤로 하고, 우리는 이별을 맞았습니다.
-            </p>
+            <div class="bridge_inner">
 
-            <div class="bridge_media">
-                <!-- 브릿지 영상 추후 추가 -->
+                <!-- 사별 전/후 이야기를 연결하는 문구 -->
+                <p class="bridge_copy">
+                    함께한 시간을 뒤로 하고, 우리는 이별을 맞았습니다.
+                </p>
+
+                <!-- 임시 이미지: 나중에 같은 영역에 영상으로 교체 -->
+                <div class="bridge_media">
+                    <img
+                        class="bridge_media_image"
+                        src="./assets/07_bridge/temp/bridge_media_temp.png"
+                        alt="sample background asset"
+                    >
+                </div>
+
+                <!-- 스크롤 아이콘은 디자인 확정 후 추가 -->
+
             </div>
 
-            <div class="scroll_indicator" aria-hidden="true">
-                <!-- 추후 추가 (* hero 섹션과 같은 종류) -->
-            </div>
+        </section>
 
-        </div>
-
-       </section>
 
 
 
@@ -551,97 +560,99 @@
 
             <div class="after-service_inner">
 
+
                 <!-- Chapter. 2 ) 사별 후 서비스 도입 -->
                 <div class="after-service_intro">
 
+                    <!-- 임시 흑백 배경 이미지 (최종 어셋 수령 시 교체) -->
                     <div class="after-service_intro_media">
-
-                        <!-- 깜식이 빈 자리 흑백 이미지 -->
                         <img
-                            src="./assets/08_after-service/temp/after-service_intro_media_temp.png"
+                            src="./assets/08_after-service/after-service_kkamsik_fullscreen.png"
                             alt=""
                         >
-
                     </div>
 
                     <div class="after-service_intro_inner grid_container">
+                        <!-- 좌측 1컬럼의 작은 네모 -->
+                        <span class="after-service_intro_mark" aria-hidden="true"></span>
 
-                        <p class="after-service_chapter">
-                            Chapter. 2
-                        </p>
+                        <p class="after-service_chapter">Chapter. 2</p>
 
+                        <!-- 오른쪽 매트 글래스 패널 -->
                         <div class="after-service_intro_copy">
+                            <span class="after-service_intro_copy_mark" aria-hidden="true"></span>
 
                             <h2 class="after-service_intro_title">
-                                사별 후 들어가는 카피
+                                이별 뒤의 일상도<br>
+                                아키가 함께 합니다.
                             </h2>
 
-                            <p class="after-service_intro_description">
-                                깜식설명 깜식설명깜식 설명 깜식설명 깜식 설명
-                                깜식설명 깜식설명깜식 설명 깜식설명 깜식 설명
-                                깜식설명 깜식설명깜식 설명 깜식설명 깜식 설명
-                                깜식설명 깜식설명깜식 설명 깜식설명 깜식 설명
-                                깜식설명 깜식설명깜식 설명 깜식설명 깜식 설명
-                                깜식설명 깜식설명깜식 설명 깜식설명 깜식 설명
-                            </p>
+                            <div class="after-service_intro_description">
+                                <p class="after-service_intro_description_ko">
+                                    곁에 늘 함께하던 자리가 비워져도 우리의 하루는 멈추지 않고
+                                    흘러갑니다. 아키는 이별 직후의 절차부터 기억과 회복의 시간
+                                    까지 함께하며, 보호자가 남겨진 일상을 천천히 마주할 수 있도록
+                                    곁을 지킵니다.
+                                </p>
 
+                                <!-- 영문 카피 확정 시 아래 문장만 교체 -->
+                                <p class="after-service_intro_description_en">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Sed do eiusmod tempor incididunt ut labore et dolore magna.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Sed do eiusmod.
+                                </p>
+                            </div>
                         </div>
-
                     </div>
 
                 </div>
 
 
-                <!-- 아카이브 소개 -->
-                <div class="after-service_archive_intro">
+                <!-- 08_after-service ) After Loss Home (사별 후 3일 홈 화면)-->
+                <div class="after-service_home">
 
-                    <div class="after-service_archive_intro_inner grid_container">
+                    <div class="after-service_home_inner grid_container">
 
-                        <!-- 아카이브 제목 및 설명 -->
-                        <div class="after-service_archive_intro_header">
+                        <!-- 상단 : 장식 네모, 타이틀, 서비스 소개 -->
+                        <div class="after-service_home_header">
 
-                            <h2 class="after-service_archive_intro_title">
+                            <span class="after-service_home_mark" aria-hidden="true"></span>
 
-                                <span class="after-service_archive_intro_mark">▪</span>
-                                Archive
-
+                            <h2 class="after-service_home_title">
+                                AFTER LOSS HOME
                             </h2>
 
-                            <div class="after-service_archive_intro_description">
-
-                                <p>
-                                    함께한 순간과 버킷리스트, 돌봄 기록과 질문 답변까지<br>
-                                    그동안 남겨온 기록을 천천히 돌아볼 수 있습니다.
+                            <div class="after-service_home_description">
+                                <!-- 현재 제공된 카피. 최종 카피가 오면 문장만 교체 -->
+                                <p class="after-service_home_ko">
+                                    사별 직후 3일 동안 필요한 정보와 행동을 시점에 맞게 안내합니다.
+                                    반려동물을 위한 마지막 준비부터 기억을 돌아보고 잠시 쉬어가는
+                                    순간까지, 당장 필요한 것부터 하나씩 살펴볼 수 있습니다.
                                 </p>
 
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                    do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis n
+                                <p class="after-service_home_en">
+                                    You can take your time reflecting on the moments spent
+                                    together, your bucket list, caregiving records, and
+                                    answers to questions.
                                 </p>
-
                             </div>
 
                         </div>
 
+                        <!-- 하단 : 왼쪽 프로토타입 + 오른쪽 임시 이미지 -->
+                        <div class="after-service_home_gallery">
 
-                       <!-- 아카이브 소개 이미지 영역 -->
-                        <div class="after-service_archive_intro_gallery">
-
-                            <!-- 왼쪽 앱 화면 -->
-                            <div class="after-service_archive_intro_main">
-
-                                <!-- 나중에 바꿔야 함 -->
+                            <div class="after-service_home_main">
+                                <!-- 나중에 사별 직후 프로토타입 영상으로 교체 예정 -->
                                 <img
-                                    src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                    alt="sample mockup"
+                                    src="./assets/08_after-service/temp/after-service_afterlosshome_media_temp.png"
+                                    alt="사별 직후 홈 화면 목업"
                                 >
-
                             </div>
 
-                            <!-- 오른쪽 이미지 -->
-                            <div class="after-service_archive_intro_side">
-                                <!-- 이미지 어셋 추후 추가 -->
+                            <div class="after-service_home_side">
+                                <!-- 이미지 어셋 수령 후 여기에 삽입 -->
                             </div>
 
                         </div>
@@ -669,11 +680,11 @@
                             <div class="after-service_epilogue_description">
 
                                 <p>
-                                    장례 준비와 장묘 업체 탐색, 펫로스 상담과 보호자 이야기까지<br>
-                                    이별 이후 필요한 여러 지원을 한곳에서 살펴보고,<br>
-                                    현재 상황에 맞는 도움을 선택할 수 있습니다.
-                                    장례 준비와 장묘 업체 탐색, 펫로스 상담과 보호자 이야기까지
-                                    이별 이후 필요한 여러 지원을 한
+                                    사별 직후 확인해야 할 사항부터 장례 준비와 장묘 업체 탐색까지,
+                                    필요한 절차와 정보를 차례대로 살펴봅니다. 비슷한 경험을 한
+                                    보호자들의 이야기를 통해 공감과 위로를 얻고, 슬픔이 오래
+                                    지속되거나 일상에 영향을 줄 때에는 펫로스 전문 기관의
+                                    상담 정보도 확인할 수 있습니다.
                                 </p>
 
                                 <p>
@@ -758,74 +769,66 @@
                 </div>
 
 
+
                 <!-- transition ) 에필로그와 기록 돌아보기 사이 연출 이미지 -->
                 <div class="after-service_transition">
-                    <!-- 깜식이 흑백 연출 이미지 추후 추가 -->
+
+                    <!-- 최종 이미지 추후 추가 -->
+
+                    <p class="after-service_transition_copy">
+                        이별 준비를 돕던 홈은, 3일이 지나면 추억을 안고 다시 일상으로 나아가는 공간으로 달라집니다.
+                    </p>
+
                 </div>
 
 
                 <!-- 기록 돌아보기 -->
                 <div class="after-service_archive">
 
-                    <!-- 기록 돌아보기 첫 번째 영역 -->
+                    <!-- 기록 돌아보기 첫 번째 영역 : Archive -->
                     <div class="after-service_archive_overview">
 
                         <div class="after-service_archive_overview_inner grid_container">
 
-                            <!-- 아카이브 제목 및 설명 -->
+                            <!-- Archive 제목 및 서비스 소개 -->
                             <div class="after-service_archive_info">
 
-                                <h2 class="after-service_archive_title">
+                                <span class="after-service_archive_mark" aria-hidden="true"></span>
 
-                                    <span class="after-service_archive_mark">▪</span>
-                                    Archive
-
-                                </h2>
+                                <h2 class="after-service_archive_title">Archive</h2>
 
                                 <div class="after-service_archive_description">
-
-                                    <p>
-                                        함께한 순간과 버킷리스트, 돌봄 기록과 질문 답변까지<br>
+                                    <p class="after-service_archive_ko">
+                                        함께한 순간과 버킷리스트, 돌봄 기록과 질문 답변까지
                                         그동안 남겨온 기록을 천천히 돌아볼 수 있습니다.
                                     </p>
 
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                        do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Nisl tincidunt eget nullam non. Quis he
+                                    <p class="after-service_archive_en">
+                                        You can take your time reflecting on the moments spent
+                                        together, your bucket list, caregiving records, and
+                                        answers to questions.
                                     </p>
-
                                 </div>
 
                             </div>
 
-
-                          <!-- 아카이브 콘텐츠 -->
+                            <!-- 왼쪽 아카이브 목업 + 오른쪽 두 미디어 -->
                             <div class="after-service_archive_gallery">
 
-                                <!-- 왼쪽 영상 목업 (추후 교체) -->
+                                <!-- 왼쪽 : 임시 목업. 최종 앱 영상/어셋이 오면 교체 -->
                                 <div class="after-service_archive_video">
-
                                     <img
                                         src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                        alt="sample mockup"
+                                        alt="아카이브 앱 화면 임시 목업"
                                     >
-
                                 </div>
 
-                                <!-- 오른쪽 두 개의 콘텐츠 -->
                                 <div class="after-service_archive_side">
+                                    <!-- 오른쪽 위 : 버킷리스트 이미지 추후 삽입 -->
+                                    <div class="after-service_archive_side_top"></div>
 
-                                    <!-- 오른쪽 위 -->
-                                    <div class="after-service_archive_side_top">
-                                        <!-- 장식용 카피 또는 어셋 추후 추가 -->
-                                    </div>
-
-                                    <!-- 오른쪽 아래 -->
-                                    <div class="after-service_archive_side_bottom">
-                                        <!-- 버킷리스트 이미지 추후 추가 -->
-                                    </div>
-
+                                    <!-- 오른쪽 아래 : 그라디언트 그래픽 사용 -->
+                                    <div class="after-service_archive_side_bottom"></div>
                                 </div>
 
                             </div>
@@ -835,77 +838,66 @@
                     </div>
 
 
-                    <!-- 기록 돌아보기 두 번째 영역 -->
+
+                    <!-- 기록 돌아보기 두 번째 영역 : Archive Closing -->
                     <div class="after-service_archive_closing">
 
                         <div class="after-service_archive_closing_inner grid_container">
 
-                           <!-- 오른쪽 질문 답변 설명 -->
+                            <!-- 오른쪽 : 생전 돌봄 기록 소개 -->
                             <div class="after-service_archive_qa_copy">
 
                                 <p class="after-service_description_ko">
-                                    식사와 투약, 활동 등 남겨온 돌봄 기록을 통해<br>
-                                    최선을 다해 돌봐온 보호자의 시간을 되새길 수 있습니다.
+                                    생전에 남긴 질문과 답변, 꾸준히 이어온 돌봄 기록에는 반려동물의 평소 모습과 함께한 시간이 고스란히 남아 있습니다. 그 기록을 통해 최선을 다해 반려동물의 곁을 지켜온 시간을 확인할 수 있습니다.
                                 </p>
 
                                 <p class="after-service_description_en">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                    do eiusmod tempor incididunt ut labore et dolore magna
+                                    You can take your time reflecting on the moments spent together, your bucket list, caregiving records, and answers to questions.
                                 </p>
 
                             </div>
 
-
-                            <!-- 왼쪽 강아지 사진 + 기록 카드 -->
+                            <!-- 왼쪽 : 깜식이 사진과 기록 카드 (기존 구조 / 임시 어셋 유지) -->
                             <div class="after-service_archive_photo">
 
                                 <img
                                     class="after-service_archive_background"
                                     src="./assets/08_after-service/temp/after-service_archive_care_background_temp.png"
-                                    alt="깜식이의 일상 사진"
+                                    alt=""
                                 >
 
-                                <!-- 기록 카드 01 -->
                                 <img
                                     class="after-service_archive_card after-service_archive_card_01"
                                     src="./assets/08_after-service/temp/after-service_archive_care_01_temp.png"
-                                    alt="깜식이 돌봄 기록 01"
+                                    alt=""
                                 >
 
-                                <!-- 기록 카드 02 -->
                                 <img
                                     class="after-service_archive_card after-service_archive_card_02"
                                     src="./assets/08_after-service/temp/after-service_archive_care_02_temp.png"
-                                    alt="깜식이 돌봄 기록 02"
+                                    alt=""
                                 >
 
-                                <!-- 기록 카드 03 -->
                                 <img
                                     class="after-service_archive_card after-service_archive_card_03"
                                     src="./assets/08_after-service/temp/after-service_archive_care_03_temp.png"
-                                    alt="깜식이 돌봄 기록 03"
+                                    alt=""
                                 >
 
                             </div>
 
-
-                            <!-- 오른쪽 질문 답변 목업 -->
+                            <!-- 오른쪽 : 손에 쥔 휴대폰 목업 -->
                             <div class="after-service_archive_qa_media">
-
                                 <img
-                                    src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                    alt="질문 답변 앱 화면 임시 목업"
+                                    src="./assets/08_after-service/temp/after-service_archive_handphone_temp.png"
+                                    alt=""
                                 >
-
                             </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </div>
 
         </section>
 

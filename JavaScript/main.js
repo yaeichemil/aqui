@@ -43,7 +43,7 @@ heroVideo.addEventListener("ended", () => {
 
 // 05 + 06 ) 스크롤 시퀀스
 // ======================================================================
-// 05 Device → 06 Before-service : v11 (06 제목 위치 튐 수정 + 첫 설명 대기 단축)
+// 05 Device → 06 Before-service : v12 (05 카피 최종 위치 + 첫 전환 스크롤 부담 완화)
 //
 // - 기존 v4 HTML/CSS 유지: main.js만 전체 교체
 // - 05 카피: 한국어+영어 본문 전체가 화면에 들어온 이후 이동 시작.
@@ -83,22 +83,22 @@ heroVideo.addEventListener("ended", () => {
         return t * t * (3 - 2 * t);
     };
 
-    // ===== v10 모션 조정값: 스크롤 이동과 시간 기반 페이드를 분리 =====
+    // ===== v12: 05→06 앞부분의 트리거만 조정 (후반 06은 그대로) =====
     // 아래 p값은 전체 05~06 스크롤 구간의 0~1 정규화 진행률입니다.
     // 05 본문은 여기까지는 계속 보이고, 이 지점을 지나면 560ms 동안 자동으로 사라집니다.
     // 페이드를 끝내기 위해 스크롤을 계속 굴릴 필요가 없습니다.
-    const deviceFadeTrigger = 0.150;
+    const deviceFadeTrigger = 0.100; // v11 0.150 → 카피 정착 후 좀 더 빨리 자동 페이드
     const deviceFadeDuration = 560;
 
-    // 페이드를 앞당긴 만큼 Shrink 시작도 소폭 당겨 빈 화면이 길어지지 않게 유지.
-    // Shrink 자체의 속도(구간 길이 .096)는 v9와 동일.
-    const shrinkStart = 0.270;
-    const shrinkEnd = 0.366;
+    // 05 페이드 이후 ~ 디바이스 Shrink까지의 대기만 줄입니다.
+    // Shrink 자체의 길이(0.096)와 06 이후 미디어 스와이프는 그대로 유지.
+    const shrinkStart = 0.170; // v11 0.270 → 페이드 이후 긴 스크롤 대기 단축
+    const shrinkEnd = 0.266;   // 구간 길이 0.096 유지: shrink 속도 자체는 동일
     const swipeStarts = [0.585, 0.720, 0.855];
-    const swipeLength = 0.078;          // v5 .082 / v6 .055
+    const swipeLength = 0.100;          // v5 .082 / v6 .055
     const overlayDarkness = 0.90;       // 이전 미디어만 더 어둡게
 
-    const serviceStart = 0.410;         // v10 .432 → v11 .410: 06 첫 NFC 텍스트 대기 약간 단축
+    const serviceStart = 0.300;         // v11 0.410 → sticky 직후 본문 대기 단축
     const mediaHalf = swipeStarts.map((v) => v + swipeLength / 2);
     const serviceEntries = [serviceStart, ...mediaHalf];
 
@@ -265,7 +265,7 @@ heroVideo.addEventListener("ended", () => {
     let firstTitleEntered = false;
     let deviceCopyHeight = 0;
     let deviceCopyInitialTop = 35;
-    let deviceCopyFinalLift = 0; // 본문이 화면 아래에서 잘리지 않도록 위로 옮길 픽셀
+    let deviceCopyFinalShift = 0; // +: 시안에 맞춰 아래로 / -: 화면 밖 잘림 방지로 위로
     let previousTarget = null;
 
     function measureDeviceOffset() {
@@ -280,11 +280,16 @@ heroVideo.addEventListener("ended", () => {
         const stageRect = stage.getBoundingClientRect();
         deviceCopyInitialTop = gridRect.top - stageRect.top;
 
-        // 시안의 오른쪽 아래 위치가 작은 모니터에서 잘리는 경우만 위로 올립니다.
-        // p 태그 높이, 폰트, 줄바꿈을 측정한 뒤 계산하므로 실사용 어셋/폰트에도 대응.
+        // 05 시안처럼 '정착한 카피'를 기존보다 소폭 아래로 배치합니다.
+        // (1920 기준 최대 약 50px, 노트북에서는 화면 비율에 따라 더 작게)
+        // 하지만 카피 전체가 보여야 하므로, 화면 아래쪽 여유가 없으면 올려 보정합니다.
         const bottomGap = Math.min(42, Math.max(26, window.innerHeight * 0.045));
         const finalBottomWithinStage = finalRect.bottom - stageRect.top;
-        deviceCopyFinalLift = Math.max(0, finalBottomWithinStage - (window.innerHeight - bottomGap));
+        const availableBelow = window.innerHeight - bottomGap - finalBottomWithinStage;
+        const desiredDrop = Math.min(50, window.innerHeight * 0.055, window.innerWidth * 0.03);
+        deviceCopyFinalShift = availableBelow >= 0
+            ? Math.min(desiredDrop, availableBelow)
+            : availableBelow;
         deviceCopy.style.transform = oldTransform;
     }
 
@@ -486,11 +491,14 @@ heroVideo.addEventListener("ended", () => {
     // 빠른 연속 스크롤에서도 이전 예약 재생이 나오지 않도록 세대 ID로 보호.
     function switchService(next) {
         if (next === currentService) return;
+        const previousService = currentService;
         currentService = next;
         const transitionId = ++serviceTransitionId;
         clearTimeout(pendingServiceTimer);
         clearTimeout(pendingDogTimer);
-        const fadeDuration = 350;  // 식별 가능한 1 -> 0, 그래도 지나치게 느리지 않게
+        // 첫 NFC 설명에 들어갈 때는 아직 사라질 06 텍스트가 없으므로 대기를 짧게.
+        // HOME·CARE LOG·ARCHIVE 사이의 퇴장 시간(350ms)은 기존처럼 유지.
+        const fadeDuration = previousService === -1 && next === 0 ? 160 : 350;
 
         // 글자 하나하나가 자동 애니메이션 중이어도 우선 기존 묶음 전체가 사라짐.
         descriptions.forEach((card, i) => {
@@ -612,9 +620,9 @@ heroVideo.addEventListener("ended", () => {
 
     function renderDeviceCopy(p) {
         const move = getDeviceEntryProgress();
-        // 첫 배치(상단)는 그대로 두고, 최종 배치에 가까워질수록 필요한 만큼만 위로 보정.
-        // 브라우저 높이가 낮아도 한글+영문 카피 전체가 화면 아래에서 잘리지 않습니다.
-        const shiftY = -(1 - move) * deviceInitialOffset - move * deviceCopyFinalLift;
+        // 처음에는 피그마 상단 위치. 화면을 채워 갈수록 시안 하단으로 내려옵니다.
+        // 최종 위치는 + 방향으로 조금 낮추되, 카피가 잘리면 자동으로 위로 보정합니다.
+        const shiftY = -(1 - move) * deviceInitialOffset + move * deviceCopyFinalShift;
         deviceCopy.style.transform = `translate3d(0, ${shiftY.toFixed(2)}px, 0)`;
         // opacity는 updateTriggers()에서 지점 통과 시 자동 재생하므로 이곳에서 건드리지 않음.
     }
@@ -713,4 +721,34 @@ heroVideo.addEventListener("ended", () => {
 
     rebuildLines();
     if (document.fonts?.ready) document.fonts.ready.then(rebuildLines);
+})();
+
+
+
+
+// 07 ) 텍스트 opacity 조정 모션
+(() => {
+    const bridge = document.querySelector("#bridge");
+    const copy = bridge?.querySelector(".bridge_copy");
+    if (!bridge || !copy) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        !("IntersectionObserver" in window)) return;
+
+    // 이미 카피가 충분히 화면 안으로 들어왔다면 바로 관측 시작.
+    bridge.classList.add("is-motion-ready");
+
+    const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            copy.classList.add("is-visible");
+            observer.disconnect(); // 한번 차분하게 등장한 후에는 그대로 유지
+            break;
+        }
+    }, {
+        threshold: 0.2,
+        rootMargin: "0px 0px -22% 0px"
+    });
+
+    observer.observe(copy);
 })();
