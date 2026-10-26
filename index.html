@@ -78,21 +78,19 @@
                     <div class="overview_heading">
 
                         <h2 class="overview_title">
-                            WE CARE FOR PEOPLE WHO EXPERIENCE<br>
-                            PET LOSS. I WANT TO CARE DOLDOL. I<br>
-                            MISS DOLDOL. AND
+                            반려동물과의 이별은 누군가의 일상 전체를 흔들기도 합니다.<br>
+                            그리고 그 슬픔은 생각보다 오래, 다양한 모습으로 남습니다.<br>
                         </h2>
 
                         <div class="overview_lead">
 
                             <p class="overview_lead_first">
-                                반려동물과의 이별은 누군가의 일상 전체를 흔들기도 합니다.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
                             </p>
 
                             <p class="overview_lead_rest">
-                                그리고 그 슬픔은 생각보다 오래, 다양한 모습으로 남습니다.<br>
-                                그리고 그 슬픔은 생각보다 오래, 다양한 모습으로 남습니다.<br>
-                                그리고 그 슬픔은 생각보다 오래, 다양한 모습으로 남습니다.
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation<br>
+                                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dol
                             </p>
 
                         </div>
@@ -420,133 +418,117 @@
 
 
 
-        <!-- 05_device -->
-       <section id="device" class="section device">
+        <!-- 05_device + 06_before-service (scroll sequence) -->
+        <!-- 스크롤 구간 전체를 감싸는 부모 (07 Bridge 직전에 종료) -->
+        <div class="device_service_sequence" id="device_service_sequence">
 
-        <div class="device_intro">
+            <!-- 이 화면 하나가 05~06 연출 내내 sticky로 유지됩니다. -->
+            <div class="device_service_sticky">
 
-            <!-- 풀스크린 -> 오른쪽 영역으로 축소될 영역 -->
-            <div class="device_media">
-                <!-- NFC 3D 사진 어셋 추후 추가 -->
+                <!-- 05 Device : 양쪽 소개 카피 -->
+                <section id="device" class="section device device_intro" aria-label="NFC 디바이스 소개">
+                    <div class="device_intro_copy grid_container">
+                        <p class="device_intro_copy_left">Lorem Ipsum</p>
+                        <p class="device_intro_copy_right">Lorem Ipsum</p>
+                    </div>
+                </section>
+
+                <!-- 06 Before-service : 왼쪽 고정 마커/사진 + 바뀌는 설명 -->
+                <section id="before-service" class="section before-service before-service_scene" aria-label="">
+                    <div class="before-service_inner">
+
+                        <!-- 네모와 사진은 06 진입 시 페이드인하고, 06 동안 고정 -->
+                        <span class="before-service_mark" aria-hidden="true"></span>
+
+                        <div class="before-service_title_group">
+                            <h2 class="before-service_title" data-service-title="0">NFC Keyring</h2>
+                            <h2 class="before-service_title" data-service-title="1">HOME</h2>
+                            <h2 class="before-service_title" data-service-title="2">CARE LOG</h2>
+                            <h2 class="before-service_title" data-service-title="3">ARCHIVE</h2>
+                        </div>
+
+                        <div class="before-service_description_group">
+                            <!-- 001 : NFC Keyring -->
+                            <div class="before-service_description" data-service-description="0">
+                                <p class="before-service_description_ko">반려동물과 보호자를 연결하는 아키의 NFC 디바이스입니다.<br>
+                                    휴대폰에 태그하면 연결된 반려동물의 아키 화면으로 바로<br>
+                                    이동해, 함께하는 동안의 기록부터 이후 남겨진 추억까지<br>
+                                    만나볼 수 있습니다.</p>
+                                <p class="before-service_description_en">Aqui's NFC device that connects pets and their owners.<br>
+                                    Tag your pet and it connects you directly to its Aqui screen<br>
+                                    Move along, from the moments we spent together to the<br>
+                                    memories left behind You can meet it.</p>
+                            </div>
+
+                            <!-- 002 : HOME -->
+                            <div class="before-service_description" data-service-description="1">
+                                <p class="before-service_description_ko">반려동물의 오늘 상태와 작성한 기록을 한눈에 확인합니다.<br>
+                                    매일 달라지는 모습을 놓치지 않도록,필요한 정보와<br>
+                                    기록을 보기 쉽게 정리합니다.</p>
+                                <p class="before-service_description_en">Check your pet's condition and the records at a glance.<br>
+                                    To make sure you don't miss the daily changes, with<br>
+                                    the necessary information and Organize the records<br>
+                                    for easier viewing.</p>
+                            </div>
+
+                            <!-- 003 : CARE LOG -->
+                            <div class="before-service_description" data-service-description="2">
+                                <p class="before-service_description_ko">식사, 투약, 활동과 상태 변화를 날짜별로 기록합니다.<br>
+                                    쌓인 기록을 바탕으로 반려동물의 변화를 확인하고,<br>
+                                    진료 전 필요한 내용을 빠르게 파악할 수 있습니다.</p>
+                                <p class="before-service_description_en">Record meals, medications, activities, and changes<br>
+                                    in status by date. Check changes in your pet based<br>
+                                    on accumulated records, You can quickly understand<br>
+                                    what is needed before the consultation.</p>
+                            </div>
+
+                            <!-- 004 : ARCHIVE -->
+                            <div class="before-service_description" data-service-description="3">
+                                <p class="before-service_description_ko">반려동물과 함께한 순간들을 사진과 영상, 음성으로 기록합니다.<br>
+                                    일상 속 반려동물과의 추억을 하나씩 남기고, 원하는 순간<br>
+                                    언제든 다시 꺼내볼 수 있습니다.</p>
+                                <p class="before-service_description_en">Capture moments with your pet through photos, videos,<br>
+                                    and audio. Capture memories with your pet one by<br>
+                                    one in everyday life, You can take it out and use it<br>
+                                    anytime you want.</p>
+                            </div>
+                        </div>
+
+                        <!-- 파일명이 다르면 src만 수정하세요. -->
+                        <div class="before-service_dog">
+                            <img src="./assets/06_before-service/temp/before-service_kkamsik_temp.png"
+                                alt="NFC keyring + kkamsik portrait">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 05에서 06으로 이어지는 SAME NFC 미디어. JS는 크기만 축소합니다. -->
+                <div class="device_service_media" aria-hidden="true">
+                    <div class="device_service_media_item device_service_media_nfc" data-service-media="0">
+                        <img class="device_service_nfc_image"
+                            src="./assets/05_device/temp/device_NFC_02_temp.png"
+                            alt="">
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+
+                    <!-- 다음 이미지들은 아래에서 위로 스와이프하며 앞 이미지를 덮습니다. -->
+                    <!-- 각각의 src는 프로젝트에 있는 실제 파일명으로 변경하세요. -->
+                    <div class="device_service_media_item device_service_media_phone" data-service-media="1">
+                        <img src="./assets/06_before-service/temp/before-service_main_temp.png" alt="">
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+                    <div class="device_service_media_item device_service_media_phone" data-service-media="2">
+                        <img src="./assets/06_before-service/temp/before-service_carelog_temp.png" alt="">
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+                    <div class="device_service_media_item device_service_media_phone" data-service-media="3">
+                        <img src="./assets/06_before-service/temp/before-service_archive_temp.png" alt="">
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+                </div>
+
             </div>
-
-            <!-- NFC 비주얼이 viewport를 다 차지한 뒤 나올 소개 카피 -->
-            <div class="device_intro_copy grid_container">
-                <p class="device_intro_copy_left">
-                    디바이스 소개 카피
-                </p>
-
-                <p class="device_intro_copy_right">
-                    디바이스 소개 카피
-                </p>
-            </div>
-
         </div>
-
-       </section>
-
-
-
-
-
-        <!-- 06_before-service -->
-       <section id="before-service" class="section before-service">
-
-        <div class="before-service_inner grid_container">
-
-            <!-- 왼쪽 ) 서비스 설명 영역 -->
-            <div class="before-service_content">
-                
-
-                <!-- 1 ) NFC -->
-                <div class="before-service_step before-service_step_nfc">
-                    <div class="before-service_header">
-                        <span class="before-service_number">001</span>
-
-                        <h2 class="before-service_title">
-                            NFC 진입
-                        </h2>
-                    </div>
-
-                    <div class="before-service_description">
-                        <!-- 서비스 설명 카피 추후 추가 -->
-                    </div>
-                </div>
-
-
-                <!-- 2 ) main -->
-                <div class="before-service_step before-service_step_main">
-                    <div class="before-service_header">
-                        <span class="before-service_number">002</span>
-
-                        <h2 class="before-service_title">
-                            메인화면
-                        </h2>
-                    </div>
-
-                    <div class="before-service_description">
-                        <!-- 서비스 설명 카피 추후 추가 -->
-                    </div>
-                </div>
-
-
-                <!-- 3 ) care log -->
-                <div class="before-service_step before-service_step_carelog">
-                    <div class="before-service_header">
-                        <span class="before-service_number">003</span>
-
-                        <h2 class="before-service_title">
-                            케어로그
-                        </h2>
-                    </div>
-
-                    <div class="before-service_description">
-                        <!-- 서비스 설명 카피 추후 추가 -->
-                    </div>
-                </div>
-
-
-                <!-- 4 ) archive -->
-                <div class="before-service_step before-service_step_archive">
-                    <div class="before-service_header">
-                        <span class="before-service_number">004</span>
-
-                        <h2 class="before-service_title">
-                            아카이브
-                        </h2>
-                    </div>
-
-                    <div class="before-service_description">
-                        <!-- 서비스 설명 카피 추후 추가 -->
-                    </div>
-                </div>
-
-
-
-                <span class="before-service_slash">/</span>
-
-            </div>
-
-
-
-            <!-- 오른쪽 ) 앱 프로토타입 영역 -->
-            <div class="before-service_media">
-                <div class="before-service_media_item before-service_media_main">
-                    <!-- 메인 화면 프로토타입 추후 추가 -->
-                </div>
-
-                <div class="before-service_media_item before-service_media_carelog">
-                    <!-- 케어로그 화면 프로토타입 추후 추가 -->
-                </div>
-
-                <div class="before-service_media_item before-service_media_archive">
-                    <!-- 아카이브 화면 프로토타입 추후 추가 -->
-                </div>
-            </div>
-
-        </div>
-
-       </section>
 
 
 
