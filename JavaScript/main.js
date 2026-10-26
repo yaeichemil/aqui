@@ -2,6 +2,8 @@ console.log("Capstone Design web is running.");
 
 
 
+
+
 // 탑 버튼
 const topBtn = document.querySelector("#topBtn");
 
@@ -10,6 +12,8 @@ topBtn.addEventListener("click", () => {
         top: 0,
     });
 });
+
+
 
 
 
@@ -24,6 +28,8 @@ heroPlayBtn.addEventListener("click", () => {
 
 
 
+
+
 // 01_hero ) 스크롤 유도 표지 등장
 const heroScrollIndicator = document.querySelector("#hero .scroll_indicator");
 
@@ -33,131 +39,223 @@ heroVideo.addEventListener("ended", () => {
 
 
 
+
+
 // 05 + 06 ) 스크롤 시퀀스
 (() => {
     const sequence = document.querySelector("#device_service_sequence");
     if (!sequence) return;
 
     const stage = sequence.querySelector(".device_service_sticky");
-    const deviceCopy = sequence.querySelector(".device_intro_copy");
+    const deviceCopy = sequence.querySelector(".device_intro_copy_text");
+    const deviceCopyParagraphs = [...sequence.querySelectorAll(".device_intro_copy_ko, .device_intro_copy_en")];
     const marker = sequence.querySelector(".before-service_mark");
     const dog = sequence.querySelector(".before-service_dog");
-    const titleCards = [...sequence.querySelectorAll("[data-service-title]")];
-    const bodyCards = [...sequence.querySelectorAll("[data-service-description]")];
+    const titles = [...sequence.querySelectorAll("[data-service-title]")];
+    const descriptions = [...sequence.querySelectorAll("[data-service-description]")];
     const panels = [...sequence.querySelectorAll("[data-service-media]")];
 
-    const koCards = bodyCards.map((card) => card.querySelector(".before-service_description_ko"));
-    const enCards = bodyCards.map((card) => card.querySelector(".before-service_description_en"));
-
-    const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-    const lerp = (from, to, progress) => from + (to - from) * progress;
-    const range = (start, end, value) => clamp((value - start) / (end - start));
-    const easeOut = (value) => 1 - Math.pow(1 - value, 4);
-    const smooth = (start, end, value) => {
-        const t = range(start, end, value);
+    const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const range = (a, b, v) => clamp((v - a) / (b - a));
+    const smooth = (a, b, v) => {
+        const t = range(a, b, v);
         return t * t * (3 - 2 * t);
     };
+    const easeOut = (v) => 1 - Math.pow(1 - clamp(v), 3);
 
-    // 이미지 전환 시작 위치 (전체 스크롤 진행률 0~1 기준)
+    // 06 HOME, CARE LOG, ARCHIVE 시작점. v3 스크롤 길이 유지.
     const swipeStarts = [0.585, 0.720, 0.855];
-    const swipeLength = 0.082; // 스크롤 길이가 조금 길어져 와이프가 덜 급합니다.
+    const swipeLength = 0.082;
 
-    // 레퍼런스처럼 '문장이 나타나기 전 마스크 안에서 올라오는' 효과.
-    // 제목 / 한글 / 영문에 각각 다른 시작 시간을 주어 순서대로 등장합니다.
-    function animateText(element, enterStart, enterEnd, exitStart, exitEnd, p, distance) {
+    // 원본 텍스트는 문단당 한 번만 보관합니다. 리사이즈할 때 줄을 재측정.
+    const textParagraphs = [
+        ...deviceCopyParagraphs,
+        ...descriptions.flatMap((card) => [
+            card.querySelector(".before-service_description_ko"),
+            card.querySelector(".before-service_description_en")
+        ])
+    ].filter(Boolean);
+    const textLines = new Map();
+    const originalTexts = new Map();
+    textParagraphs.forEach((paragraph) => {
+        originalTexts.set(paragraph, paragraph.textContent.replace(/\s+/g, " ").trim());
+    });
+
+    // 브라우저가 실제로 만든 줄바꿈을 Range로 측정합니다.
+    // 사용자는 HTML에서 한글 p / 영문 p만 수정하면 됩니다.
+    function splitIntoLines(paragraph) {
+        const source = originalTexts.get(paragraph);
+        paragraph.textContent = source;
+        const textNode = paragraph.firstChild;
+        if (!textNode || !source) return [];
+
+        const measurement = document.createRange();
+        const lines = [];
+        let lastTop = null;
+        let start = 0;
+
+        for (let i = 0; i < source.length; i++) {
+            measurement.setStart(textNode, i);
+            measurement.setEnd(textNode, i + 1);
+            const rectangle = measurement.getBoundingClientRect();
+            if (!rectangle.height) continue;
+            const y = rectangle.top;
+
+            if (lastTop !== null && Math.abs(y - lastTop) > 2) {
+                lines.push(source.slice(start, i).trim());
+                start = i;
+            }
+            lastTop = y;
+        }
+        lines.push(source.slice(start).trim());
+        measurement.detach?.();
+
+        const fragment = document.createDocumentFragment();
+        const innerElements = [];
+        lines.filter(Boolean).forEach((line) => {
+            const outer = document.createElement("span");
+            outer.className = "device_service_line";
+            const inner = document.createElement("span");
+            inner.className = "device_service_line_inner";
+            inner.textContent = line;
+            outer.appendChild(inner);
+            fragment.appendChild(outer);
+            innerElements.push(inner);
+        });
+        paragraph.replaceChildren(fragment);
+        return innerElements;
+    }
+
+    function rebuildLines() {
+        // 기존 애니메이션 속성이 측정에 영향을 주지 않도록 원문으로 되돌린 뒤 분리.
+        textParagraphs.forEach((paragraph) => {
+            paragraph.style.clipPath = "none";
+            paragraph.style.transform = "none";
+            paragraph.style.opacity = "1";
+            textLines.set(paragraph, splitIntoLines(paragraph));
+        });
+        requestRender();
+    }
+
+    function showLine(line, amount) {
+        if (!line) return;
+        const t = clamp(amount);
+        line.style.opacity = t.toFixed(3);
+        line.style.transform = `translate3d(0, ${(106 * (1 - easeOut(t))).toFixed(2)}%, 0)`;
+    }
+
+    // p 하나 안에서도 줄별로 조금씩 시간차를 주며 드러납니다.
+    function revealParagraph(paragraph, from, to, p, exitFrom = null, exitTo = null) {
+        const lines = textLines.get(paragraph) || [];
+        if (!lines.length) return;
+        const stagger = Math.min(0.006, (to - from) / (lines.length + 2));
+        lines.forEach((line, i) => {
+            const enter = smooth(from + i * stagger, to + i * stagger, p);
+            const exit = exitFrom === null ? 0 :
+                smooth(exitFrom + (lines.length - i - 1) * stagger,
+                       exitTo + (lines.length - i - 1) * stagger, p);
+            showLine(line, enter * (1 - exit));
+        });
+    }
+
+    // 05 본문: 처음 05 화면에 들어왔을 때 보임. 앞으로 스크롤하면
+    // 아래로 조금 이동 → 행별 퇴장. 역방향 스크롤하면 위쪽 행부터 리빌.
+    function renderDeviceCopy(p) {
+        const drift = smooth(0.07, 0.265, p);
+        deviceCopy.style.transform = `translate3d(0, ${(32 * drift).toFixed(2)}px, 0)`;
+        let globalLine = 0;
+        const totalLines = deviceCopyParagraphs.reduce((sum, element) =>
+            sum + (textLines.get(element) || []).length, 0);
+        deviceCopyParagraphs.forEach((paragraph) => {
+            (textLines.get(paragraph) || []).forEach((line) => {
+                // 첫 행부터 역방향으로 올라오도록 높은 진행률 쪽에 먼저 배치.
+                const order = totalLines - 1 - globalLine;
+                const exitStart = 0.212 + order * 0.004;
+                const exitEnd = 0.260 + order * 0.004;
+                showLine(line, 1 - smooth(exitStart, exitEnd, p));
+                globalLine++;
+            });
+        });
+    }
+
+    function animateTitle(element, enterFrom, enterTo, p, exitFrom = null, exitTo = null) {
         if (!element) return;
-
-        const enter = easeOut(range(enterStart, enterEnd, p));
-        const exit = exitStart === null ? 0 : smooth(exitStart, exitEnd, p);
-
-        // 진입: 텍스트가 고정된 창 아래에서 올라오며 순차적으로 드러납니다.
-        // 퇴장: 마스크는 열린 채 약간 올라가면서 자연스럽게 사라집니다.
-        // 이미지와 달리 텍스트는 '상단부터 읽히는' 방향으로 리빌합니다.
-        const opacity = enter * (1 - exit);
-        const translateY = lerp(distance, 0, enter) - 8 * exit;
-        const hiddenBottom = (1 - enter) * 100;
-
-        element.style.opacity = opacity.toFixed(3);
-        element.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0)`;
-        element.style.clipPath = `inset(0 0 ${hiddenBottom.toFixed(2)}% 0)`;
-        element.style.visibility = opacity < 0.001 ? "hidden" : "visible";
+        const enter = smooth(enterFrom, enterTo, p);
+        const exit = exitFrom === null ? 0 : smooth(exitFrom, exitTo, p);
+        const amount = enter * (1 - exit);
+        element.style.opacity = amount.toFixed(3);
+        element.style.transform = `translate3d(0, ${(26 * (1 - easeOut(enter)) - 5 * exit).toFixed(2)}px, 0)`;
+        element.style.visibility = amount < 0.001 ? "hidden" : "visible";
     }
 
-    function animateServiceText(index, enterAt, exitAt, p) {
-        // 퇴장은 다음 이미지가 약 50% 올라왔을 때 시작.
-        const titleExitStart = exitAt === null ? null : exitAt + swipeLength * 0.50;
-        const titleExitEnd = exitAt === null ? null : exitAt + swipeLength * 0.87;
+    function renderService(p) {
+        // 네모와 첫 제목은 05 첫 화면에서 등장 후 06까지 같은 자리에 유지.
+        marker.style.opacity = smooth(0.002, 0.035, p).toFixed(3);
+        dog.style.opacity = smooth(0.429, 0.488, p).toFixed(3);
 
-        animateText(titleCards[index], enterAt, enterAt + 0.030,
-            titleExitStart, titleExitEnd, p, 38);
-        animateText(koCards[index], enterAt + 0.009, enterAt + 0.037,
-            titleExitStart, titleExitEnd, p, 28);
-        animateText(enCards[index], enterAt + 0.022, enterAt + 0.053,
-            titleExitStart, titleExitEnd, p, 28);
+        descriptions.forEach((element) => {
+            element.style.opacity = "1";
+            element.style.transform = "none";
+            element.style.visibility = "visible";
+        });
+
+        // NFC Keyring은 05에서 나타나 06 NFC 화면까지 계속 유지.
+        const firstExitA = swipeStarts[0] + swipeLength * 0.5;
+        const firstExitB = swipeStarts[0] + swipeLength * 0.9;
+        animateTitle(titles[0], 0.003, 0.045, p, firstExitA, firstExitB);
+
+        // NFC 06 본문만 새로 나타납니다 (05 타이틀 중복 등장 없음).
+        const firstDescription = descriptions[0];
+        revealParagraph(firstDescription.querySelector(".before-service_description_ko"),
+            0.438, 0.482, p, firstExitA, firstExitB);
+        revealParagraph(firstDescription.querySelector(".before-service_description_en"),
+            0.455, 0.506, p, firstExitA, firstExitB);
+
+        // 06의 나머지 3개 화면은 타이틀 / 한글 / 영문 순서로 들어옵니다.
+        for (let i = 1; i < 4; i++) {
+            const enter = swipeStarts[i - 1] + swipeLength * 0.80;
+            const exitA = i === 3 ? null : swipeStarts[i] + swipeLength * 0.5;
+            const exitB = i === 3 ? null : swipeStarts[i] + swipeLength * 0.9;
+            animateTitle(titles[i], enter, enter + 0.028, p, exitA, exitB);
+            revealParagraph(descriptions[i].querySelector(".before-service_description_ko"),
+                enter + 0.010, enter + 0.048, p, exitA, exitB);
+            revealParagraph(descriptions[i].querySelector(".before-service_description_en"),
+                enter + 0.023, enter + 0.064, p, exitA, exitB);
+        }
     }
 
-    // 매 프레임마다 실제 화면 상태 계산 (역방향 스크롤도 동일하게 동작).
-    function render(p) {
-        // 05 : 양쪽 카피 동시 등장 → 유지 → 사라짐
-        const copyEnter = smooth(0.08, 0.145, p);
-        const copyExit = 1 - smooth(0.23, 0.30, p);
-        deviceCopy.style.opacity = (copyEnter * copyExit).toFixed(3);
-        deviceCopy.style.transform = `translate3d(0, ${lerp(38, 0, copyEnter).toFixed(2)}px, 0)`;
-
-        // 05→06 : 왼쪽 경계가 오른쪽으로 좁혀지며 정착
+    function renderMedia(p) {
         const shrink = smooth(0.32, 0.425, p);
         stage.style.setProperty("--device_shrink", shrink.toFixed(4));
-        stage.style.setProperty("--device_nfc_scale", lerp(1, 0.80, shrink).toFixed(4));
+        // 최종 풀스크린 이미지에서는 scale이 적용되지 않음. 투명 PNG만 소폭 조정.
+        stage.style.setProperty("--device_nfc_scale", lerp(1, 0.88, shrink).toFixed(4));
 
-        // 06 : 네모와 깜식이는 처음 등장한 뒤 끝까지 유지.
-        // 위로 다시 스크롤하면 자연스럽게 사라짐.
-        const decorationsOpacity = smooth(0.425, 0.490, p).toFixed(3);
-        marker.style.opacity = decorationsOpacity;
-        dog.style.opacity = decorationsOpacity;
-
-        // HTML에는 이미 한글/영문 p가 별개로 있습니다.
-        // 본문 전체 박스를 움직이던 v1과 달리, 세 단위를 각각 조작합니다.
-        bodyCards.forEach((card) => {
-            card.style.opacity = "1";
-            card.style.transform = "none";
-            card.style.visibility = "visible";
-        });
-
-        // 최초 NFC : 오른쪽 미디어 정착 후 텍스트 등장
-        animateServiceText(0, 0.438, swipeStarts[0], p);
-
-        // HOME / CARE LOG / ARCHIVE : 새 이미지가 거의 정착하면 다음 타이틀 시작 (이전 문구와 겹치지 않음)
-        for (let i = 1; i < 4; i++) {
-            const enterAt = swipeStarts[i - 1] + swipeLength * 0.85;
-            const exitAt = i === 3 ? null : swipeStarts[i];
-            animateServiceText(i, enterAt, exitAt, p);
-        }
-
-        // 미디어 마스크 와이프 : 이미지 자체는 제자리에 고정합니다.
-        // 새 패널의 보이는 범위만 아래 → 위로 열리므로 화면이 렌더되듯 드러납니다.
-        // 0%일 때 전체 가림, 50%일 때 아래 절반만 보임, 100%일 때 완전히 보임.
         panels.forEach((panel, i) => {
-            const shade = panel.querySelector(".device_service_media_overlay");
+            const overlay = panel.querySelector(".device_service_media_overlay");
             if (i > 0) {
-                const reveal = smooth(swipeStarts[i - 1], swipeStarts[i - 1] + swipeLength, p);
-                const hiddenTop = (1 - reveal) * 100;
-                panel.style.clipPath = `inset(${hiddenTop.toFixed(3)}% 0 0 0)`;
-                // v1의 translateY(100%)를 덮어씁니다. 픽셀 이미지 자체는 이동하지 않아요.
+                const t = smooth(swipeStarts[i - 1], swipeStarts[i - 1] + swipeLength, p);
+                panel.style.clipPath = `inset(${((1 - t) * 100).toFixed(3)}% 0 0 0)`;
                 panel.style.transform = "none";
             }
-            if (shade) {
-                shade.style.opacity = i === 3 ? "0" :
-                    (0.34 * smooth(swipeStarts[i], swipeStarts[i] + swipeLength, p)).toFixed(3);
+            if (overlay) {
+                // v3의 0.34보다 강하게 (0.64). 올라온 새 이미지는 어두워지지 않음.
+                const opacity = i === 3 ? 0 :
+                    0.64 * smooth(swipeStarts[i], swipeStarts[i] + swipeLength, p);
+                overlay.style.opacity = opacity.toFixed(3);
             }
         });
     }
 
-    // 트랙패드/마우스 휠로 스크롤이 점프해도 변화가 뚝뚝 끊기지 않도록
-    // 실제 진행률을 약간 뒤따라가도록 하는 보간 처리 (약 110ms 반응).
-    // 사용자 스크롤이 끝나면 애니메이션 루프도 멈춥니다.
+    function render(p) {
+        renderDeviceCopy(p);
+        renderMedia(p);
+        renderService(p);
+    }
+
     function getProgress() {
-        const scrollDistance = Math.max(1, sequence.offsetHeight - window.innerHeight);
-        return clamp(-sequence.getBoundingClientRect().top / scrollDistance);
+        const travel = Math.max(1, sequence.offsetHeight - window.innerHeight);
+        return clamp(-sequence.getBoundingClientRect().top / travel);
     }
 
     let targetProgress = getProgress();
@@ -168,10 +266,8 @@ heroVideo.addEventListener("ended", () => {
     function tick(time) {
         const delta = lastTime ? Math.min(80, time - lastTime) : 16;
         lastTime = time;
-        const follow = 1 - Math.exp(-delta / 110);
-        visibleProgress += (targetProgress - visibleProgress) * follow;
+        visibleProgress += (targetProgress - visibleProgress) * (1 - Math.exp(-delta / 110));
         render(visibleProgress);
-
         if (Math.abs(targetProgress - visibleProgress) > 0.00008) {
             frameId = requestAnimationFrame(tick);
         } else {
@@ -187,9 +283,18 @@ heroVideo.addEventListener("ended", () => {
         if (frameId === null) frameId = requestAnimationFrame(tick);
     }
 
+    let resizeTimer;
     window.addEventListener("scroll", requestRender, { passive: true });
-    window.addEventListener("resize", requestRender);
-    window.addEventListener("load", requestRender);
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(rebuildLines, 130);
+        requestRender();
+    });
     window.addEventListener("pageshow", requestRender);
+    window.addEventListener("load", () => { rebuildLines(); requestRender(); });
+
+    rebuildLines();
     render(visibleProgress);
+    // 웹폰트가 늦게 로드되면 실제 줄 수가 달라질 수 있으므로 재계산.
+    if (document.fonts?.ready) document.fonts.ready.then(rebuildLines);
 })();

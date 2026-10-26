@@ -419,116 +419,101 @@
 
 
         <!-- 05_device + 06_before-service (scroll sequence) -->
-        <!-- 스크롤 구간 전체를 감싸는 부모 (07 Bridge 직전에 종료) -->
-        <div class="device_service_sequence" id="device_service_sequence">
+       <!-- 스크롤 구간 전체를 감싸는 부모 (07 Bridge 직전에 종료) -->
+<div class="device_service_sequence" id="device_service_sequence">
 
-            <!-- 이 화면 하나가 05~06 연출 내내 sticky로 유지됩니다. -->
-            <div class="device_service_sticky">
+    <!-- 이 화면 하나가 05~06 연출 내내 sticky로 유지됩니다. -->
+    <div class="device_service_sticky">
 
-                <!-- 05 Device : 양쪽 소개 카피 -->
-                <section id="device" class="section device device_intro" aria-label="NFC 디바이스 소개">
-                    <div class="device_intro_copy grid_container">
-                        <p class="device_intro_copy_left">Lorem Ipsum</p>
-                        <p class="device_intro_copy_right">Lorem Ipsum</p>
-                    </div>
-                </section>
+        <!-- 05 Device : 위의 공통 타이틀은 06과 같은 DOM 요소를 사용합니다. -->
+        <section id="device" class="section device device_intro" aria-label="NFC 디바이스 소개">
+            <!-- 10~12컬럼 / 4~5로우 : 카피는 문단 단위로 작성합니다. -->
+            <div class="device_intro_copy grid_container">
+                <div class="device_intro_copy_text">
+                    <!-- 기획팀 최종 문구 확정 전 임시 텍스트 -->
+                    <p class="device_intro_copy_ko">반려동물과 보호자를 연결하는 아키의 NFC 디바이스입니다. 휴대폰에 태그하면 연결된 반려동물의 아키 화면으로 바로 이동해, 함께하는 동안의 기록부터 이후 남겨진 추억까지 만나볼 수 있습니다.</p>
+                    <p class="device_intro_copy_en">Aqui's NFC device that connects pets and their owners. Tag your pet and it connects you directly to its Aqui screen.</p>
+                </div>
+            </div>
+        </section>
 
-                <!-- 06 Before-service : 왼쪽 고정 마커/사진 + 바뀌는 설명 -->
-                <section id="before-service" class="section before-service before-service_scene" aria-label="">
-                    <div class="before-service_inner">
+        <!-- 06 Before-service : 왼쪽 고정 마커/사진 + 바뀌는 설명 -->
+        <section id="before-service" class="section before-service before-service_scene" aria-label="사별 전 서비스">
+            <div class="before-service_inner">
 
-                        <!-- 네모와 사진은 06 진입 시 페이드인하고, 06 동안 고정 -->
-                        <span class="before-service_mark" aria-hidden="true"></span>
+                <!-- 네모 + 첫 제목은 05 진입부터 등장/유지. 사진은 06부터 등장. -->
+                <span class="before-service_mark" aria-hidden="true"></span>
 
-                        <div class="before-service_title_group">
-                            <h2 class="before-service_title" data-service-title="0">NFC Keyring</h2>
-                            <h2 class="before-service_title" data-service-title="1">HOME</h2>
-                            <h2 class="before-service_title" data-service-title="2">CARE LOG</h2>
-                            <h2 class="before-service_title" data-service-title="3">ARCHIVE</h2>
-                        </div>
+                <div class="before-service_title_group">
+                    <h2 class="before-service_title" data-service-title="0">NFC Keyring</h2>
+                    <h2 class="before-service_title" data-service-title="1">HOME</h2>
+                    <h2 class="before-service_title" data-service-title="2">CARE LOG</h2>
+                    <h2 class="before-service_title" data-service-title="3">ARCHIVE</h2>
+                </div>
 
-                        <div class="before-service_description_group">
-                            <!-- 001 : NFC Keyring -->
-                            <div class="before-service_description" data-service-description="0">
-                                <p class="before-service_description_ko">반려동물과 보호자를 연결하는 아키의 NFC 디바이스입니다.<br>
-                                    휴대폰에 태그하면 연결된 반려동물의 아키 화면으로 바로<br>
-                                    이동해, 함께하는 동안의 기록부터 이후 남겨진 추억까지<br>
-                                    만나볼 수 있습니다.</p>
-                                <p class="before-service_description_en">Aqui's NFC device that connects pets and their owners.<br>
-                                    Tag your pet and it connects you directly to its Aqui screen<br>
-                                    Move along, from the moments we spent together to the<br>
-                                    memories left behind You can meet it.</p>
-                            </div>
-
-                            <!-- 002 : HOME -->
-                            <div class="before-service_description" data-service-description="1">
-                                <p class="before-service_description_ko">반려동물의 오늘 상태와 작성한 기록을 한눈에 확인합니다.<br>
-                                    매일 달라지는 모습을 놓치지 않도록,필요한 정보와<br>
-                                    기록을 보기 쉽게 정리합니다.</p>
-                                <p class="before-service_description_en">Check your pet's condition and the records at a glance.<br>
-                                    To make sure you don't miss the daily changes, with<br>
-                                    the necessary information and Organize the records<br>
-                                    for easier viewing.</p>
-                            </div>
-
-                            <!-- 003 : CARE LOG -->
-                            <div class="before-service_description" data-service-description="2">
-                                <p class="before-service_description_ko">식사, 투약, 활동과 상태 변화를 날짜별로 기록합니다.<br>
-                                    쌓인 기록을 바탕으로 반려동물의 변화를 확인하고,<br>
-                                    진료 전 필요한 내용을 빠르게 파악할 수 있습니다.</p>
-                                <p class="before-service_description_en">Record meals, medications, activities, and changes<br>
-                                    in status by date. Check changes in your pet based<br>
-                                    on accumulated records, You can quickly understand<br>
-                                    what is needed before the consultation.</p>
-                            </div>
-
-                            <!-- 004 : ARCHIVE -->
-                            <div class="before-service_description" data-service-description="3">
-                                <p class="before-service_description_ko">반려동물과 함께한 순간들을 사진과 영상, 음성으로 기록합니다.<br>
-                                    일상 속 반려동물과의 추억을 하나씩 남기고, 원하는 순간<br>
-                                    언제든 다시 꺼내볼 수 있습니다.</p>
-                                <p class="before-service_description_en">Capture moments with your pet through photos, videos,<br>
-                                    and audio. Capture memories with your pet one by<br>
-                                    one in everyday life, You can take it out and use it<br>
-                                    anytime you want.</p>
-                            </div>
-                        </div>
-
-                        <!-- 파일명이 다르면 src만 수정하세요. -->
-                        <div class="before-service_dog">
-                            <img src="./assets/06_before-service/temp/before-service_kkamsik_temp.png"
-                                alt="NFC keyring + kkamsik portrait">
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 05에서 06으로 이어지는 SAME NFC 미디어. JS는 크기만 축소합니다. -->
-                <div class="device_service_media" aria-hidden="true">
-                    <div class="device_service_media_item device_service_media_nfc" data-service-media="0">
-                        <img class="device_service_nfc_image"
-                            src="./assets/05_device/temp/device_NFC_02_temp.png"
-                            alt="">
-                        <span class="device_service_media_overlay"></span>
+                <div class="before-service_description_group">
+                    <!-- 001 : NFC Keyring -->
+                    <div class="before-service_description" data-service-description="0">
+                        <p class="before-service_description_ko">반려동물과 보호자를 연결하는 아키의 NFC 디바이스입니다. 휴대폰에 태그하면 연결된 반려동물의 아키 화면으로 바로 이동해, 함께하는 동안의 기록부터 이후 남겨진 추억까지 만나볼 수 있습니다.</p>
+                        <p class="before-service_description_en">Aqui's NFC device that connects pets and their owners. Tag your pet and it connects you directly to its Aqui screen Move along, from the moments we spent together to the memories left behind You can meet it.</p>
                     </div>
 
-                    <!-- 다음 이미지들은 아래에서 위로 스와이프하며 앞 이미지를 덮습니다. -->
-                    <!-- 각각의 src는 프로젝트에 있는 실제 파일명으로 변경하세요. -->
-                    <div class="device_service_media_item device_service_media_phone" data-service-media="1">
-                        <img src="./assets/06_before-service/temp/before-service_main_temp.png" alt="">
-                        <span class="device_service_media_overlay"></span>
+                    <!-- 002 : HOME -->
+                    <div class="before-service_description" data-service-description="1">
+                        <p class="before-service_description_ko">반려동물의 오늘 상태와 작성한 기록을 한눈에 확인합니다. 매일 달라지는 모습을 놓치지 않도록,필요한 정보와 기록을 보기 쉽게 정리합니다.</p>
+                        <p class="before-service_description_en">Check your pet's condition and the records at a glance. To make sure you don't miss the daily changes, with the necessary information and Organize the records for easier viewing.</p>
                     </div>
-                    <div class="device_service_media_item device_service_media_phone" data-service-media="2">
-                        <img src="./assets/06_before-service/temp/before-service_carelog_temp.png" alt="">
-                        <span class="device_service_media_overlay"></span>
+
+                    <!-- 003 : CARE LOG -->
+                    <div class="before-service_description" data-service-description="2">
+                        <p class="before-service_description_ko">식사, 투약, 활동과 상태 변화를 날짜별로 기록합니다. 쌓인 기록을 바탕으로 반려동물의 변화를 확인하고, 진료 전 필요한 내용을 빠르게 파악할 수 있습니다.</p>
+                        <p class="before-service_description_en">Record meals, medications, activities, and changes in status by date. Check changes in your pet based on accumulated records, You can quickly understand what is needed before the consultation.</p>
                     </div>
-                    <div class="device_service_media_item device_service_media_phone" data-service-media="3">
-                        <img src="./assets/06_before-service/temp/before-service_archive_temp.png" alt="">
-                        <span class="device_service_media_overlay"></span>
+
+                    <!-- 004 : ARCHIVE -->
+                    <div class="before-service_description" data-service-description="3">
+                        <p class="before-service_description_ko">반려동물과 함께한 순간들을 사진과 영상, 음성으로 기록합니다. 일상 속 반려동물과의 추억을 하나씩 남기고, 원하는 순간 언제든 다시 꺼내볼 수 있습니다.</p>
+                        <p class="before-service_description_en">Capture moments with your pet through photos, videos, and audio. Capture memories with your pet one by one in everyday life, You can take it out and use it anytime you want.</p>
                     </div>
                 </div>
 
+                <!-- 파일명이 다르면 src만 수정하세요. -->
+                <div class="before-service_dog">
+                    <img src="./assets/06_before-service/temp/before-service_kkamsik_temp.png"
+                         alt="NFC 키링을 착용한 깜식이의 사진">
+                </div>
+            </div>
+        </section>
+
+        <!-- 05부터 06까지 유지되는 SAME NFC 미디어 (기본은 투명 PNG 임시 어셋) -->
+        <div class="device_service_media" aria-hidden="true">
+            <!-- 최종 풀스크린 이미지가 오면 data-image-mode="full"로 변경하고 src를 교체하세요. -->
+            <div class="device_service_media_item device_service_media_nfc" data-service-media="0" data-image-mode="placeholder">
+                <img class="device_service_nfc_image"
+                     src="./assets/05_device/temp/device_NFC_02_temp.png"
+                     alt="">
+                <span class="device_service_media_overlay"></span>
+            </div>
+
+            <!-- 다음 이미지들은 아래에서 위로 스와이프하며 앞 이미지를 덮습니다. -->
+            <!-- 각각의 src는 프로젝트에 있는 실제 파일명으로 변경하세요. -->
+            <div class="device_service_media_item device_service_media_phone" data-service-media="1">
+                <img src="./assets/06_before-service/temp/before-service_main_temp.png" alt="">
+                <span class="device_service_media_overlay"></span>
+            </div>
+            <div class="device_service_media_item device_service_media_phone" data-service-media="2">
+                <img src="./assets/06_before-service/temp/before-service_carelog_temp.png" alt="">
+                <span class="device_service_media_overlay"></span>
+            </div>
+            <div class="device_service_media_item device_service_media_phone" data-service-media="3">
+                <img src="./assets/06_before-service/temp/before-service_archive_temp.png" alt="">
+                <span class="device_service_media_overlay"></span>
             </div>
         </div>
+
+    </div>
+</div>
+
 
 
 

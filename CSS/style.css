@@ -1099,6 +1099,160 @@ p {
 
 
 
+/* ===================================================================
+    05 Device → 06 Before-service : 2026-10-26 시안/모션 수정 v4
+    style.css 맨 아래에 추가 (기존 05/06 CSS와 v3 모션 CSS는 그대로 둬도 됨)
+    기준 1920×1080 / 12 column + 5 row / 마진 가로 30, 세로 35
+    =================================================================== */
+
+/* 05 copy는 더 이상 양쪽 한 줄이 아닙니다. */
+.device_intro_copy {
+    position: absolute;
+    inset: 35px var(--page-margin);
+    width: auto;
+    max-width: none;
+    height: auto;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    row-gap: 20px;
+    align-items: initial;
+    transform: none;
+    opacity: 1;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Figma 1920: x 1440 / y 약 733 / column 10~12, row 4~5 */
+.device_intro_copy_text {
+    grid-column: 10 / 13;
+    grid-row: 4 / 6;
+    min-width: 0;
+    align-self: start;
+    margin-top: min(7.407vh, 80px);
+    color: #191313;
+    will-change: transform;
+}
+
+.device_intro_copy_ko {
+    font-family: var(--font-ko);
+    font-size: clamp(13px, 1.146vw, 22px);
+    line-height: 1.272727; /* 22px -> 28px */
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+
+.device_intro_copy_en {
+    margin-top: 22px; /* 05 시안 22px / 06 시안 20px은 각자 유지 */
+    font-family: var(--font-en);
+    font-size: clamp(14px, 1.25vw, 24px);
+    line-height: 1.416667; /* 24px -> 34px */
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    overflow-wrap: break-word;
+}
+
+/* 05와 06의 네모, 제목은 이미 하나의 DOM을 공유합니다. */
+.before-service_mark {
+    z-index: 3;
+}
+.before-service_title_group {
+    z-index: 3;
+}
+
+/* 최초 NFC Keyring 제목은 05에서 나타나 06 첫 화면까지 유지됩니다. */
+.before-service_title {
+    clip-path: none !important;
+    transform: none;
+}
+
+/* 06 본문: v3의 문단 전체 클립을 끄고, 내부 '줄'에만 마스크를 적용 */
+.before-service_description_ko,
+.before-service_description_en {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    visibility: visible !important;
+}
+
+.before-service_description_group {
+    z-index: 3;
+}
+
+/* JS가 실제 줄바꿈을 측정해 생성하는 마스크. HTML p는 그대로 유지. */
+.device_service_line {
+    display: block;
+    overflow: hidden;
+    line-height: inherit;
+    width: 100%;
+}
+.device_service_line_inner {
+    display: block;
+    width: 100%;
+    line-height: inherit;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translate3d(0, 106%, 0);
+    will-change: transform, opacity;
+}
+
+/* 05의 중앙 디바이스: 1920에서 에셋 배치 기준 약 680×680 영역 */
+.device_service_nfc_image {
+    width: min(35.436vw, 63vh);
+    max-width: none;
+    max-height: none;
+    height: min(35.436vw, 63vh); /* 1920 기준 약 680×680 프레임 */
+    top: calc(50% - min(2.685vh, 29px));
+    left: 50%;
+    object-fit: contain;
+    transform: translate3d(-50%, -50%, 0) scale(var(--device_nfc_scale));
+    transform-origin: center;
+}
+
+/* 최종 배경 포함 풀스크린 이미지가 전달되었을 때의 모드.
+   data-image-mode=full / src만 바꾸면 이 규칙이 활성화됩니다.
+   이미지 자체가 눌리거나 이동하지 않고 보이는 창만 오른쪽으로 좁아집니다. */
+.device_service_media_nfc[data-image-mode="full"] .device_service_nfc_image {
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    transform: translate3d(-50%, -50%, 0) translateX(var(--device_image_shift, 0px));
+}
+
+.device_service_media_nfc[data-image-mode="full"] {
+    background: #e1e1e1;
+}
+
+/* v3의 마스크 와이프 유지 : 이미지 위치 이동이 아닌 아래→위 드러남 */
+.device_service_media_phone {
+    transform: none !important;
+    clip-path: inset(100% 0 0 0);
+}
+
+@media (max-width: 1600px) {
+    .device_intro_copy_text { grid-column: 10 / 13; }
+    /* 최종 디자인 검토 전까지 줄 수 변화에 대응 */
+    .device_intro_copy_ko { font-size: clamp(13px, 1.15vw, 22px); }
+    .device_intro_copy_en { font-size: clamp(14px, 1.25vw, 24px); }
+}
+
+@media (max-width: 1280px) {
+    .device_intro_copy { inset: 22px var(--page-margin); row-gap: 14px; }
+    .device_intro_copy_text { margin-top: min(5.5vh, 40px); }
+    .device_intro_copy_en { margin-top: 14px; }
+}
+
+
+
+
+
 
 
 
