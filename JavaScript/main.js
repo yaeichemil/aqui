@@ -41,6 +41,43 @@ heroVideo.addEventListener("ended", () => {
 
 
 
+// 02 ) 갤러리 이미지 스크롤 등장 (한 번 나타나면 유지)
+(() => {
+    const overview = document.querySelector("#overview");
+    if (!overview || overview.dataset.revealInitialized === "true") return;
+
+    const cards = [...overview.querySelectorAll(
+        ".overview_gallery > .overview_news_item, .overview_gallery > .overview_item"
+    )];
+    if (!cards.length) return;
+
+    overview.dataset.revealInitialized = "true";
+
+    // 스크롤 위치에 따라 등장하지만, 다시 위로 올라가도 사라지지 않음.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        !("IntersectionObserver" in window)) return;
+
+    overview.classList.add("is-reveal-ready");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -6% 0px"
+    });
+
+    cards.forEach((card) => observer.observe(card));
+})();
+
+
+
+
+
 // 05 + 06 ) 스크롤 시퀀스
 // ======================================================================
 // 05 Device → 06 Before-service : v12 (05 카피 최종 위치 + 첫 전환 스크롤 부담 완화)
@@ -386,31 +423,43 @@ heroVideo.addEventListener("ended", () => {
         deviceLines().forEach((line, index) => playRise(line, index * 65, 600));
     }
 
-    // 06: 타이틀과 본문 각 행의 상승 시간은 650ms로 동일합니다.
-    // 이미지/본문 순서가 뒤섞이지 않도록 마지막 행이 완료되는 시점을 반환합니다.
-    function startServiceReveal(i, transitionId) {
-        const card = descriptions[i];
-        stopAnimation(card);
-        card.style.opacity = "1";
-        card.style.visibility = "visible";
-        const korean = linesFor(card.querySelector(".before-service_description_ko"));
-        const english = linesFor(card.querySelector(".before-service_description_en"));
-        const riseDuration = 650;
-        if (i > 0) playTitleRise(titles[i], riseDuration);
-        korean.forEach((line, index) => playRise(line, 75 + index * 64, riseDuration));
-        english.forEach((line, index) =>
-            playRise(line, 125 + korean.length * 64 + index * 64, riseDuration));
+   // 06 ) 한글 / 영문 본문 동시 리빌
+function startServiceReveal(i, transitionId) {
+    const card = descriptions[i];
 
-        // 첫 한국어 행이 막 올라오기 시작할 때 깜식이 사진도 부드럽게 등장.
-        // 텍스트보다 먼저 튀어나오지도, 마지막 행까지 기다리느라 늦지도 않습니다.
-        if (!dogVisible) {
-            clearTimeout(pendingDogTimer);
-            pendingDogTimer = setTimeout(() => {
-                if (transitionId !== serviceTransitionId || currentService < 0) return;
-                setDogVisible(true);
-            }, 135);
-        }
+    stopAnimation(card);
+    card.style.opacity = "1";
+    card.style.visibility = "visible";
+
+    const korean = linesFor(card.querySelector(".before-service_description_ko"));
+    const english = linesFor(card.querySelector(".before-service_description_en"));
+
+    const riseDuration = 650;
+    const riseDelay = 75;
+    const lineDelay = 64;
+
+    if (i > 0) playTitleRise(titles[i], riseDuration);
+
+    // 한글과 영문은 동시에 시작하고, 각 언어의 줄은 순차적으로 등장
+    korean.forEach((line, index) => {
+        playRise(line, riseDelay + index * lineDelay, riseDuration);
+    });
+
+    english.forEach((line, index) => {
+        playRise(line, riseDelay + index * lineDelay, riseDuration);
+    });
+
+    // 첫 한국어 행이 올라오기 시작할 때 깜식이 사진도 등장
+    if (!dogVisible) {
+        clearTimeout(pendingDogTimer);
+
+        pendingDogTimer = setTimeout(() => {
+            if (transitionId !== serviceTransitionId || currentService < 0) return;
+
+            setDogVisible(true);
+        }, 135);
     }
+}
 
     // 퇴장 역시 시간 기반 fade. 스크롤을 멈춰도 흐릿한 글자가 남지 않습니다.
     function fadeOut(element, duration = 220, onFinish = null) {
@@ -727,31 +776,55 @@ heroVideo.addEventListener("ended", () => {
 
 
 
-// 07 ) 텍스트 opacity 조정 모션
+// 07 ) 스크롤에 따른 텍스트 opacity
 (() => {
     const bridge = document.querySelector("#bridge");
     const copy = bridge?.querySelector(".bridge_copy");
+
     if (!bridge || !copy) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-        !("IntersectionObserver" in window)) return;
+    // 스크롤 진행률 0~1
+    const clamp = (value) => Math.max(0, Math.min(1, value));
 
-    // 이미 카피가 충분히 화면 안으로 들어왔다면 바로 관측 시작.
-    bridge.classList.add("is-motion-ready");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        copy.style.opacity = "1";
+        return;
+    }
 
-    const observer = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-            if (!entry.isIntersecting) continue;
-            copy.classList.add("is-visible");
-            observer.disconnect(); // 한번 차분하게 등장한 후에는 그대로 유지
-            break;
-        }
-    }, {
-        threshold: 0.2,
-        rootMargin: "0px 0px -22% 0px"
-    });
+    let ticking = false;
 
-    observer.observe(copy);
+    function updateBridgeCopy() {
+        const rect = bridge.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // 그라디언트가 거의 끝난 뒤부터 카피가 나타남
+        const start = viewportHeight * 0.15;
+        const end = viewportHeight * 0.85;
+
+        const progress = clamp(
+            (-rect.top - start) / (end - start)
+        );
+
+        // 부드러운 opacity 변화
+        const opacity = progress * progress * (3 - 2 * progress);
+
+        copy.style.opacity = opacity.toFixed(3);
+
+        ticking = false;
+    }
+
+    function requestBridgeUpdate() {
+        if (ticking) return;
+
+        ticking = true;
+        requestAnimationFrame(updateBridgeCopy);
+    }
+
+    window.addEventListener("scroll", requestBridgeUpdate, { passive: true });
+    window.addEventListener("resize", requestBridgeUpdate);
+    window.addEventListener("pageshow", requestBridgeUpdate);
+
+    updateBridgeCopy();
 })();
 
 

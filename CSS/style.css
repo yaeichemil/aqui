@@ -308,7 +308,6 @@ p {
 ====================== */
 
 
-
 .overview {
     position: relative;
     width: 100%;
@@ -331,7 +330,7 @@ p {
     right: 0;
     bottom: 0;
 
-    height: 60vh;
+    height: 120vh;
 
     background: linear-gradient(
         to bottom,
@@ -348,7 +347,8 @@ p {
     position: relative;
     align-content: start;
 
-    padding-bottom: 60vh;
+    /* 1920 시안 3437px : 갤러리 뒤쪽 흰색 전환 여백 */
+    padding-bottom: clamp(820px, 64.35vw, 1235.52px);
 }
 
 
@@ -360,7 +360,9 @@ p {
     grid-template-columns: subgrid;
 
     padding-top: clamp(150px, 12.5vw, 240px);
-    padding-bottom: clamp(95px, 7.875vw, 151px);
+
+    /* 기존 151px → 1920 기준 약 389px, 갤러리 시작 y≈902px */
+    padding-bottom: clamp(260px, 20.255vw, 389px);
 }
 
 
@@ -386,14 +388,22 @@ p {
 
 /* 메인 한글 카피 */
 .overview_title {
-    margin-left: calc((100% + var(--grid-gutter)) / 7);
+    /* margin-left: calc((100% + var(--grid-gutter)) / 7); */
     font-family: var(--font-ko);
     font-weight: 400;
 
     font-size: clamp(23px, 1.979vw, 38px);
-    line-height: 1.035;
+    line-height: 1.357;
     letter-spacing: -0.04em;
 }
+
+.overview_title_first {
+    margin-left: calc((100% + var(--grid-gutter)) / 7);
+}
+
+/* .overview_title_rest {
+    margin-left: calc((100% + var(--grid-gutter)) / 7);
+} */
 
 
 /* 한글 본문 전체 */
@@ -422,17 +432,34 @@ p {
 }
 
 
-
+/* 갤러리 : 12 columns / 이미지 5 rows */
 .overview_gallery {
     grid-column: 1 / -1;
 
+    position: relative;
     display: grid;
     grid-template-columns: subgrid;
 
-    grid-auto-rows: clamp(150px, 12.29vw, 235.89px);
-    row-gap: clamp(12px, 1.04vw, 20px);
+    grid-auto-rows: clamp(150px, 12.286vw, 235.89px);
+    row-gap: clamp(18px, 1.5625vw, 30px);
 
     padding-bottom: 0;
+}
+
+
+/* 뉴스 카드 위 안내 문구 : 1920 기준 x37 / y866 */
+.overview_news_notice {
+    position: absolute;
+    top: calc(-1 * clamp(24px, 1.889vw, 36.27px));
+    left: clamp(4px, 0.367vw, 7.05px);
+
+    font-family: var(--font-ko);
+    font-weight: 400;
+    font-size: clamp(12px, min(0.9375vw, 1.83vh), 18px);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    color: #CDCDCD;
+    white-space: nowrap;
 }
 
 
@@ -460,17 +487,17 @@ p {
 }
 
 
-/* 뉴스 이미지 */
+/* 뉴스 호버 이미지 : 임시 1종을 같은 비율의 이미지에서 테스트 */
 .overview_news {
     position: absolute;
     inset: 0;
+    z-index: 1;
 
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.22s ease;
+    pointer-events: none;
 }
 
-
-/* 뉴스 이미지 내부 */
 .overview_news img {
     display: block;
 
@@ -480,9 +507,23 @@ p {
     object-fit: cover;
 }
 
+.overview_news_item:hover .overview_news,
+.overview_news_item:focus-visible .overview_news,
+.overview_item_has_hover:hover .overview_news,
+.overview_item_has_hover:focus-visible .overview_news {
+    opacity: 1;
+}
 
-/* 뉴스 이미지 hover */
-.overview_news_item:hover .overview_news {
+
+/* 이미지 스크롤 등장 : 한 번 등장하면 역스크롤해도 유지 */
+.overview.is-reveal-ready .overview_news_item,
+.overview.is-reveal-ready .overview_item {
+    opacity: 0;
+    transition: opacity 0.85s ease-out;
+}
+
+.overview.is-reveal-ready .overview_news_item.is-visible,
+.overview.is-reveal-ready .overview_item.is-visible {
     opacity: 1;
 }
 
@@ -497,60 +538,50 @@ p {
 
 /* 이미지 01 */
 .overview_item_01 {
-    grid-column: 5 / 7;
+    grid-column: 6 / 9;
     grid-row: 1;
+    left: clamp(6px, 0.521vw, 10px);
 }
 
 /* 이미지 02 */
 .overview_item_02 {
-    grid-column: 7 / 8;
-    grid-row: 1;
-}
-
-/* 이미지 03 */
-.overview_item_03 {
-    grid-column: 10 / 13;
+    grid-column: 12 / 13;
     grid-row: 1;
 }
 
 
 /* 2 row */
 
-/* 이미지 04 */
-.overview_item_04 {
-    grid-column: 4 / 7;
+/* 이미지 03 */
+.overview_item_03 {
+    grid-column: 4 / 6;
     grid-row: 2;
 }
 
-/* 이미지 05 */
-.overview_item_05 {
-    grid-column: 9 / 11;
+/* 이미지 04 */
+.overview_item_04 {
+    grid-column: 10 / 12;
     grid-row: 2;
 }
 
 
 /* 3 row */
 
+/* 이미지 05 */
+.overview_item_05 {
+    grid-column: 1 / 4;
+    grid-row: 3;
+}
+
 /* 이미지 06 */
 .overview_item_06 {
-    grid-column: 1 / 2;
+    grid-column: 6 / 8;
     grid-row: 3;
+    left: clamp(6px, 0.521vw, 10px);
 }
 
 /* 이미지 07 */
 .overview_item_07 {
-    grid-column: 3 / 6;
-    grid-row: 3;
-}
-
-/* 이미지 08 */
-.overview_item_08 {
-    grid-column: 8 / 10;
-    grid-row: 3;
-}
-
-/* 이미지 09 */
-.overview_item_09 {
     grid-column: 10 / 13;
     grid-row: 3;
 }
@@ -558,38 +589,48 @@ p {
 
 /* 4 row */
 
-/* 이미지 10 */
-.overview_item_10 {
-    grid-column: 1 / 4;
+/* 이미지 08 */
+.overview_item_08 {
+    grid-column: 4 / 6;
     grid-row: 4;
 }
 
-/* 이미지 11 */
-.overview_item_11 {
-    grid-column: 5 / 7;
-    grid-row: 4;
-}
-
-/* 이미지 12 */
-.overview_item_12 {
-    grid-column: 9 / 11;
-    grid-row: 4;
-}
-
-/* 이미지 13 */
-.overview_item_13 {
+/* 이미지 09 */
+.overview_item_09 {
     grid-column: 11 / 13;
     grid-row: 4;
 }
 
 
-/* 작은 데스크톱에서는 시안의 강제 줄바꿈을 해제하고 자연스럽게 줄바꿈 */
-/* @media (max-width: 1600px) {
-    .overview_title br,
-    .overview_lead_rest br {
-        display: none;
+/* 5 row */
+
+/* 이미지 10 */
+.overview_item_10 {
+    grid-column: 1 / 3;
+    grid-row: 5;
+}
+
+/* 이미지 11 */
+.overview_item_11 {
+    grid-column: 4 / 6;
+    grid-row: 5;
+}
+
+/* 이미지 12 */
+.overview_item_12 {
+    grid-column: 8 / 11;
+    grid-row: 5;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .overview.is-reveal-ready .overview_news_item,
+    .overview.is-reveal-ready .overview_item {
+        opacity: 1;
+        transition: none;
     }
-} */
+}
+
 
 
 
@@ -1496,21 +1537,6 @@ p {
     opacity: 1; /* JS가 실행되지 않아도 카피 표시 */
 }
 
-.bridge.is-motion-ready .bridge_copy {
-    opacity: 0;
-}
-
-.bridge.is-motion-ready .bridge_copy.is-visible {
-    animation: bridge_lightup 1900ms ease-out both;
-}
-
-@keyframes bridge_lightup {
-    0%   { opacity: 0;    filter: blur(2px); }
-    24%  { opacity: 0.17; filter: blur(1.6px); }
-    49%  { opacity: 0.45; filter: blur(0.8px); }
-    76%  { opacity: 0.84; filter: blur(0.2px); }
-    100% { opacity: 1;    filter: blur(0); }
-}
 
 /* 최소 한 뷰포트만큼의 검은 장면이 충분히 나온 다음 이미지 등장 */
 .bridge_media {
@@ -1929,7 +1955,13 @@ p {
 
 .after-service_epilogue {
     width: 100%;
-    padding: clamp(100px, min(10.4167vw, 19vh), 200px) 0 clamp(74px, 6.25vw, 120px);
+
+    /* 상단 여백은 유지 / 하단 여백은 1920 기준 약 200px 추가 */
+    padding-top: clamp(100px, min(10.4167vw, 19vh), 200px);
+    padding-bottom: calc(
+        clamp(74px, 6.25vw, 120px) + clamp(125px, 10.4167vw, 200px)
+    );
+
     background-color: var(--bg-dark);
 }
 
@@ -2086,7 +2118,7 @@ p {
 
 
 /* 중앙 하단 안내 카피 */
-.after-service_transition_copy {
+/* .after-service_transition_copy {
     position: relative;
     z-index: 1;
 
@@ -2103,21 +2135,7 @@ p {
     word-break: keep-all;
 
     color: var(--bg-dark);
-}
-
-
-/* 추후 최종 이미지 적용 */
-.after-service_transition img {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
+} */
 
 
 /* 이미지 호버 인터랙션 */
