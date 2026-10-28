@@ -726,6 +726,7 @@ heroVideo.addEventListener("ended", () => {
 
 
 
+
 // 07 ) 텍스트 opacity 조정 모션
 (() => {
     const bridge = document.querySelector("#bridge");
@@ -748,6 +749,34 @@ heroVideo.addEventListener("ended", () => {
     }, {
         threshold: 0.2,
         rootMargin: "0px 0px -22% 0px"
+    });
+
+    observer.observe(copy);
+})();
+
+
+
+
+
+// 10_application ) 상단 카피 스크롤 진입 모션
+(() => {
+    const application = document.querySelector("#application");
+    const copy = application?.querySelector(".application_copy");
+    if (!application || !copy) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        !("IntersectionObserver" in window)) return;
+
+    application.classList.add("is-motion-ready");
+
+    const observer = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+
+        copy.classList.add("is-visible");
+        observer.disconnect(); // 한 번 등장한 뒤에는 유지
+    }, {
+        threshold: 0.35,
+        rootMargin: "0px 0px -12% 0px"
     });
 
     observer.observe(copy);

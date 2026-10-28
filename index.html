@@ -26,7 +26,7 @@
 
             <video
                 class="hero_video"
-                src="./assets/01_hero/temp/hero_after_temp.mp4"
+                src="./assets/01_hero/temp/hero_temp.mp4"
                 controls
                 playsinline
             ></video>
@@ -906,32 +906,106 @@
 
 
         <!-- 09_memory -->
-       <section id="memory" class="section memory">
+        <section id="memory" class="section memory">
 
-        <div class="memory_media">
-            <!-- 디바이스 키링 서랍 보관 영상 추가 예정 -->
-        </div>
+            <div class="memory_inner grid_container">
+                <span class="memory_mark" aria-hidden="true"></span>
 
-       </section>
+                <p class="memory_copy">
+                    함께 사용하던 NFC 디바이스는 이별 이후에도 추억을 간직하는 오브젝트로 남습니다.<br>
+                    보호자용 키링을 태그하면 그동안 남긴 기록과 기억을 다시 만날 수 있습니다.
+                </p>
+
+                <!-- 영상 영역: 현재는 임시 플레이스홀더. 실제 영상 수령 후 안쪽 요소만 교체 -->
+                <div class="memory_media">
+                    <div class="memory_media_placeholder" role="img" aria-label="-> video"></div>
+                </div>
+
+                <div class="memory_description">
+                    <p class="memory_description_ko">국문으로 이러이렇게 사용한다는 설명</p>
+                    <p class="memory_description_en">A short explanation of how to use the NFC keyring will appear here.</p>
+                </div>
+            </div>
+
+        </section>
+
 
 
 
 
 
         <!-- 10_application -->
-       <section id="application" class="section application">
+        <section id="application" class="section application">
 
-        <div class="application_inner">
-            <div class="application_device">
-                <!-- 디바이스 키링 360도 회전 영상 추가 예정 -->
+            <div class="application_inner grid_container">
+
+                <span class="application_mark" aria-hidden="true"></span>
+
+                <!-- 오른쪽 상단 카피 (교체 예정) -->
+                <p class="application_copy">
+                    함께 사용하던 NFC 디바이스는<br>
+                    이별 이후에도 추억을 간직하는<br>
+                    오브젝트로 남습니다.
+                </p>
+
+                <!-- 왼쪽 NFC 디바이스 (현재 05 임시 어셋 재사용. 추후 360도 영상으로 교체) -->
+                <div class="application_device">
+                    <img
+                        class="application_device_image"
+                        src="./assets/05_device/temp/device_NFC_02_temp.png"
+                        alt="아키 NFC 디바이스"
+                    >
+                </div>
+
+                <!-- NFC 신청 폼-->
+                <div class="application_form" role="group" aria-label="NFC 신청 시연용 입력 화면. 입력한 정보는 저장되거나 전송되지 않습니다.">
+
+                    <div class="application_form_inner">
+
+                        <!-- 보호자 정보 -->
+                        <div class="application_form_group">
+                            <p class="application_form_group_title">보호자<br>정보</p>
+
+                            <div class="application_form_fields">
+                                <input class="application_field" type="text" placeholder="이름" aria-label="보호자 이름" autocomplete="off">
+                                <input class="application_field" type="email" placeholder="이메일" aria-label="이메일" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <!-- 배송 정보 -->
+                        <div class="application_form_group">
+                            <p class="application_form_group_title">배송<br>정보</p>
+
+                            <div class="application_form_fields">
+                                <input class="application_field" type="text" placeholder="받는 분" aria-label="받는 분" autocomplete="off">
+                                <input class="application_field" type="tel" placeholder="연락처" aria-label="연락처" autocomplete="off">
+                                <input class="application_field" type="text" placeholder="기본 주소" aria-label="기본 주소" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <!-- 반려견 정보 -->
+                        <div class="application_form_group">
+                            <p class="application_form_group_title">반려견<br>정보</p>
+
+                            <div class="application_form_fields">
+                                <input class="application_field" type="text" placeholder="반려견 이름" aria-label="반려견 이름" autocomplete="off">
+                                <input class="application_field" type="text" placeholder="인식번호" aria-label="인식번호" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <!-- 시연용 버튼 : '실제 신청 기능 없음' 안내 카피 별도 추가 -->
+                        <button type="button" class="application_submit" aria-label="NFC 신청, 현재 시연용 버튼">
+                            NFC 신청
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="application_form">
-                <!-- 디바이스 신청 폼 제작 예정 (시안 기다림) -->
-            </div>
-        </div>
+        </section>
 
-       </section>
 
 
 
