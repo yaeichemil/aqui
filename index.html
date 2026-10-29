@@ -477,10 +477,16 @@
                     </div>
                 </div>
 
-                <!-- 파일명이 다르면 src만 수정하세요. -->
-                <div class="before-service_dog">
-                    <img src="./assets/06_before-service/temp/before-service_kkamsik_temp.png"
-                         alt="">
+                <!-- 06 ) 타이틀이 전환될 때 함께 크로스페이드되는 깜식이 사진 -->
+                <div class="before-service_dog" aria-hidden="true">
+                    <img class="before-service_dog_image is-active" data-dog-photo="0"
+                         src="./assets/06_before-service/1_NFC_keyring/before-service_NFC_keyring_kkamsik_v03.jpg" alt="">
+                    <img class="before-service_dog_image" data-dog-photo="1"
+                         src="./assets/06_before-service/3_care_log/before-service_carelog_kkamsik_v01.jpg" alt="">
+                    <img class="before-service_dog_image" data-dog-photo="2"
+                         src="./assets/06_before-service/4_archive/before-service_archive_kkamsik_v01.jpg" alt="">
+                    <img class="before-service_dog_image" data-dog-photo="3"
+                         src="./assets/06_before-service/4_archive/before-service_archive_kkamsik_v03.jpg" alt="">
                 </div>
             </div>
         </section>
@@ -502,15 +508,15 @@
             <!-- 다음 이미지들은 아래에서 위로 스와이프하며 앞 이미지를 덮습니다. -->
             <!-- 각각의 src는 프로젝트에 있는 실제 파일명으로 변경하세요. -->
             <div class="device_service_media_item device_service_media_phone" data-service-media="1">
-                <img src="./assets/06_before-service/temp/before-service_main_temp.png" alt="">
+                <img src="./assets/06_before-service/temp/before-service_main_temp.png" alt="HOME 앱 화면 임시 목업">
                 <span class="device_service_media_overlay"></span>
             </div>
             <div class="device_service_media_item device_service_media_phone" data-service-media="2">
-                <img src="./assets/06_before-service/temp/before-service_carelog_temp.png" alt="">
+                <img src="./assets/06_before-service/temp/before-service_carelog_temp.png" alt="CARE LOG 앱 화면 임시 목업">
                 <span class="device_service_media_overlay"></span>
             </div>
             <div class="device_service_media_item device_service_media_phone" data-service-media="3">
-                <img src="./assets/06_before-service/temp/before-service_archive_temp.png" alt="">
+                <img src="./assets/06_before-service/temp/before-service_archive_temp.png" alt="ARCHIVE 앱 화면 임시 목업">
                 <span class="device_service_media_overlay"></span>
             </div>
         </div>
@@ -533,13 +539,16 @@
                     함께한 시간을 뒤로 하고, 우리는 이별을 맞았습니다.
                 </p>
 
-                <!-- 임시 이미지: 나중에 같은 영역에 영상으로 교체 -->
+                <!-- 07_bridge ) 임시 영상. 반복 없이 재생 후 마지막 프레임 유지 -->
                 <div class="bridge_media">
-                    <img
-                        class="bridge_media_image"
-                        src="./assets/07_bridge/temp/bridge_media_temp.png"
-                        alt="sample background asset"
-                    >
+                    <video
+                        class="bridge_media_video"
+                        src="./assets/07_bridge/temp/bridge_media_v02_temp.mp4"
+                        muted
+                        playsinline
+                        preload="metadata"
+                        aria-label="사별 전과 사별 후를 연결하는 영상"
+                    ></video>
                 </div>
 
                 <!-- 스크롤 아이콘은 디자인 확정 후 추가 -->
@@ -560,12 +569,13 @@
 
 
                 <!-- Chapter. 2 ) 사별 후 서비스 도입 -->
-                <div class="after-service_intro">
+                <div class="after-service_intro_scene">
+                    <div class="after-service_intro">
 
                     <!-- 임시 흑백 배경 이미지 (최종 어셋 수령 시 교체) -->
                     <div class="after-service_intro_media">
                         <img
-                            src="./assets/08_after-service/temp/after-service_kkamsik_fullscreen.png"
+                            src="./assets/08_after-service/1_intro/after-service_kkamsik_fullscreen_v02.jpg"
                             alt=""
                         >
                     </div>
@@ -602,6 +612,7 @@
                         </div>
                     </div>
 
+                    </div>
                 </div>
 
 
@@ -640,15 +651,12 @@
                         <div class="after-service_home_gallery">
 
                             <div class="after-service_home_main">
-                                <!-- 나중에 사별 직후 프로토타입 영상으로 교체 예정 -->
-                                <img
-                                    src="./assets/08_after-service/temp/after-service_afterlosshome_media_temp.png"
-                                    alt="사별 직후 홈 화면 목업"
-                                >
+                                <img src="./assets/08_after-service/temp/after-service_afterlosshome_media_temp.png" alt="사별 직후 홈 화면 임시 목업">
                             </div>
 
                             <div class="after-service_home_side">
-                                <!-- 이미지 어셋 수령 후 여기에 삽입 -->
+                                <img src="./assets/08_after-service/2_after_loss_home/after-service_home_right.jpg"
+                                     alt="사별 후 서비스 관련 이미지">
                             </div>
 
                         </div>
@@ -701,10 +709,7 @@
                             <!-- 에필로그 목업 01 -->
                             <figure class="after-service_epilogue_phone">
 
-                                <img
-                                    src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                    alt="Epilogue prototype 01"
-                                >
+                                <img src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png" alt="Epilogue prototype 01">
 
                                 <figcaption>
                                     에필로그 확인사항
@@ -716,10 +721,7 @@
                             <!-- 에필로그 목업 02 -->
                             <figure class="after-service_epilogue_phone">
 
-                                <img
-                                    src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                    alt="Epilogue prototype 02"
-                                >
+                                <img src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png" alt="Epilogue prototype 02">
 
                                 <figcaption>
                                     에필로그 장례준비
@@ -731,10 +733,7 @@
                             <!-- 에필로그 목업 03 -->
                             <figure class="after-service_epilogue_phone">
 
-                                <img
-                                    src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                    alt="Epilogue prototype 03"
-                                >
+                                <img src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png" alt="Epilogue prototype 03">
 
                                 <figcaption>
                                     에필로그 보호자 이야기
@@ -746,10 +745,7 @@
                             <!-- 에필로그 목업 04 -->
                             <figure class="after-service_epilogue_phone">
 
-                                <img
-                                    src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                    alt="Epilogue prototype 04"
-                                >
+                                <img src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png" alt="Epilogue prototype 04">
 
                                 <figcaption>
                                     에필로그 펫로스상담
@@ -768,7 +764,9 @@
                 <!-- transition ) 에필로그와 기록 돌아보기 사이 연출 이미지 -->
                 <div class="after-service_transition">
 
-                    <!-- 최종 이미지 추후 추가 -->
+                    <img class="after-service_transition_media"
+                         src="./assets/08_after-service/4_transition/after-service_transition_media.png"
+                         alt="사별 전후의 일상을 연결하는 이미지">
 
                     <!-- <p class="after-service_transition_copy">
                         이별 준비를 돕던 홈은, 3일이 지나면 추억을 안고 다시 일상으로 나아가는 공간으로 달라집니다.
@@ -818,8 +816,11 @@
                                 </div>
 
                                 <div class="after-service_archive_side">
-                                    <!-- 오른쪽 위 : 버킷리스트 이미지 추후 삽입 -->
-                                    <div class="after-service_archive_side_top"></div>
+                                    <!-- 오른쪽 위 : 버킷리스트 컴포넌트 (배경색 유지) -->
+                                    <div class="after-service_archive_side_top">
+                                        <img src="./assets/08_after-service/5_archive/after-service_archive_bucketlist.png"
+                                             alt="깜식이와 함께한 버킷리스트 기록">
+                                    </div>
 
                                     <!-- 오른쪽 아래 : 그라디언트 그래픽 사용 -->
                                     <div class="after-service_archive_side_bottom"></div>

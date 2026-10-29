@@ -242,6 +242,7 @@ heroVideo.addEventListener("ended", () => {
     const deviceParagraphs = [...sequence.querySelectorAll(".device_intro_copy_ko, .device_intro_copy_en")];
     const marker = sequence.querySelector(".before-service_mark");
     const dog = sequence.querySelector(".before-service_dog");
+    const dogPhotos = [...sequence.querySelectorAll("[data-dog-photo]")];
     const titles = [...sequence.querySelectorAll("[data-service-title]")];
     const descriptions = [...sequence.querySelectorAll("[data-service-description]")];
     const panels = [...sequence.querySelectorAll("[data-service-media]")];
@@ -432,6 +433,11 @@ heroVideo.addEventListener("ended", () => {
     let currentService = -1; // -1: 06 문구 전 / 0~3: NFC, HOME, CARE LOG, ARCHIVE
     const dogEnter = serviceStart; // 본문 등장 시점. 실제 강아지 등장은 본문 마지막 행 리빌 완료 후.
     let dogVisible = false;
+
+    // 06 ) 타이틀 / 설명이 바뀔 때 바깥 dog 영역은 그대로 두고 이미지끼리 크로스페이드
+    function setDogPhoto(index) {
+        dogPhotos.forEach((photo, i) => photo.classList.toggle("is-active", i === index));
+    }
     let serviceTransitionId = 0;
     let pendingServiceTimer = null;
     let pendingDogTimer = null;
@@ -497,6 +503,7 @@ heroVideo.addEventListener("ended", () => {
         if (deviceTextVisible) showLines(deviceLines());
         else hideLines(deviceLines());
         currentService = serviceIndexFor(p);
+        setDogPhoto(Math.max(0, currentService));
         // 새로고침/리사이즈 시 현재 06 화면에서는 정적인 완료 상태로 복원.
         dogVisible = currentService >= 0;
         dog.style.opacity = dogVisible ? "1" : "0";
@@ -707,6 +714,7 @@ function startServiceReveal(i, transitionId) {
         pendingServiceTimer = setTimeout(() => {
             if (transitionId !== serviceTransitionId || currentService !== next) return;
             if (next === 0) changeFirstTitle(true);
+            setDogPhoto(next); // 새로운 타이틀 등장 시점과 사진 교체를 동기화
             startServiceReveal(next, transitionId);
         }, fadeDuration + 30);
     }
@@ -818,10 +826,39 @@ function startServiceReveal(i, transitionId) {
         // 스크롤 위치에 끌려가므로, 여기에서는 건드리지 않습니다.
     }
 
+    // 06 ) 현재 오른쪽에 등장한 프로토타입 영상 하나만 재생합니다.
+    const beforeServiceVideos = panels.slice(1).map((panel) => panel.querySelector("video"));
+    // HOME / CARE LOG / ARCHIVE 순서. 필요하면 [1.2, 1.2, 1.2]처럼 배속 조정.
+    const beforeServicePlaybackRates = [1, 1, 1];
+    beforeServiceVideos.forEach((video, i) => {
+        if (video) video.playbackRate = beforeServicePlaybackRates[i];
+    });
+    let activeBeforeServiceVideo = -1;
+
+    function syncBeforeServiceVideos(p) {
+        const rect = sequence.getBoundingClientRect();
+        const inView = rect.bottom > 0 && rect.top < window.innerHeight &&
+                       document.visibilityState !== "hidden";
+        let next = -1;
+        if (inView) {
+            swipeStarts.forEach((start, i) => {
+                if (p >= start + 0.006) next = i;
+            });
+        }
+        if (next === activeBeforeServiceVideo) return;
+        activeBeforeServiceVideo = next;
+        beforeServiceVideos.forEach((video, i) => {
+            if (!video) return;
+            if (i === next) video.play().catch(() => {}); // 음소거 자동재생
+            else video.pause();
+        });
+    }
+
     function renderMedia(p) {
+        syncBeforeServiceVideos(p);
         const shrink = smooth(shrinkStart, shrinkEnd, p);
         stage.style.setProperty("--device_shrink", shrink.toFixed(4));
-        stage.style.setProperty("--device_nfc_scale", lerp(1, 0.88, shrink).toFixed(4));
+        stage.style.setProperty("--device_nfc_scale", lerp(1, 1.08, shrink).toFixed(4));
 
         panels.forEach((panel, i) => {
             if (i > 0) {
@@ -902,6 +939,7 @@ function startServiceReveal(i, transitionId) {
         requestRender();
     });
     window.addEventListener("pageshow", requestRender);
+    document.addEventListener("visibilitychange", requestRender);
     window.addEventListener("load", () => { rebuildLines(); requestRender(); });
 
     rebuildLines();
@@ -989,4 +1027,199 @@ function startServiceReveal(i, transitionId) {
     });
 
     observer.observe(copy);
+})();
+
+
+
+
+
+// 07_bridge ) 영상은 화면에 들어오면 재생, 반복 없이 끝 프레임에 정지
+// - 기존 07 텍스트의 스크롤 연동 opacity와는 독립적으로 작동.
+(() => {
+    const video = document.querySelector("#bridge .bridge_media_video");
+    if (!video) return;
+    video.loop = false;
+    video.muted = true;
+
+    let inView = false;
+
+    function syncBridgeVideo() {
+        if (inView && document.visibilityState === "visible" && !video.ended) {
+            video.play().catch((error) => {
+                console.warn("[07_bridge] 영상 재생 실패:", video.currentSrc || video.src, error);
+            });
+        } else {
+            video.pause();
+        }
+    }
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (!entry) return;
+            inView = entry.isIntersecting;
+            syncBridgeVideo();
+        }, { threshold: 0.25 });
+        observer.observe(video);
+    } else {
+        inView = true;
+        syncBridgeVideo();
+    }
+
+    document.addEventListener("visibilitychange", syncBridgeVideo);
+})();
+
+
+// 08_after-service ) 07→08 진입 시 04와 같은 상단 구도 리빌
+// 스크롤을 내리면 이미지가 아래로 이동하며 윗부분이 드러나고,
+// 올리면 반대로 가려집니다. 확대/축소, 04의 3단계 슬라이드 없음.
+(() => {
+    const intro = document.querySelector("#after-service .after-service_intro");
+    if (!intro) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    let requestId = null;
+
+    function updateEntry() {
+        requestId = null;
+        if (reducedMotion.matches) {
+            intro.style.setProperty("--after_service_entry_pan", "0px");
+            return;
+        }
+
+        const viewportHeight = Math.max(1, window.innerHeight);
+        const introTop = intro.getBoundingClientRect().top;
+        const progress = clamp((viewportHeight - introTop) / viewportHeight, 0, 1);
+        // CSS의 추가 이미지 높이(min(23vh, 220px))와 같은 거리.
+        const maxPan = Math.min(viewportHeight * 0.23, 220);
+        const pan = -maxPan * (1 - progress);
+        intro.style.setProperty("--after_service_entry_pan", `${pan.toFixed(2)}px`);
+    }
+
+    function requestEntryUpdate() {
+        if (requestId !== null) return;
+        requestId = requestAnimationFrame(updateEntry);
+    }
+
+    window.addEventListener("scroll", requestEntryUpdate, { passive: true });
+    window.addEventListener("resize", requestEntryUpdate);
+    window.addEventListener("pageshow", requestEntryUpdate);
+    reducedMotion.addEventListener?.("change", requestEntryUpdate);
+    updateEntry();
+})();
+
+
+// 06/08 ) 미디어 오류 진단: 실제 영상의 경로 / 인코딩 문제가 있으면 콘솔에 표시
+// 표시·스크롤·재생 정책은 건드리지 않습니다.
+(() => {
+    const videos = document.querySelectorAll(
+        "#before-service video, #after-service video"
+    );
+    videos.forEach((video) => {
+        const warn = () => {
+            const error = video.error;
+            console.error("[영상 파일 오류]", {
+                src: video.currentSrc || video.src,
+                code: error?.code ?? null,
+                message: error?.message || "리소스/코덱/파일 경로를 확인하세요",
+                readyState: video.readyState,
+                networkState: video.networkState
+            });
+        };
+        video.addEventListener("error", warn);
+        if (video.error) warn();
+    });
+})();
+
+
+
+
+
+
+
+// 08_after-service ) 앱 프로토타입 재생 제어
+// HOME: 영역이 화면에 있으면 루프 / Epilogue: 화면 중앙에 가장 가까운 폰 하나만 재생
+(() => {
+    const section = document.querySelector("#after-service");
+    if (!section) return;
+
+    const homeVideo = section.querySelector(".after-service_home_main video");
+    const phones = [...section.querySelectorAll(".after-service_epilogue_phone")];
+    const phoneVideos = phones.map((phone) => phone.querySelector("video"));
+    let activePhone = -1;
+    let requestedFrame = null;
+
+    // 사별 후 HOME: 화면 밖에서 자원을 소비하지 않도록 재생을 멈춤.
+    if (homeVideo && "IntersectionObserver" in window) {
+        const homeObserver = new IntersectionObserver(([entry]) => {
+            if (!entry) return;
+            if (entry.isIntersecting && document.visibilityState === "visible") {
+                homeVideo.play().catch(() => {});
+            } else {
+                homeVideo.pause();
+            }
+        }, { threshold: 0.25 });
+        homeObserver.observe(homeVideo);
+    }
+
+    function updateEpilogueFocus() {
+        requestedFrame = null;
+        if (!phones.length) return;
+
+        // 트랙패드 스크롤 중에도 매번 play()/pause()를 호출하지 않도록 포커스만 비교.
+        const viewportHeight = window.innerHeight;
+        const focusLine = viewportHeight * 0.5;
+        let next = -1;
+        let bestScore = Infinity;
+
+        if (document.visibilityState === "visible") {
+            phones.forEach((phone, i) => {
+                if (!phoneVideos[i]) return;
+                const rect = phone.getBoundingClientRect();
+                const visibleHeight = Math.max(0,
+                    Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top));
+                const visibleRatio = visibleHeight / Math.max(1, rect.height);
+                if (visibleRatio < 0.28) return;
+
+                const center = rect.top + rect.height / 2;
+                const score = Math.abs(center - focusLine) / viewportHeight - visibleRatio * 0.12;
+                if (score < bestScore) {
+                    bestScore = score;
+                    next = i;
+                }
+            });
+        }
+        if (next === activePhone) return;
+        activePhone = next;
+        phoneVideos.forEach((video, i) => {
+            if (!video) return;
+            if (i === next && !video.ended) video.play().catch(() => {});
+            else video.pause();
+        });
+    }
+
+    function scheduleFocus() {
+        if (requestedFrame !== null) return;
+        requestedFrame = requestAnimationFrame(updateEpilogueFocus);
+    }
+
+    window.addEventListener("scroll", scheduleFocus, { passive: true });
+    window.addEventListener("resize", scheduleFocus);
+    window.addEventListener("pageshow", scheduleFocus);
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+            homeVideo?.pause();
+            phoneVideos.forEach((video) => video?.pause());
+            activePhone = -1;
+        } else {
+            if (homeVideo) {
+                const rect = homeVideo.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    homeVideo.play().catch(() => {});
+                }
+            }
+        }
+        scheduleFocus();
+    });
+    updateEpilogueFocus();
 })();
