@@ -78,6 +78,142 @@ heroVideo.addEventListener("ended", () => {
 
 
 
+// 04_kkamsik ) Introduce 1 → 2 → 3 : 부드러운 세로 슬라이드
+// 기존 '04_kkamsik ) 아래에서 올라와 풀스크린 → Introduce 1 / 2 / 3 스냅'
+// 함수 블록 하나만 교체합니다.
+// - 마스크 / clip-path / opacity 전환 없음
+// - 브라우저 기본 스크롤을 막지 않음 (마우스 / 트랙패드 대응)
+// - 스크롤 위치가 다음 구간에 도달하면 100vh씩 매끄럽게 슬라이드
+// - 03→04 배경 진입 인터랙션 JS는 기존 코드 그대로 유지
+(() => {
+    const section = document.querySelector("#kkamsik");
+    if (!section || section.dataset.motionInitialized === "true") return;
+
+    const panels = [...section.querySelectorAll("[data-kkamsik-panel]")];
+    if (panels.length !== 3) return;
+    section.dataset.motionInitialized = "true";
+
+    // 이 값은 04가 풀스크린으로 정착한 지점(0)부터 스크롤한 거리 / 화면 높이입니다.
+    // 1 → 2: 약 1.08화면 뒤 / 2 → 3: 약 2.55화면 뒤.
+    // CSS의 .kkamsik_scroll: 400vh와 함께 쓰는 설정입니다.
+    // 3 전환 후에도 약 1.45화면 동안 풀스크린을 유지합니다.
+    const step2At = 1.08; // Introduce 1을 충분히 보여준 뒤 2로 전환
+    const step3At = 2.55; // Introduce 2도 충분히 머문 뒤 3으로 전환
+    const buffer = 0.075; // 경계 부근 미세 왕복 방지 (화면 높이의 7.5%)
+
+    let currentStep = -1;
+    let requestId = null;
+
+    function readStep(progress) {
+        // 처음 실행하거나 새로고침/스크롤바 이동한 경우 현재 위치에서 바로 계산.
+        if (currentStep < 0) {
+            return progress < step2At ? 0 : progress < step3At ? 1 : 2;
+        }
+
+        // 방향이 바뀌더라도 경계 주변에서 1↔2↔3이 깜빡이지 않도록 여유를 둡니다.
+        if (currentStep === 0) {
+            return progress >= step3At + buffer ? 2
+                 : progress >= step2At + buffer ? 1 : 0;
+        }
+        if (currentStep === 1) {
+            return progress >= step3At + buffer ? 2
+                 : progress < step2At - buffer ? 0 : 1;
+        }
+        return progress < step2At - buffer ? 0
+             : progress < step3At - buffer ? 1 : 2;
+    }
+
+    function syncKkamsik() {
+        requestId = null;
+
+        const rect = section.getBoundingClientRect();
+        const height = Math.max(1, window.innerHeight);
+        const progress = -rect.top / height;
+        const nextStep = readStep(progress);
+
+        if (nextStep === currentStep) return;
+        currentStep = nextStep;
+        section.dataset.step = String(currentStep);
+
+        panels.forEach((panel, index) => {
+            panel.inert = index !== currentStep;
+        });
+    }
+
+    function requestSync() {
+        if (requestId !== null) return;
+        requestId = requestAnimationFrame(syncKkamsik);
+    }
+
+    // wheel.preventDefault / 강제 scrollTo는 쓰지 않습니다.
+    // 마우스와 트랙패드는 기본 스크롤 그대로. 긴 단계 간격으로 과민한 전환을 완화합니다.
+    // 극단적으로 긴 단일 스와이프까지 무조건 한 단계로 제한하는 방식은 아닙니다.
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", requestSync);
+    window.addEventListener("pageshow", requestSync);
+    syncKkamsik();
+})();
+
+
+
+
+
+
+
+// 04_kkamsik ) 03→04 배경 이미지 상단 리빌 (기존 진입 추가 JS와 교체)
+// 사진을 확대하거나 좌우로 퍼뜨리지 않고, 수직 구도만 스크롤에 맞춰 드러냅니다.
+// 04 Introduce 1→2→3 JS / 05~06 JS는 그대로 둡니다.
+(() => {
+    const section = document.querySelector("#kkamsik");
+    if (!section) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    let requestId = null;
+
+    function updateEntryReveal() {
+        requestId = null;
+
+        // 04 시작 지점이 뷰포트 아래에 있을 때 0,
+        // 04가 뷰포트를 완전히 채워 sticky에 붙을 때 1.
+        const viewportHeight = window.innerHeight;
+        const sectionTop = section.getBoundingClientRect().top;
+        const progress = clamp((viewportHeight - sectionTop) / viewportHeight, 0, 1);
+
+        if (reducedMotion.matches) {
+            section.style.setProperty("--kkamsik_entry_pan", "0px");
+            return;
+        }
+
+        // 효과 강도: 0.18 = 화면 높이의 최대 18%를 위로 감춰둠.
+        // 수치를 높이면 상단이 더 많이 가려졌다가 드러납니다.
+        // 화면 높이에 따른 상한을 두어 노트북에서도 과해지지 않도록 함.
+        const maxPan = Math.min(viewportHeight * 0.18, 180);
+        const panY = -maxPan * (1 - progress);
+
+        // easing 대신 실제 스크롤 진행률과 1:1로 연결:
+        // 내리면 상단이 열리고, 다시 올리면 같은 속도로 닫힘.
+        section.style.setProperty("--kkamsik_entry_pan", `${panY.toFixed(2)}px`);
+    }
+
+    function requestUpdate() {
+        if (requestId === null) {
+            requestId = requestAnimationFrame(updateEntryReveal);
+        }
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    window.addEventListener("pageshow", requestUpdate);
+    reducedMotion.addEventListener?.("change", requestUpdate);
+    updateEntryReveal();
+})();
+
+
+
+
+
+
 // 05 + 06 ) 스크롤 시퀀스
 // ======================================================================
 // 05 Device → 06 Before-service : v12 (05 카피 최종 위치 + 첫 전환 스크롤 부담 완화)
