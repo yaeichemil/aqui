@@ -60,8 +60,9 @@
 
 
 
-       <!-- 02_overview -->
+              <!-- 02_overview -->
         <section id="overview" class="section overview">
+
 
             <!-- grid container ) common 12 columns grid -->
             <div class="overview_inner grid_container">
@@ -105,166 +106,156 @@
 
 
                 <div class="overview_gallery">
+                    <p class="overview_news_notice">*클릭 시, 펫로스 뉴스 기사로 이동합니다.</p>
 
-                <!-- 뉴스 카드 안내 문구 -->
-                <p class="overview_news_notice">*클릭 시, 펫로스 뉴스 기사로 이동합니다.</p>
-
-                <!--
-                    뉴스 링크 받으면 연결
-                    href ) (실제 뉴스 기사 주소)
-                    target ) _blank
-                    rel ) noopener noreferrer
-
-                    호버용 뉴스 카드는 임시 어셋 1장으로 테스트 중
-                -->
-
-                    <!-- 1 row -->
-
-                    <!-- 뉴스 아이템 01 -->
-                    <a class="overview_news_item overview_news_item_01" tabindex="0" aria-label="펫로스 뉴스 카드 미리보기 (기사 링크 준비 중)">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_04.png"
-                            alt=""
-                        >
-                        <!-- <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/temp/overview_news_item_01_temp.png" alt="">
-                        </span> -->
+                    <!-- 기사 링크 연결 방법: 각 a 태그에 href="뉴스 URL" target="_blank" rel="noopener noreferrer" 추가 -->
+                    <!-- news_01~news_13은 화면 왼쪽→오른쪽, 다음 행 순서로 지정 -->
+                    <!-- 1 row / 뉴스 카드 / 호버 news_01.png -->
+                    <a class="overview_news_item overview_news_item_01" tabindex="0" aria-label="pet-loss news 01"
+                        href="https://www.theguardian.com/lifeandstyle/2026/jan/20/pet-owners-grief-family-member"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_04.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_01.png" alt="">
+                        </span>
                     </a>
 
-                    <!-- 이미지 01 -->
-                    <div class="overview_item overview_item_01 overview_item_has_hover" tabindex="0">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_01.png"
-                            alt=""
-                        >
-                        <!-- 임시 뉴스 호버 이미지 : 최종 어셋 수령 시 교체 -->
-                        <!-- <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/temp/overview_news_item_01_temp.png" alt="">
-                        </span> -->
-                    </div>
+                    <!-- 1 row / 이미지 01 / 호버 news_02.png -->
+                    <a class="overview_item overview_item_01 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://www.abc.net.au/news/2024-04-07/pet-loss-grief-farwelling-much-loved-family-members-dogs-cats/103656820"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_01.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_02.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 02 -->
-                    <div class="overview_item overview_item_02">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_13_v01.png"
-                            alt=""
-                        >
-                    </div>
+                    <!-- 1 row / 이미지 02 / 호버 news_03.png -->
+                    <a class="overview_item overview_item_02 overview_item_has_hover" tabindex="0" aria-label="">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_13_v01.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_03.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 2 row -->
+                    <!-- 2 row / 이미지 03 / 호버 news_04.png -->
+                    <a class="overview_item overview_item_03 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://news.sky.com/story/pet-loss-and-grief-my-world-crashed-the-rising-number-of-people-seeking-support-over-the-deaths-of-their-animals-12974903"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_07.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_04.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 03 -->
-                    <div class="overview_item overview_item_03">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_07.png"
-                            alt=""
-                        >
-                    </div>
+                    <!-- 2 row / 이미지 04 / 호버 news_05.png -->
+                    <a class="overview_item overview_item_04 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://www.theguardian.com/lifeandstyle/2026/jan/20/pet-owners-grief-family-member"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_06.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_05.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 04 -->
-                    <div class="overview_item overview_item_04">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_06.png"
-                            alt=""
-                        >
-                    </div>
+                    <!-- 3 row / 이미지 05 / 호버 news_06.png -->
+                    <a class="overview_item overview_item_05 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://www.theguardian.com/business/2026/apr/24/pet-memorial-jewelry-small-business"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_02_v01.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_06.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 3 row -->
+                    <!-- 3 row / 이미지 06 / 호버 news_07.png -->
+                    <a class="overview_item overview_item_06 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://health.chosun.com/site/data/html_dir/2026/03/05/2026030504125.html"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_12_v02.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_07.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 05 -->
-                    <div class="overview_item overview_item_05 overview_item_has_hover" tabindex="0">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_02_v01.png"
-                            alt=""
-                        >
-                        <!-- 임시 뉴스 호버 이미지 : 최종 어셋 수령 시 교체 -->
-                        <!-- <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/temp/overview_news_item_01_temp.png" alt="">
-                        </span> -->
-                    </div>
+                    <!-- 3 row / 이미지 07 / 호버 news_08.png -->
+                    <a class="overview_item overview_item_07 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://www.bluecross.org.uk/story/michelles-story"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_03.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_08.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 06 -->
-                    <div class="overview_item overview_item_06">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_12_v02.png"
-                            alt=""
-                        >
-                    </div>
+                    <!-- 4 row / 이미지 08 / 호버 news_09.png -->
+                    <a class="overview_item overview_item_08 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13237898/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_10.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_09.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 07 -->
-                    <div class="overview_item overview_item_07 overview_item_has_hover" tabindex="0">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_03.png"
-                            alt=""
-                        >
-                        <!-- 임시 뉴스 호버 이미지 : 최종 어셋 수령 시 교체 -->
-                        <!-- <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/temp/overview_news_item_01_temp.png" alt="">
-                        </span> -->
-                    </div>
+                    <!-- 4 row / 이미지 09 / 호버 news_10.png -->
+                    <a class="overview_item overview_item_09 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://news.sky.com/story/pet-loss-and-grief-my-world-crashed-the-rising-number-of-people-seeking-support-over-the-deaths-of-their-animals-12974903"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_11.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_10.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 4 row -->
+                    <!-- 5 row / 이미지 10 / 호버 news_11.png -->
+                    <a class="overview_item overview_item_10 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://www.irishexaminer.com/lifestyle/healthandwellbeing/arid-41800733.html"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_12_v03.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_11.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 08 -->
-                    <div class="overview_item overview_item_08">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_10.png"
-                            alt=""
-                        >
-                    </div>
+                    <!-- 5 row / 이미지 11 / 호버 news_12.png -->
+                    <a class="overview_item overview_item_11 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13237898/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_08.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_12.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 이미지 09 -->
-                    <div class="overview_item overview_item_09">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_11.png"
-                            alt=""
-                        >
-                    </div>
+                    <!-- 5 row / 이미지 12 / 호버 news_13.png -->
+                    <a class="overview_item overview_item_12 overview_item_has_hover" tabindex="0" aria-label=""
+                        href="https://www.newsis.com/view/NISX20260507_0003619997"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <img class="overview_img" src="./assets/02_overview/overview_item_05.png" alt="">
+                        <span class="overview_news" aria-hidden="true">
+                            <img src="./assets/02_overview/news/news_13.png" alt="">
+                        </span>
+                    </a>
 
-                    <!-- 5 row -->
+                </div> <!-- /.overview_gallery -->
+            </div> <!-- /.overview_inner -->
 
-                    <!-- 이미지 10 -->
-                    <div class="overview_item overview_item_10">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_12_v03.png"
-                            alt=""
-                        >
-                    </div>
-
-                    <!-- 이미지 11 -->
-                    <div class="overview_item overview_item_11">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_08.png"
-                            alt=""
-                        >
-                    </div>
-
-                    <!-- 이미지 12 -->
-                    <div class="overview_item overview_item_12 overview_item_has_hover" tabindex="0">
-                        <img
-                            class="overview_img"
-                            src="./assets/02_overview/overview_item_05.png"
-                            alt=""
-                        >
-                        <!-- 임시 뉴스 호버 이미지 : 최종 어셋 수령 시 교체 -->
-                        <!-- <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/temp/overview_news_item_01_temp.png" alt="">
-                        </span> -->
-                    </div>
 
         </section>
+
 
 
 
@@ -307,9 +298,9 @@
                 <!-- 아래 : 로고 시퀀스 영역 + 브랜드 설명 -->
                 <div class="brand_identity">
 
-                    <!-- 영상 파일 전달 전에는 회색 플레이스홀더만 표시 -->
-                    <div class="brand_identity_media" aria-label="브랜드 로고 시퀀스 영상 영역">
-                        <!-- 나중에 이 안에 video 삽입 -->
+                    <!-- 로고 영상 대체용 임시 이미지 -->
+                    <div class="brand_identity_media" aria-label="브랜드 로고 이미지 영역">
+                        <img src="./assets/03_brand/brand_logo.png" alt="aquí brand logo">
                     </div>
 
                     <div class="brand_identity_info">
@@ -336,6 +327,7 @@
 
 
 
+
         <!-- 04_kkamsik -->
         <section id="kkamsik" class="section kkamsik" data-step="0">
 
@@ -343,8 +335,8 @@
             <div class="kkamsik_sticky">
 
                 <div class="kkamsik_background">
-                    <!-- 정인님 피그마 시안 기준 임시 선택: v01 -->
-                    <img src="./assets/04_kkamsik/kkamsik_fullscreen_v01.png" alt="">
+                    <!-- 정인님 피그마 시안 기준 임시 선택: v01 -> v02 변경 -->
+                    <img src="./assets/04_kkamsik/kkamsik_fullscreen_v02.png" alt="">
                 </div>
 
                 <div class="kkamsik_sticky_inner grid_container">
@@ -371,18 +363,38 @@
                             </div>
                         </div>
 
-                        <!-- Introduce 2 : 사진 3개 (최종 어셋 받으면 각 figure에 img 넣기) -->
+                        <!-- Introduce 2 : 성장 사진 01~03 -->
                         <div class="kkamsik_growth kkamsik_growth_01 kkamsik_panel" data-kkamsik-panel="1">
-                            <figure class="kkamsik_growth_item"></figure>
-                            <figure class="kkamsik_growth_item"></figure>
-                            <figure class="kkamsik_growth_item"></figure>
+
+                            <figure class="kkamsik_growth_item">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_01.png" alt="깜식이 성장 사진 01">
+                            </figure>
+
+                            <figure class="kkamsik_growth_item">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_02.png" alt="깜식이 성장 사진 02">
+                            </figure>
+
+                            <figure class="kkamsik_growth_item">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_03.png" alt="깜식이 성장 사진 03">
+                            </figure>
+
                         </div>
 
-                        <!-- Introduce 3 : 사진 3개 (최종 어셋 받으면 각 figure에 img 넣기) -->
+                       <!-- Introduce 3 : 성장 사진 04~06 -->
                         <div class="kkamsik_growth kkamsik_growth_02 kkamsik_panel" data-kkamsik-panel="2">
-                            <figure class="kkamsik_growth_item"></figure>
-                            <figure class="kkamsik_growth_item"></figure>
-                            <figure class="kkamsik_growth_item"></figure>
+
+                            <figure class="kkamsik_growth_item">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_04.png" alt="깜식이 성장 사진 04">
+                            </figure>
+
+                            <figure class="kkamsik_growth_item">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic05.png" alt="깜식이 성장 사진 05">
+                            </figure>
+
+                            <figure class="kkamsik_growth_item">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_06.png" alt="깜식이 성장 사진 06">
+                            </figure>
+
                         </div>
 
                     </div>
@@ -764,13 +776,16 @@
                 <!-- transition ) 에필로그와 기록 돌아보기 사이 연출 이미지 -->
                 <div class="after-service_transition">
 
-                    <img class="after-service_transition_media"
-                         src="./assets/08_after-service/4_transition/after-service_transition_media.png"
-                         alt="사별 전후의 일상을 연결하는 이미지">
+                    <img
+                        class="after-service_transition_media"
+                        src="./assets/08_after-service/4_transition/after-service_transition_media.png"
+                        alt="transition media"
+                    >
 
-                    <!-- <p class="after-service_transition_copy">
-                        이별 준비를 돕던 홈은, 3일이 지나면 추억을 안고 다시 일상으로 나아가는 공간으로 달라집니다.
-                    </p> -->
+                    <p class="after-service_transition_copy">
+                        이별 준비를 돕던 메인 화면은,<br>
+                        3일이 지나면 추억을 안고 다시 일상으로 나아가는 공간으로 달라집니다.
+                    </p>
 
                 </div>
 
@@ -810,8 +825,8 @@
                                 <!-- 왼쪽 : 임시 목업. 최종 앱 영상/어셋이 오면 교체 -->
                                 <div class="after-service_archive_video">
                                     <img
-                                        src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png"
-                                        alt="아카이브 앱 화면 임시 목업"
+                                        src="./assets/08_after-service/5_archive/temp/epilogue_archive_mockup_temp.png"
+                                        alt="temp"
                                     >
                                 </div>
 
@@ -822,8 +837,12 @@
                                              alt="깜식이와 함께한 버킷리스트 기록">
                                     </div>
 
-                                    <!-- 오른쪽 아래 : 그라디언트 그래픽 사용 -->
-                                    <div class="after-service_archive_side_bottom"></div>
+                                    <!-- 오른쪽 아래 : 그라디언트 그래픽 + 슬로건 -->
+                                    <div class="after-service_archive_side_bottom">
+                                        <p class="after-service_archive_slogan">
+                                            Every little moment, still here.
+                                        </p>
+                                    </div>
                                 </div>
 
                             </div>
@@ -913,7 +932,10 @@
 
                 <!-- 영상 영역: 현재는 임시 플레이스홀더. 실제 영상 수령 후 안쪽 요소만 교체 -->
                 <div class="memory_media">
-                    <div class="memory_media_placeholder" role="img" aria-label="-> video"></div>
+                    <img
+                        src="./assets/09_memory/memory_pic.png"
+                        alt=""
+                    >
                 </div>
 
                 <div class="memory_description">
@@ -943,13 +965,18 @@
                     오브젝트로 남습니다.
                 </p>
 
-                <!-- 왼쪽 NFC 디바이스 (현재 05 임시 어셋 재사용. 추후 360도 영상으로 교체) -->
+                <!-- 왼쪽 NFC 디바이스 : 360도 회전 영상 -->
                 <div class="application_device">
-                    <img
-                        class="application_device_image"
-                        src="./assets/05_device/device_NFC.png"
-                        alt="아키 NFC 디바이스"
-                    >
+                    <video
+                        class="application_device_video"
+                        src="./assets/10_application/temp/keyring_motion_temp.mp4"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="auto"
+                        aria-label="아키 NFC 키링 360도 회전 영상"
+                    ></video>
                 </div>
 
                 <!-- NFC 신청 폼-->
@@ -996,6 +1023,11 @@
                     </div>
 
                 </div>
+
+                 <!-- 신청 안내 문구 -->
+                <p class="application_notice">
+                    * 본 신청 화면은 서비스 시연용으로, 실제로 접수되지 않습니다.
+                </p>
 
             </div>
 

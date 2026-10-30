@@ -494,7 +494,7 @@ p {
     z-index: 1;
 
     opacity: 0;
-    transition: opacity 0.22s ease;
+    transition: opacity 0.2s ease;
     pointer-events: none;
 }
 
@@ -631,6 +631,28 @@ p {
     }
 }
 
+
+/* ==============================
+   02 Overview — 하얀 네모 / 카드 커서
+   기존 CSS 마지막에 붙여넣기 가능
+   ============================== */
+.overview_label {
+    position: relative;
+    padding-left: clamp(80px, 8.333vw, 160px);
+}
+.overview_label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.28em;
+    width: clamp(4px, 0.4167vw, 8px);
+    height: clamp(4px, 0.4167vw, 8px);
+    background: #D9D9D9;
+}
+.overview_news_item,
+.overview_item_has_hover {
+    cursor: pointer;
+}
 
 
 
@@ -1693,17 +1715,31 @@ p {
     position: absolute;
     inset: 0;
     z-index: 0;
-    overflow: hidden; /* 07→08 진입 시 이미지의 상단을 서서히 드러내는 창 */
+    overflow: hidden;
+    background-color: #777;
 }
 
 .after-service_intro_media img {
-    width: 100%;
-    /* 위로 이동할 때 하단이 비지 않도록 이동 거리만큼 이미지 높이 확보 */
-    height: calc(100% + min(23vh, 220px));
+    display: block;
+
+    /* 사진의 세로 구도를 우선 보존 */
+    width: auto;
+    height: 100%;
+
+    /* 오른쪽 패널을 제외한 사진 영역은 반드시 채우기 */
+    min-width: calc(100% - min(26.042vw, 500px));
+
     max-width: none;
     object-fit: cover;
-    object-position: center;
-    transform: translate3d(0, var(--after_service_entry_pan, 0px), 0);
+    object-position: left center;
+
+    /* 기존 진입 인터랙션 유지 */
+    transform: translate3d(
+        0,
+        var(--after_service_entry_pan, 0px),
+        0
+    );
+
     will-change: transform;
 }
 
@@ -1781,11 +1817,11 @@ p {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: rgba(104, 104, 104, 0.34);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    background: rgba(128, 128, 128, 0.34);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: #fff;
-    border: 2px solid #7e7e7e;
+    border: 1px solid #6a6a6a;
 }
 
 /* Figma 패널 안 x40 / y35 */
@@ -2159,6 +2195,31 @@ p {
     background-color: #D9D9D9;
 }
 
+/* 이미지 스크롤 연동 */
+.after-service_transition > .after-service_transition_media {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    /* JS에서 스크롤에 따라 변경 */
+    transform: translate3d(
+        0,
+        var(--transition-pan, 0px),
+        0
+    );
+
+    /* 스크롤 진행률에 즉시 반응 */
+    transition: none;
+
+    will-change: transform;
+}
+
 
 /* 중앙 하단 안내 카피 */
 /* .after-service_transition_copy {
@@ -2181,11 +2242,38 @@ p {
 } */
 
 
-/* 이미지 호버 인터랙션 */
-.after-service_transition:hover img {
-    transform: scale(1.02);
-}
+.after-service_transition_copy {
+    position: absolute;
+    z-index: 2;
 
+    /* 1920px 기준: 텍스트 박스 1013px */
+    width: min(1013px, 52.76%);
+
+    /* 이미지 하단 중앙 배치 */
+    left: 50%;
+    bottom: clamp(40px, 2.1875vw, 56px);
+    transform: translateX(-50%);
+
+    margin: 0;
+
+    /* Typography */
+    font-family: "SUIT", sans-serif;
+    font-weight: 400;
+
+    font-size: clamp(15px, 1.1979vw, 23px);
+    line-height: clamp(23px, 1.8229vw, 35px);
+    letter-spacing: -0.04em;
+
+    color: #FFFFFF;
+    text-align: center;
+    word-break: keep-all;
+
+    /* Figma: 검정 Outside Stroke 0.5px 근사 */
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.8);
+    paint-order: stroke fill;
+
+    pointer-events: none;
+}
 
 /* =========================================
    05. Archive Overview
@@ -2297,13 +2385,17 @@ p {
     background-color: #D9D9D9;
 }
 
+/* 08 Archive — 왼쪽 앱 목업 */
 .after-service_archive_video img,
 .after-service_archive_video video {
     display: block;
+
     width: auto;
-    height: 88%;
-    max-width: 88%;
+    height: 82.43%;
+
+    max-width: 90%;
     max-height: 100%;
+
     object-fit: contain;
 }
 
@@ -2335,6 +2427,28 @@ p {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.after-service_archive_side_bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.after-service_archive_slogan {
+    margin: 0;
+
+    font-family: var(--font-en);
+    font-weight: 300;
+
+    font-size: clamp(18px, 1.6667vw, 32px);
+    line-height: 1;
+
+    letter-spacing: -0.03em;
+
+    color: #FFFFFF;
+    text-align: center;
+    white-space: nowrap;
 }
 
 
@@ -2536,9 +2650,9 @@ p {
        3~12칼럼 가용 폭 안에서 자연스럽게 배치. */
 
     font-family: var(--font-ko);
-    font-size: clamp(22px, min(1.9791667vw, 3.72vh), 38px);
+    font-size: clamp(16px, min(1.9791667vw, 2.72vh), 28px);
     font-weight: 300;
-    line-height: 1.368421; /* 38px -> 52px */
+    line-height: 1.5; /* 38px -> 52px */
     letter-spacing: -0.03em;
     word-break: keep-all;
     overflow-wrap: anywhere;
@@ -2549,7 +2663,7 @@ p {
     grid-column: 3 / 13;
     min-width: 0;
     width: 100%;
-    aspect-ratio: 1547 / 570;
+    aspect-ratio: 1577 / 570;
     margin-top: clamp(132.52px, 10.353125vw, 198.78px);
 
     overflow: hidden;
@@ -2715,6 +2829,37 @@ p {
     object-fit: contain;
 }
 
+/* 
+    NFC Keyring 360deg video
+*/
+
+.application_device_video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    pointer-events: none;
+}
+
+.application_device video.application_device_video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    max-width: none;
+
+    pointer-events: none;
+    transform: translateY(50px); /* 영상만 아래로 20px 이동 */
+}
+
 
 /* 오른쪽 폼 : 8~12칼럼 / 기본 비율 유지 + 화면 높이에 맞춰 축소 */
 .application_form {
@@ -2851,6 +2996,32 @@ p {
     }
 }
 
+
+.application_notice {
+    /* 폼과 동일한 그리드 위치 */
+    grid-column: 8 / 13;
+    grid-row: 2;
+
+    /* 폼 바로 아래에 배치 */
+    align-self: end;
+    justify-self: start;
+
+    transform: translateY(calc(100% + 14px));
+
+    margin: 0;
+
+    font-family: "SUIT", var(--font-ko), sans-serif;
+    font-weight: 300;
+
+    font-size: clamp(10px, 0.4505vw, 11.65px);
+    line-height: 20.8px;
+    letter-spacing: -0.03em;
+
+    color: #c7c7c7;
+
+    position: relative;
+    z-index: 2;
+}
 
 
 

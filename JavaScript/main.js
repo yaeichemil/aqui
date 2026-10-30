@@ -1135,6 +1135,80 @@ function startServiceReveal(i, transitionId) {
 
 
 
+// 08 ) transition 스크롤 제어
+(() => {
+
+    const transition = document.querySelector(
+        ".after-service_transition"
+    );
+
+    if (!transition) return;
+
+    // 이미지 윗부분이 잘리는 최대 거리
+    const maxPan = 200;
+
+    let ticking = false;
+
+    const clamp = (value, min, max) => {
+        return Math.min(Math.max(value, min), max);
+    };
+
+    function updateTransitionReveal() {
+
+        const rect = transition.getBoundingClientRect();
+
+        const viewportHeight = window.innerHeight;
+
+        // 이미지가 뷰포트에 들어오는 동안 진행
+        const revealDistance = Math.min(
+            rect.height,
+            viewportHeight
+        );
+
+        const progress = clamp(
+            (viewportHeight - rect.top) / revealDistance,
+            0,
+            1
+        );
+
+        // -60px → 0px
+        const pan = -maxPan * (1 - progress);
+
+        transition.style.setProperty(
+            "--transition-pan",
+            `${pan.toFixed(2)}px`
+        );
+
+        ticking = false;
+    }
+
+    function requestTransitionUpdate() {
+
+        if (ticking) return;
+
+        ticking = true;
+
+        requestAnimationFrame(updateTransitionReveal);
+    }
+
+    window.addEventListener(
+        "scroll",
+        requestTransitionUpdate,
+        { passive: true }
+    );
+
+    window.addEventListener(
+        "resize",
+        requestTransitionUpdate
+    );
+
+    // 새로고침했을 때 현재 스크롤 위치 반영
+    updateTransitionReveal();
+
+})();
+
+
+
 
 
 // 08_after-service ) 앱 프로토타입 재생 제어
