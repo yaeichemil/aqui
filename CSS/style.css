@@ -1175,7 +1175,8 @@ p {
     will-change: transform;
 }
 
-.device_service_media_phone > img {
+.device_service_media_phone > img,
+.device_service_media_phone > video {
     display: block;
     width: 48%;
     max-width: 540px;
@@ -1502,8 +1503,6 @@ p {
     .device_intro_copy_text { margin-top: min(5.5vh, 40px); }
     .device_intro_copy_en { margin-top: 14px; }
 }
-
-
 
 
 
