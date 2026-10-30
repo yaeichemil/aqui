@@ -950,6 +950,117 @@ function startServiceReveal(i, transitionId) {
 
 
 
+
+// 06 ) 프로토타입 영상 재생 최적화
+(() => {
+    const sequence = document.querySelector(".device_service_sequence");
+
+    if (!sequence) return;
+
+    const panels = [
+        ...sequence.querySelectorAll(
+            ".device_service_media_phone[data-service-media]"
+        )
+    ];
+
+    const videos = panels
+        .map(panel => panel.querySelector("video"))
+        .filter(Boolean);
+
+    let ticking = false;
+
+    // 패널이 아래에서 위로 얼마나 드러났는지 확인
+    function getRevealProgress(panel) {
+        const clipPath = getComputedStyle(panel).clipPath;
+
+        // 예: inset(100% 0px 0px 0px)
+        const match = clipPath.match(/inset\(\s*([\d.]+)(%|px)/);
+
+        if (!match) return 0;
+
+        const value = parseFloat(match[1]);
+        const unit = match[2];
+
+        const hiddenPercent = unit === "%"
+            ? value
+            : (value / panel.getBoundingClientRect().height) * 100;
+
+        return 1 - Math.min(1, Math.max(0, hiddenPercent / 100));
+    }
+
+    function updateServiceVideos() {
+        ticking = false;
+
+        const rect = sequence.getBoundingClientRect();
+
+        // 05~06 구간이 화면 밖이면 모든 영상 정지
+        const isSequenceVisible =
+            rect.bottom > 0 &&
+            rect.top < window.innerHeight;
+
+        let activeVideo = null;
+
+        if (isSequenceVisible && !document.hidden) {
+
+            // 뒤에 등장한 패널이 앞의 패널을 덮는 구조
+            panels.forEach(panel => {
+                const progress = getRevealProgress(panel);
+
+                // 절반 이상 드러난 패널을 현재 영상으로 판단
+                if (progress >= 0.5) {
+                    activeVideo = panel.querySelector("video");
+                }
+            });
+        }
+
+        videos.forEach(video => {
+            if (video === activeVideo) {
+
+                // 현재 보이는 영상만 재생
+                if (video.paused) {
+                    video.play().catch(() => {});
+                }
+
+            } else {
+
+                // 나머지는 일시정지
+                if (!video.paused) {
+                    video.pause();
+                }
+            }
+        });
+    }
+
+    // 스크롤 이벤트가 과도하게 실행되지 않도록 제한
+    function requestVideoUpdate() {
+        if (ticking) return;
+
+        ticking = true;
+        requestAnimationFrame(updateServiceVideos);
+    }
+
+    window.addEventListener("scroll", requestVideoUpdate, {
+        passive: true
+    });
+
+    window.addEventListener("resize", requestVideoUpdate);
+
+    document.addEventListener(
+        "visibilitychange",
+        requestVideoUpdate
+    );
+
+    window.addEventListener("pageshow", requestVideoUpdate);
+
+    // 최초 상태 확인
+    requestVideoUpdate();
+})();
+
+
+
+
+
+
 // 07 ) 스크롤에 따른 텍스트 opacity
 (() => {
     const bridge = document.querySelector("#bridge");
