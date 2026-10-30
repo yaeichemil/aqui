@@ -30,11 +30,16 @@ heroPlayBtn.addEventListener("click", () => {
 
 
 
-// 01_hero ) 스크롤 유도 표지 등장
+// 01_hero ) 스크롤 유도 표지 등장 및 숨김
 const heroScrollIndicator = document.querySelector("#hero .scroll_indicator");
+
 
 heroVideo.addEventListener("ended", () => {
     heroScrollIndicator.classList.add("is-visible");
+});
+
+heroVideo.addEventListener("play", () => {
+    heroScrollIndicator.classList.remove("is-visible");
 });
 
 
