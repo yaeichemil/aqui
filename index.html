@@ -42,7 +42,7 @@
             >
                 <img
                 class="hero_thumbnail"
-                src="./assets/01_hero/temp/hero_thumbnail_v2_temp.png"
+                src="./assets/01_hero/hero_thumbnail.png"
                 alt=""
                 >
 
@@ -51,280 +51,249 @@
         </div>
 
 
-        <div class="scroll_indicator" aria-hidden="true">
+        <!-- Hero 영상 종료 후 등장하는 스크롤 이동 버튼 -->
+        <button
+            type="button"
+            class="scroll_indicator"
+            aria-label="scroll indicator"
+            disabled
+        >
             <img
-            src="./assets/00_common/icons/scroll_icon.png"
-            alt=""
+                src="./assets/00_common/icons/scroll_icon.png"
+                alt=""
             >
-        </div>
+        </button>
 
 
-       </section>
-
-
-
-
-
-        <!-- 02_overview -->
-        <section id="overview" class="section overview">
-
-
-            <!-- grid container ) common 12 columns grid -->
-            <div class="overview_inner grid_container">
-
-
-                <div class="overview_intro">
-
-                    <p class="overview_label">
-                        OVERVIEW
-                    </p>
-
-                    <div class="overview_heading">
-
-                        <h2 class="overview_title">
-
-                            <p class="overview_title_first">
-                                반려동물과의 이별은 누군가의 일상 전체를 흔들기도 합니다.
-                            </p>
-
-                            <p class="overview_title_rest">
-                                그리고 그 슬픔은 생각보다 오래, 다양한 모습으로 남습니다.
-                            </p>
-                        </h2>
-
-                        <div class="overview_lead">
-
-                            <p class="overview_lead_first">
-                                Losing a pet can disrupt every aspect of a person's daily life. And the grief that
-                            </p>
-
-                            <p class="overview_lead_rest">
-                                follows often lingers longer than we expect, taking many different forms. Even the smallest<br>
-                                moments of everyday life can become reminders of their absence.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="overview_gallery">
-                    <p class="overview_news_notice">*클릭 시, 펫로스 뉴스 기사로 이동합니다.</p>
-
-                    <!-- 기사 링크 연결 방법: 각 a 태그에 href="뉴스 URL" target="_blank" rel="noopener noreferrer" 추가 -->
-                    <!-- news_01~news_13은 화면 왼쪽→오른쪽, 다음 행 순서로 지정 -->
-                    <!-- 1 row / 뉴스 카드 / 호버 news_01.png -->
-                    <a class="overview_news_item overview_news_item_01" tabindex="0" aria-label="pet-loss news 01"
-                        href="https://www.theguardian.com/lifeandstyle/2026/jan/20/pet-owners-grief-family-member"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_04.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_01.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 1 row / 이미지 01 / 호버 news_02.png -->
-                    <a class="overview_item overview_item_01 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://www.abc.net.au/news/2024-04-07/pet-loss-grief-farwelling-much-loved-family-members-dogs-cats/103656820"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_01.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_02.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 1 row / 이미지 02 / 호버 news_03.png -->
-                    <a class="overview_item overview_item_02 overview_item_has_hover" tabindex="0" aria-label="">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_13_v02.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_03.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 2 row / 이미지 03 / 호버 news_04.png -->
-                    <a class="overview_item overview_item_03 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://news.sky.com/story/pet-loss-and-grief-my-world-crashed-the-rising-number-of-people-seeking-support-over-the-deaths-of-their-animals-12974903"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_07.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_04.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 2 row / 이미지 04 / 호버 news_05.png -->
-                    <a class="overview_item overview_item_04 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://www.theguardian.com/lifeandstyle/2026/jan/20/pet-owners-grief-family-member"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_06.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_05.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 3 row / 이미지 05 / 호버 news_06.png -->
-                    <a class="overview_item overview_item_05 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://www.theguardian.com/business/2026/apr/24/pet-memorial-jewelry-small-business"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_02_v01.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_06.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 3 row / 이미지 06 / 호버 news_07.png -->
-                    <a class="overview_item overview_item_06 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://health.chosun.com/site/data/html_dir/2026/03/05/2026030504125.html"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_12_v02.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_07.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 3 row / 이미지 07 / 호버 news_08.png -->
-                    <a class="overview_item overview_item_07 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://www.bluecross.org.uk/story/michelles-story"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_03.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_08.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 4 row / 이미지 08 / 호버 news_09.png -->
-                    <a class="overview_item overview_item_08 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13237898/"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_10.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_09.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 4 row / 이미지 09 / 호버 news_10.png -->
-                    <a class="overview_item overview_item_09 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://news.sky.com/story/pet-loss-and-grief-my-world-crashed-the-rising-number-of-people-seeking-support-over-the-deaths-of-their-animals-12974903"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_11.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_10.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 5 row / 이미지 10 / 호버 news_11.png -->
-                    <a class="overview_item overview_item_10 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://www.irishexaminer.com/lifestyle/healthandwellbeing/arid-41800733.html"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_12_v03.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_11.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 5 row / 이미지 11 / 호버 news_12.png -->
-                    <a class="overview_item overview_item_11 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13237898/"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_08.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_12.png" alt="">
-                        </span>
-                    </a>
-
-                    <!-- 5 row / 이미지 12 / 호버 news_13.png -->
-                    <a class="overview_item overview_item_12 overview_item_has_hover" tabindex="0" aria-label=""
-                        href="https://www.newsis.com/view/NISX20260507_0003619997"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <img class="overview_img" src="./assets/02_overview/overview_item_05.png" alt="">
-                        <span class="overview_news" aria-hidden="true">
-                            <img src="./assets/02_overview/news/news_13.png" alt="">
-                        </span>
-                    </a>
-
-                </div> <!-- /.overview_gallery -->
-            </div> <!-- /.overview_inner -->
-
-
-        </section>
+    </section>
 
 
 
 
 
-
-        <!-- 03_brand -->
-        <section id="brand" class="section brand">
-
-            <div class="brand_inner grid_container">
+    <!-- 02_overview -->
+    <section id="overview" class="section overview">
 
 
-                <!-- 상단 : 브랜드 소개 -->
-                <div class="brand_intro">
+        <!-- grid container ) common 12 columns grid -->
+        <div class="overview_inner grid_container">
 
-                    <!-- 02 Overview와 동일한 왼쪽 레이블 -->
-                    <p class="brand_typography">
-                        INTRODUCE<br>
-                        SERVICE
-                    </p>
 
-                    <div class="brand_service">
-                        <!-- 한글 두 문장 : 디자인상 각각 한 줄로 시작 -->
-                        <h2 class="brand_service_title">
-                            <span>사별 전 마지막 돌봄부터</span>
-                            <span>사별 이후까지 이어지는 펫로스 케어 서비스</span>
-                        </h2>
+            <div class="overview_intro">
 
-                        <!-- 확정 전 영어 더미 텍스트 : 위치가 다른 두 문단 -->
-                        <p class="brand_service_lead_first">
-                            aquí is a pet loss care service that preserves moments shared with pets.  It helps  
-                        </p>
-                        <p class="brand_service_lead_rest">
-                            pet owners navigate loss and return to everyday life. By understanding their changing needs, 
-                            aquí provides thoughtful care before and after farewell.
+                <p class="overview_label">
+                    OVERVIEW
+                </p>
+
+                <div class="overview_heading">
+
+                    <h2 class="overview_title">
+                        <span class="overview_title_first">반려동물과의 이별은 누군가의 일상 전체를 흔들기도 합니다.</span>
+                        <span class="overview_title_rest">그리고 그 슬픔은 생각보다 오래, 다양한 모습으로 남습니다.</span>
+                    </h2>
+
+                    <div class="overview_lead">
+                        <p class="overview_lead_text">
+                            <span class="overview_lead_line">Losing a pet can upend everyday life. Grief often lingers</span>
+                            <span class="overview_lead_line">longer than expected, taking many forms.</span>
                         </p>
                     </div>
 
                 </div>
-
-                <!-- 아래 : 로고 시퀀스 영역 + 브랜드 설명 -->
-                <div class="brand_identity">
-
-                    <!-- 로고 영상 대체용 임시 이미지 -->
-                    <div class="brand_identity_media" aria-label="브랜드 로고 이미지 영역">
-                        <img src="./assets/03_brand/brand_logo_pic.png" alt="aquí brand sequence">
-                    </div>
-
-                    <div class="brand_identity_info">
-                        <div class="brand_symbol">
-                            <img src="./assets/00_common/icons/aqui_symbol_black.svg" alt="">
-                        </div>
-
-                        <div class="brand_description">
-                            <p>아키는 반려동물과 함께하는 시간을 기록하고, 이별 이후 다시 일상을 이어갈 수 있도록 돕는 펫로스 케어 서비스입니다.</p>
-                            <p>반려동물과의 사별을 하나의 사건으로만 보지 않고, 변화하는 보호자의 상황에 맞춰 필요한 경험을 설계합니다.</p>
-                        </div>
-                    </div>
-
-                </div>
-
 
             </div>
 
-        </section>
+
+            <div class="overview_gallery">
+                <p class="overview_news_notice">*클릭 시, 펫로스 뉴스 기사로 이동합니다.</p>
+
+                <!-- 기사 링크 연결 방법: 각 a 태그에 href="뉴스 URL" target="_blank" rel="noopener noreferrer" 추가 -->
+                <!-- news_01~news_13은 화면 왼쪽→오른쪽, 다음 행 순서로 지정 -->
+                <!-- 1 row / 뉴스 카드 / 호버 news_01.png -->
+                <a class="overview_news_item overview_news_item_01" tabindex="0" aria-label="pet-loss news 01"
+                    href="https://www.theguardian.com/lifeandstyle/2026/jan/20/pet-owners-grief-family-member"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_04.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_01.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 1 row / 이미지 01 / 호버 news_02.png -->
+                <a class="overview_item overview_item_01 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://www.abc.net.au/news/2024-04-07/pet-loss-grief-farwelling-much-loved-family-members-dogs-cats/103656820"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_01.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_02.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 1 row / 이미지 02 / 호버 news_03.png -->
+                <a class="overview_item overview_item_02 overview_item_has_hover" tabindex="0" aria-label="">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_13_v02.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_03.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 2 row / 이미지 03 / 호버 news_04.png -->
+                <a class="overview_item overview_item_03 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://news.sky.com/story/pet-loss-and-grief-my-world-crashed-the-rising-number-of-people-seeking-support-over-the-deaths-of-their-animals-12974903"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_07.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_04.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 2 row / 이미지 04 / 호버 news_05.png -->
+                <a class="overview_item overview_item_04 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://www.theguardian.com/lifeandstyle/2026/jan/20/pet-owners-grief-family-member"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_06.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_05.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 3 row / 이미지 05 / 호버 news_06.png -->
+                <a class="overview_item overview_item_05 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://www.theguardian.com/business/2026/apr/24/pet-memorial-jewelry-small-business"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_02_v01.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_06.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 3 row / 이미지 06 / 호버 news_07.png -->
+                <a class="overview_item overview_item_06 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://health.chosun.com/site/data/html_dir/2026/03/05/2026030504125.html"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_12_v02.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_07.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 3 row / 이미지 07 / 호버 news_08.png -->
+                <a class="overview_item overview_item_07 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://www.bluecross.org.uk/story/michelles-story"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_03.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_08.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 4 row / 이미지 08 / 호버 news_09.png -->
+                <a class="overview_item overview_item_08 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13237898/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_08.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_09.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 4 row / 이미지 09 / 호버 news_10.png -->
+                <a class="overview_item overview_item_09 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://news.sky.com/story/pet-loss-and-grief-my-world-crashed-the-rising-number-of-people-seeking-support-over-the-deaths-of-their-animals-12974903"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_11.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_10.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 5 row / 이미지 10 / 호버 news_11.png -->
+                <a class="overview_item overview_item_10 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://www.irishexaminer.com/lifestyle/healthandwellbeing/arid-41800733.html"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_12_v03.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_11.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 5 row / 이미지 11 / 호버 news_12.png -->
+                <a class="overview_item overview_item_11 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13237898/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_10.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_12.png" alt="">
+                    </span>
+                </a>
+
+                <!-- 5 row / 이미지 12 / 호버 news_13.png -->
+                <a class="overview_item overview_item_12 overview_item_has_hover" tabindex="0" aria-label=""
+                    href="https://www.newsis.com/view/NISX20260507_0003619997"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <img class="overview_img" src="./assets/02_overview/overview_item_05.png" alt="">
+                    <span class="overview_news" aria-hidden="true">
+                        <img src="./assets/02_overview/news/news_13.png" alt="">
+                    </span>
+                </a>
+
+            </div> <!-- /.overview_gallery -->
+        </div> <!-- /.overview_inner -->
+
+
+    </section>
+
+
+
+
+
+
+
+    <!-- 03_brand -->
+    <section id="brand" class="section brand">
+
+
+        <div class="brand_inner grid_container">
+           
+            <div class="brand_intro">
+                <p class="brand_typography">INTRODUCE<br>SERVICE</p>
+                
+                <div class="brand_service">
+                    <h2 class="brand_service_title">사별 전 마지막 돌봄부터<br>사별 이후까지 이어지는 펫로스 케어 서비스</h2>
+                </div>
+            </div>
+
+            <div class="brand_identity">
+                
+                <div class="brand_identity_media">
+                    <img src="./assets/03_brand/brand_logo_pic.png" alt="들판을 달리는 사람과 반려견, aquí 브랜드 로고">
+                </div>
+
+                <div class="brand_identity_info">
+                    <div class="brand_description">
+                        <p>아키는 반려동물과 함께하는 시간을 기록하고, 이별 이후 다시 일상을 이어갈 수 있도록 돕는 펫로스 케어 서비스입니다.</p>
+                        <p>반려동물과의 사별을 하나의 사건으로만 보지 않고, 변화하는 보호자의 상황에 맞춰 필요한 경험을 설계합니다.</p>
+                    </div>
+                    <p class="brand_description_en">aquí is a pet loss care service that preserves moments shared with pets. With thoughtful<br>care through goodbye and beyond, it helps owners return to everyday life.</p>
+                </div>
+            
+            </div>
+        </div>
+
+
+    </section>
 
 
 
@@ -333,14 +302,15 @@
 
 
 
-        <!-- 04_kkamsik -->
+
+         <!-- 04_kkamsik -->
         <section id="kkamsik" class="section kkamsik" data-step="0">
 
             <!-- 04가 아래에서 올라와 풀스크린이 된 다음, 3단계 동안 sticky로 고정 -->
             <div class="kkamsik_sticky">
 
                 <div class="kkamsik_background">
-                    <!-- 정인님 피그마 시안 기준 임시 선택: v01 -> v02 변경 -->
+                    <!-- 최종 시안과 동일한 04 전체 배경 이미지 유지 -->
                     <img src="./assets/04_kkamsik/kkamsik_fullscreen_v02.png" alt="">
                 </div>
 
@@ -349,9 +319,8 @@
                     <p class="kkamsik_chapter">Chapter. 1</p>
                 </div>
 
-                <!-- 우측 회색 패널은 고정, 안쪽 3개 Introduce만 슬라이드 -->
+                <!-- 우측 Frost Glass 패널은 고정, 안쪽 3개 Introduce만 슬라이드 -->
                 <div class="kkamsik_content" aria-label="kkamsik's story">
-                    <span class="kkamsik_content_mark" aria-hidden="true"></span>
 
                     <div class="kkamsik_track">
 
@@ -363,8 +332,13 @@
                             </h2>
 
                             <div class="kkamsik_description_group">
-                                <p class="kkamsik_description">처음 만나던 날, 품에 쏙 안기던 작은 깜식이. 많은 시간을 함께 보내며 오랜 친구가 되었지요. 나이가 들어 예전 같지 않은 날도 있지만, 함께하는 하루가 조금은 더 이어졌으면 해요.</p>
-                                <p class="kkamsik_description_en">The day we first met, little Kkamsik fit perfectly in my arms. Through all the time we've shared, we've become old friends. There are days now when age shows, but I hope we get just a little more time together.</p>
+                                <p class="kkamsik_description">처음 만나던 날, 품에 쏙 안기던 작은 깜식이. 많은 시간을 함께<br class="kkamsik_desktop_break">
+                                    보내며 오랜 친구가 되었지요. 나이가 들어 예전 같지 않은 날도<br class="kkamsik_desktop_break">
+                                    있지만, 함께하는 하루가 조금은 더 이어졌으면 해요.</p>
+                                <p class="kkamsik_description_en">The day we first met, little Kkamsik fit perfectly in my arms.<br class="kkamsik_desktop_break">
+                                    Through all the time we've shared, we've become old<br class="kkamsik_desktop_break">
+                                    friends. There are days now when age shows, but I hope<br class="kkamsik_desktop_break">
+                                    we get just a little more time together.</p>
                             </div>
                         </div>
 
@@ -372,15 +346,15 @@
                         <div class="kkamsik_growth kkamsik_growth_01 kkamsik_panel" data-kkamsik-panel="1">
 
                             <figure class="kkamsik_growth_item">
-                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_01.png" alt="깜식이 성장 사진 01">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_01.png" alt="kkamsik 01">
                             </figure>
 
                             <figure class="kkamsik_growth_item">
-                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_02.png" alt="깜식이 성장 사진 02">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_02.png" alt="kkamsik 02">
                             </figure>
 
                             <figure class="kkamsik_growth_item">
-                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_03.png" alt="깜식이 성장 사진 03">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_03.png" alt="kkamsik 03">
                             </figure>
 
                         </div>
@@ -389,15 +363,15 @@
                         <div class="kkamsik_growth kkamsik_growth_02 kkamsik_panel" data-kkamsik-panel="2">
 
                             <figure class="kkamsik_growth_item">
-                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_04.png" alt="깜식이 성장 사진 04">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_04.png" alt="kkamsik 04">
                             </figure>
 
                             <figure class="kkamsik_growth_item">
-                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic05.png" alt="깜식이 성장 사진 05">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic05.png" alt="kkamsik 05">
                             </figure>
 
                             <figure class="kkamsik_growth_item">
-                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_06.png" alt="깜식이 성장 사진 06">
+                                <img src="./assets/04_kkamsik/growth/kkamsik_introduce_pic_06.png" alt="kkamsik 06">
                             </figure>
 
                         </div>
@@ -417,160 +391,172 @@
 
 
 
-
         <!-- 05_device + 06_before-service (scroll sequence) -->
-       <!-- 스크롤 구간 전체를 감싸는 부모 (07 Bridge 직전에 종료) -->
-<div class="device_service_sequence" id="device_service_sequence">
+        <!-- 스크롤 구간 전체를 감싸는 부모 (07 Bridge 직전에 종료) -->
+        <div class="device_service_sequence" id="device_service_sequence">
 
-    <!-- 이 화면 하나가 05~06 연출 내내 sticky로 유지됩니다. -->
-    <div class="device_service_sticky">
+            <!-- 이 화면 하나가 05~06 연출 내내 sticky로 유지됩니다. -->
+            <div class="device_service_sticky">
 
-        <!-- 05 Device : 위의 공통 타이틀은 06과 같은 DOM 요소를 사용합니다. -->
-        <section id="device" class="section device device_intro" aria-label="NFC 디바이스 소개">
-            <!-- 10~12컬럼 / 4~5로우 : 카피는 문단 단위로 작성합니다. -->
-            <div class="device_intro_copy grid_container">
-                <div class="device_intro_copy_text">
-                    <!-- 기획팀 최종 문구 확정 전 임시 텍스트 -->
-                    <p class="device_intro_copy_ko">깜식이의 하루에 언제나 함께하는<br>
-                                                    아키의 NFC 디바이스입니다!</p>
-                    <p class="device_intro_copy_en">This is aquí's NFC device,<br>
-                                                    part of every moment of 
-                                                    Kkamsik's day!</p>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <!-- 06 Before-service : 왼쪽 고정 마커/사진 + 바뀌는 설명 -->
-        <section id="before-service" class="section before-service before-service_scene" aria-label="before-service">
-            <div class="before-service_inner">
-
-                <!-- 네모 + 첫 제목은 05 진입부터 등장/유지. 사진은 06부터 등장. -->
-                <span class="before-service_mark" aria-hidden="true"></span>
-
-                <div class="before-service_title_group">
-                    <h2 class="before-service_title" data-service-title="0">NFC Keyring</h2>
-                    <h2 class="before-service_title" data-service-title="1">HOME</h2>
-                    <h2 class="before-service_title" data-service-title="2">CARE LOG</h2>
-                    <h2 class="before-service_title" data-service-title="3">ARCHIVE</h2>
-                </div>
-
-                <div class="before-service_description_group">
-                    <!-- 001 : NFC Keyring -->
-                    <div class="before-service_description" data-service-description="0">
-                        <p class="before-service_description_ko">반려동물의 상태와 일상을 꾸준히 기록할 수 있도록 아키의 NFC 디바이스를 사용합니다. 휴대폰에 가볍게 태그하면 연결된 반려동물의 케어로그로 바로 이동해, 필요한 순간마다 번거로운 과정 없이 기록을 시작할 수 있습니다.</p>
-                        <p class="before-service_description_en">Keep a steady record of your pet's health and everyday moments with aqui's NFC tag. Just tap it to your phone 
-                                                                to jump straight to your pet's care log, so you can start logging whenever you need, no extra steps.</p>
-                    </div>
-
-                    <!-- 002 : HOME -->
-                    <div class="before-service_description" data-service-description="1">
-                        <p class="before-service_description_ko">사용자가 설정한 반려동물 사진이 홈 화면을 가득 채우고, 오늘의 상태를 묻는 문구와 함께 기록을 바로 시작할 수 있습니다. 처음 마주하는 화면에서 반려동물의 하루를 자연스레 살피도록 돕습니다.</p>
-                        <p class="before-service_description_en">Check your pet's condition and records at a glance. Key information is neatly organized for easy viewing, 
-                                                                so you never miss a change in their day.</p>
-                    </div>
-
-                    <!-- 003 : CARE LOG -->
-                    <div class="before-service_description" data-service-description="2">
-                        <p class="before-service_description_ko">식사, 투약, 활동과 상태 변화를 날짜별로 기록합니다.
-                                                                쌓인 기록을 바탕으로 반려동물의 변화를 확인하고,
-                                                                진료 전 필요한 내용을 빠르게 파악할 수 있습니다.</p>
-                        <p class="before-service_description_en">Track meals, meds, activity, and health changes day by day. Over time, your records reveal 
-                                                                changes and keep you ready for vet visits.</p>
-                    </div>
-
-                    <!-- 004 : ARCHIVE -->
-                    <div class="before-service_description" data-service-description="3">
-                        <p class="before-service_description_ko">반려동물과 함께한 순간을 사진과 영상, 음성으로 기록하고, 
-                                                                함께하고 싶은 일은 버킷리스트로 남깁니다. 일상 속 추억과 함께 하고 싶은 일을 하나씩 쌓아두고, 원하는 때 
-                                                                언제든 꺼내볼 수 있습니다.</p>
-                        <p class="before-service_description_en">Capture moments in photos, videos, and voice notes, 
-                                                                and build a bucket list of things to do together. 
-                                                                Revisit them anytime.</p>
+                <!-- 05 Device : 위의 공통 타이틀은 06과 같은 DOM 요소를 사용합니다. -->
+                <section id="device" class="section device device_intro" aria-label="NFC device">
+                <div class="device_intro_copy grid_container">
+                    <div class="device_intro_copy_text">
+                        <p class="device_intro_copy_ko">깜식이의 하루에 언제나 함께하는<br>
+                                                        아키의 NFC 디바이스입니다.</p>
+                        <p class="device_intro_copy_en">This is aqui's NFC device,<br>
+                                                        part of everyday.</p>
                     </div>
                 </div>
+            </section>
 
-                <!-- 06 ) 타이틀이 전환될 때 함께 크로스페이드되는 깜식이 사진 -->
-                <div class="before-service_dog" aria-hidden="true">
-                    <img class="before-service_dog_image is-active" data-dog-photo="0"
-                         src="./assets/06_before-service/1_NFC_keyring/before-service_NFC_keyring_kkamsik_v03.jpg" alt="">
-                    <img class="before-service_dog_image" data-dog-photo="1"
-                         src="./assets/06_before-service/3_care_log/before-service_carelog_kkamsik_v01.jpg" alt="">
-                    <img class="before-service_dog_image" data-dog-photo="2"
-                         src="./assets/06_before-service/4_archive/before-service_archive_kkamsik_v01.jpg" alt="">
-                    <img class="before-service_dog_image" data-dog-photo="3"
-                         src="./assets/06_before-service/4_archive/before-service_archive_kkamsik_v03.jpg" alt="">
+
+
+
+
+                <!-- 06 Before-service : 왼쪽 고정 마커/사진 + 바뀌는 설명 -->
+                <section id="before-service" class="section before-service before-service_scene" aria-label="before-service">
+                    <div class="before-service_inner">
+
+                        <!-- 네모 + 첫 제목은 05 진입부터 등장/유지. 사진은 06부터 등장. -->
+                        <span class="before-service_mark" aria-hidden="true"></span>
+
+                        <div class="before-service_title_group">
+                            <h2 class="before-service_title" data-service-title="0">NFC Keyring</h2>
+                            <h2 class="before-service_title" data-service-title="1">HOME</h2>
+                            <h2 class="before-service_title" data-service-title="2">CARE LOG</h2>
+                            <h2 class="before-service_title" data-service-title="3">ARCHIVE</h2>
+                        </div>
+
+                        <div class="before-service_description_group">
+                            <!-- 001 : NFC Keyring -->
+                            <div class="before-service_description" data-service-description="0">
+                                <p class="before-service_description_ko">반려동물의 상태와 일상을 꾸준히 기록할 수 있도록 아키의 <br>
+                                                                        NFC 디바이스를 사용합니다. 휴대폰에 가볍게 태그하면 <br>
+                                                                        연결된 반려동물의 케어로그로 바로 이동해, 필요한 순간<br>
+                                                                        마다 번거로운 과정 없이 기록을 시작할 수 있습니다.</p>
+
+                                <p class="before-service_description_en">Keep a steady record of your pet's health and everyday <br>
+                                                                        moments with aqui's NFC tag. Just tap it to your phone <br> 
+                                                                        to jump straight to your pet's care log, so you can start <br>
+                                                                        logging whenever you need, no extra steps.</p>
+                            </div>
+
+                            <!-- 002 : HOME -->
+                            <div class="before-service_description" data-service-description="1">
+                                <p class="before-service_description_ko">사용자가 설정한 반려동물 사진이 홈 화면을 가득 채우고, <br>
+                                                                        오늘의 상태를 묻는 문구와 함께 기록을 바로 시작할 수 <br>
+                                                                        있습니다. 처음 마주하는 화면에서 반려동물의 <br>
+                                                                        하루를 자연스레 살피도록 돕습니다.</p>
+
+                                <p class="before-service_description_en">Check your pet's condition and records at a glance. <br>
+                                                                        Key information is neatly organized for easy viewing, <br>
+                                                                        so you never miss a change in their day.</p>
+                            </div>
+
+                            <!-- 003 : CARE LOG -->
+                            <div class="before-service_description" data-service-description="2">
+                                <p class="before-service_description_ko">식사, 투약, 활동과 상태 변화를 날짜별로 기록합니다. <br>
+                                                                        쌓인 기록을 바탕으로 반려동물의 변화를 확인하고, <br>
+                                                                        진료 전 필요한 내용을 빠르게 파악할 수 있습니다.</p>
+
+                                <p class="before-service_description_en">Track meals, meds, activity, and health changes <br>
+                                                                        day by day. Over time, your records reveal <br>
+                                                                        changes and keep you ready for vet visits.</p>
+                            </div>
+
+                            <!-- 004 : ARCHIVE -->
+                            <div class="before-service_description" data-service-description="3">
+                                <p class="before-service_description_ko">반려동물과 함께한 순간을 사진과 영상, 음성으로 기록하고, <br>
+                                                                        함께하고 싶은 일은 버킷리스트로 남깁니다. 일상 속 <br>
+                                                                        추억과 함께 하고 싶은 일을 하나씩 쌓아두고, <br>
+                                                                        원하는 때 언제든 꺼내볼 수 있습니다.</p>
+
+                                <p class="before-service_description_en">Capture moments in photos, videos, and voice notes, <br>
+                                                                        and build a bucket list of things to do together. <br>
+                                                                        Revisit them anytime.</p>
+                            </div>
+                        </div>
+
+                        <!-- 06 ) 타이틀이 전환될 때 함께 크로스페이드되는 깜식이 사진 -->
+                        <div class="before-service_dog" aria-hidden="true">
+                            <img class="before-service_dog_image is-active" data-dog-photo="0"
+                                src="./assets/06_before-service/1_NFC_keyring/before-service_NFC_keyring_kkamsik_v03.jpg" alt="">
+                            <img class="before-service_dog_image" data-dog-photo="1"
+                                src="./assets/06_before-service/3_care_log/before-service_carelog_kkamsik_v01.jpg" alt="">
+                            <img class="before-service_dog_image" data-dog-photo="2"
+                                src="./assets/06_before-service/4_archive/before-service_archive_kkamsik_v01.jpg" alt="">
+                            <img class="before-service_dog_image" data-dog-photo="3"
+                                src="./assets/06_before-service/4_archive/before-service_archive_kkamsik_v03.jpg" alt="">
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+                <!-- 05부터 06까지 유지되는 SAME NFC 미디어 (기본은 투명 PNG 임시 어셋) -->
+                <div class="device_service_media" aria-hidden="true">
+                    <!-- 최종 풀스크린 이미지가 오면 data-image-mode="full"로 변경하고 src를 교체하세요. -->
+                    <div class="device_service_media_item device_service_media_nfc" data-service-media="0" data-image-mode="placeholder">
+                        <img class="device_service_nfc_image"
+                            src="./assets/05_device/device_NFC.png"
+                            alt="">
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+
+                    <!-- 다음 이미지들은 아래에서 위로 스와이프하며 앞 이미지를 덮습니다. -->
+                    <!-- 각각의 src는 프로젝트에 있는 실제 파일명으로 변경하세요. -->
+                    
+                    <!-- 002 : HOME 앱 프로토타입 영상 -->
+                    <div class="device_service_media_item device_service_media_phone" data-service-media="1">
+                        <video
+                            class="device_service_phone_video"
+                            src="./assets/06_before-service/2_main/before-service_main_prototype.webm"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        ></video>
+
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+
+                    <!-- 003 : CARE LOG 앱 프로토타입 영상 -->
+                    <div class="device_service_media_item device_service_media_phone" data-service-media="2">
+                        <video
+                            class="device_service_phone_video"
+                            src="./assets/06_before-service/3_care_log/before-service_carelog_prototype.webm"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        ></video>
+
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+
+                    <div class="device_service_media_item device_service_media_phone" data-service-media="3">
+                        <video
+                            class="device_service_phone_video"
+                            src="./assets/06_before-service/4_archive/before-service_archive_prototype.webm"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        ></video>
+                        <span class="device_service_media_overlay"></span>
+                    </div>
+
                 </div>
+
             </div>
-        </section>
-
-
-
-
-
-        <!-- 05부터 06까지 유지되는 SAME NFC 미디어 (기본은 투명 PNG 임시 어셋) -->
-        <div class="device_service_media" aria-hidden="true">
-            <!-- 최종 풀스크린 이미지가 오면 data-image-mode="full"로 변경하고 src를 교체하세요. -->
-            <div class="device_service_media_item device_service_media_nfc" data-service-media="0" data-image-mode="placeholder">
-                <img class="device_service_nfc_image"
-                     src="./assets/05_device/device_NFC.png"
-                     alt="">
-                <span class="device_service_media_overlay"></span>
-            </div>
-
-            <!-- 다음 이미지들은 아래에서 위로 스와이프하며 앞 이미지를 덮습니다. -->
-            <!-- 각각의 src는 프로젝트에 있는 실제 파일명으로 변경하세요. -->
-            
-            <!-- 002 : HOME 앱 프로토타입 영상 -->
-            <div class="device_service_media_item device_service_media_phone" data-service-media="1">
-                <video
-                    class="device_service_phone_video"
-                    src="./assets/06_before-service/2_main/before-service_main_prototype.webm"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata"
-                ></video>
-
-                <span class="device_service_media_overlay"></span>
-            </div>
-
-            <!-- 003 : CARE LOG 앱 프로토타입 영상 -->
-            <div class="device_service_media_item device_service_media_phone" data-service-media="2">
-                <video
-                    class="device_service_phone_video"
-                    src="./assets/06_before-service/3_care_log/before-service_carelog_prototype.webm"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata"
-                ></video>
-
-                <span class="device_service_media_overlay"></span>
-            </div>
-
-            <div class="device_service_media_item device_service_media_phone" data-service-media="3">
-                <video
-                    class="device_service_phone_video"
-                    src="./assets/06_before-service/4_archive/before-service_archive_prototype.webm"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata"
-                ></video>
-                <span class="device_service_media_overlay"></span>
-            </div>
-
         </div>
 
-    </div>
-</div>
 
 
 
@@ -595,11 +581,15 @@
                         muted
                         playsinline
                         preload="metadata"
-                        aria-label="사별 전과 사별 후를 연결하는 영상"
+                        aria-label="aqui bridge video"
                     ></video>
                 </div>
 
                 <!-- 스크롤 아이콘은 디자인 확정 후 추가 -->
+                 <button type="button" class="bridge_scroll_indicator" aria-label="다음 섹션으로 이동" disabled>
+                    <img src="./assets/00_common/icons/scroll_icon.png" alt="">
+                </button>
+
 
             </div>
 
@@ -623,7 +613,7 @@
                     <!-- 임시 흑백 배경 이미지 (최종 어셋 수령 시 교체) -->
                     <div class="after-service_intro_media">
                         <img
-                            src="./assets/08_after-service/1_intro/after-service_kkamsik_fullscreen_v02.jpg"
+                            src="./assets/08_after-service/1_intro/after-service_kkamsik_fullscreen_v02.png"
                             alt=""
                         >
                     </div>
@@ -636,7 +626,6 @@
 
                         <!-- 오른쪽 매트 글래스 패널 -->
                         <div class="after-service_intro_copy">
-                            <span class="after-service_intro_copy_mark" aria-hidden="true"></span>
 
                             <h2 class="after-service_intro_title">
                                 이별 뒤의 일상도<br>
@@ -644,18 +633,15 @@
                             </h2>
 
                             <div class="after-service_intro_description">
-                                <p class="after-service_intro_description_ko">
-                                    늘 함께하던 존재가 떠나도 우리의 하루는 멈추지 않고 흘러
-                                    갑니다. 아키는 이별 직후부터 기억과 회복의 시간까지 함께
-                                    하며, 보호자가 남겨진 일상을 천천히 마주할 수 있도록 돕습니다.
-                                </p>
 
-                                <!-- 영문 카피 확정 시 아래 문장만 교체 -->
-                                <p class="after-service_intro_description_en">
-                                    Even when a beloved companion is gone, our days go
-                                    on. From goodbye through remembering and healing,
-                                    aquí stays by your side as you face the days that remain.
-                                </p>
+                                <p class="after-service_intro_description_ko">늘 함께하던 존재가 떠나도 우리의 하루는 멈추지 않고 흘러<br>
+                                                                            갑니다. 아키는 이별 직후부터 기억과 회복의 시간까지 함께<br>
+                                                                            하며, 보호자가 남겨진 일상을 천천히 마주할 수 있도록 돕습니다.</p>
+
+                                <p class="after-service_intro_description_en">Even when a beloved companion is gone, our days go<br>
+                                                                             on. From goodbye through remembering and healing,<br> 
+                                                                             aquí stays by your side as you face the days that remain.</p>
+
                             </div>
                         </div>
                     </div>
@@ -675,22 +661,17 @@
                             <span class="after-service_home_mark" aria-hidden="true"></span>
 
                             <h2 class="after-service_home_title">
-                                AFTER LOSS HOME
+                                AFTER LOSS : MAIN
                             </h2>
 
                             <div class="after-service_home_description">
-                                <!-- 현재 제공된 카피. 최종 카피가 오면 문장만 교체 -->
-                                <p class="after-service_home_ko">
-                                    사별 직후 3일 동안 필요한 정보와 행동을 시점에 맞게 안내합니다.
-                                    반려동물을 위한 마지막 준비부터 기억을 돌아보고 잠시 쉬어가는
-                                    순간까지, 당장 필요한 것부터 하나씩 살펴볼 수 있습니다.
-                                </p>
+                                
+                                <p class="after-service_home_ko">사별 직후 3일 동안 필요한 정보와 행동을 시점에 맞게 안내합니다.<br>
+                                                                반려동물을 위한 마지막 준비부터 기억을 돌아보고 잠시 쉬어가는<br>
+                                                                순간까지, 당장 필요한 것부터 하나씩 살펴볼 수 있습니다.</p>
 
-                                <p class="after-service_home_en">
-                                    You can take your time reflecting on the moments spent
-                                    together, your bucket list, caregiving records, and
-                                    answers to questions.
-                                </p>
+                                <p class="after-service_home_en">You can take your time reflecting on the moments spent together,<br>
+                                                                your bucket list, caregiving records, and answers to questions.</p>
                             </div>
 
                         </div>
@@ -740,20 +721,17 @@
 
                             <div class="after-service_epilogue_description">
 
-                                <p>
-                                    사별 직후 확인해야 할 사항부터 장례 준비와 장묘 업체 탐색까지,
-                                    필요한 절차와 정보를 차례대로 살펴봅니다. 비슷한 경험을 한
-                                    보호자들의 이야기를 통해 공감과 위로를 얻고, 슬픔이 오래
-                                    지속되거나 일상에 영향을 줄 때에는 펫로스 전문 기관의
-                                    상담 정보도 확인할 수 있습니다.
-                                </p>
+                                <p>사별 직후 확인해야 할 사항부터 장례 준비와 장묘 업체 탐색까지,<br>
+                                필요한 절차와 정보를 차례대로 살펴봅니다. 비슷한 경험을 한<br>
+                                보호자들의 이야기를 통해 공감과 위로를 얻고, 슬픔이 오래<br>
+                                지속되거나 일상에 영향을 줄 때에는 펫로스 전문 기관의<br>
+                                상담 정보도 확인할 수 있습니다.</p>
 
-                                <p>
-                                    From the first moments after a loss to funeral and memorial
-                                    services, get the guidance you need, one step at a time.
-                                    Take comfort in others' stories, and reach out to pet 
-                                    loss counselors when grief lingers.
-                                </p>
+                                <p>From the first moments after a loss to funeral and memorial services,<br>
+                                get the guidance you need, one step at a time. Take comfort<br>
+                                in others' stories, and reach out to pet loss<br>
+                                counselors when grief lingers.</p>
+
 
                             </div>
 
@@ -776,7 +754,7 @@
                                 ></video>
 
                                 <figcaption>
-                                    에필로그 확인사항
+                                    에필로그 - 먼저 확인할 사항
                                 </figcaption>
 
                             </figure>
@@ -795,7 +773,7 @@
                                 ></video>
 
                                 <figcaption>
-                                    에필로그 장례준비
+                                    에필로그 - 장례 준비
                                 </figcaption>
 
                             </figure>
@@ -806,7 +784,7 @@
 
                                 <!-- <img src="./assets/08_after-service/temp/after-service_epilogue_media_temp.png" alt="Epilogue prototype 03"> -->
                                 <video
-                                    src="./assets/08_after-service/3_epilogue/prototype_03_community/after-service_epilogue_community.mp4"
+                                    src="./assets/08_after-service/3_epilogue/prototype_03_community/after-service_epilogue_community.webm"
                                     muted
                                     loop
                                     playsinline
@@ -815,7 +793,7 @@
                                 ></video>
 
                                 <figcaption>
-                                    에필로그 보호자 이야기
+                                    에필로그 - 보호자 이야기
                                 </figcaption>
 
                             </figure>
@@ -835,7 +813,7 @@
                                 ></video>
 
                                 <figcaption>
-                                    에필로그 펫로스상담
+                                    에필로그 - 펫로스 상담
                                 </figcaption>
 
                             </figure>
@@ -848,24 +826,35 @@
 
 
 
-                <!-- transition ) 에필로그와 기록 돌아보기 사이 연출 이미지 -->
+                <!-- transition -->
                 <div class="after-service_transition">
 
-                    <img
-                        class="after-service_transition_media"
-                        src="./assets/08_after-service/4_transition/after-service_transition_media.png"
-                        alt="transition media"
-                    >
+                    <div class="after-service_transition_inner grid_container">
 
-                    <p class="after-service_transition_copy">
-                        이별 준비를 돕던 메인 화면은,<br>
-                        3일이 지나면 추억을 안고 다시 일상으로 나아가는 공간으로 달라집니다.
-                    </p>
+                        <div class="after-service_transition_info">
+
+                            <span class="after-service_transition_mark" aria-hidden="true"></span>
+
+                            <p class="after-service_transition_copy">
+                                이별 준비를 돕던 메인 화면은, 3일이 지나면 추억을 안고 다시 일상으로 나아가는 공간으로 달라집니다.
+                            </p>
+
+                        </div>
+
+                        <div class="after-service_transition_media_frame">
+                            <img
+                                class="after-service_transition_media"
+                                src="./assets/08_after-service/4_transition/after-service_transition_media.png"
+                                alt=""
+                            >
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <!-- 기록 돌아보기 -->
+                <!-- archive -->
                 <div class="after-service_archive">
 
                     <!-- 기록 돌아보기 첫 번째 영역 : Archive -->
@@ -882,13 +871,13 @@
 
                                 <div class="after-service_archive_description">
                                     <p class="after-service_archive_ko">
-                                        함께한 일상의 추억부터 버킷리스트, 돌봄 기록과 질문 답변까지
+                                        함께한 일상의 추억부터 버킷리스트, 돌봄 기록과 질문 답변까지<br>
                                         그동안 남겨온 기록을 천천히 돌아볼 수 있습니다.
                                     </p>
 
                                     <p class="after-service_archive_en">
-                                        From memories and bucket lists to care logs and your
-                                        answers to daily prompts, revisit it all at your own pace.
+                                        From memories and bucket lists to care logs and your answers <br>
+                                        to daily prompts, revisit it all at your own pace.
                                     </p>
                                 </div>
 
@@ -899,10 +888,13 @@
 
                                 <!-- 왼쪽 : 임시 목업. 최종 앱 영상/어셋이 오면 교체 -->
                                 <div class="after-service_archive_video">
-                                    <img
-                                        src="./assets/08_after-service/5_archive/temp/epilogue_archive_mockup_temp.png"
-                                        alt="temp"
-                                    >
+                                    <video
+                                    src="./assets/08_after-service/5_archive/after-service_archive_prototype.webm"
+                                    muted
+                                    loop
+                                    playsinline
+                                    aria-label=""
+                                ></video>
                                 </div>
 
                                 <div class="after-service_archive_side">
@@ -937,11 +929,14 @@
                             <div class="after-service_archive_qa_copy">
 
                                 <p class="after-service_description_ko">
-                                    생전에 남긴 질문과 답변, 꾸준히 이어온 돌봄 기록에는 반려동물의 평소 모습과 함께한 시간이 고스란히 남아 있습니다. 그 기록을 통해 최선을 다해 반려동물의 곁을 지켜온 시간을 확인할 수 있습니다.
+                                    생전에 남긴 질문과 답변, 꾸준히 이어온 돌봄 기록에는 반려동물의 평소 모습과 <br>
+                                    함께한 시간이 고스란히 남아 있습니다. 그 기록을 통해 최선을 다해 <br>
+                                    반려동물의 곁을 지켜온 시간을 확인할 수 있습니다.
                                 </p>
 
                                 <p class="after-service_description_en">
-                                    You can take your time reflecting on the moments spent together, your bucket list, caregiving records, and answers to questions.
+                                    You can take your time reflecting on the moments spent together, your bucket list, <br>
+                                    caregiving records, and answers to questions.
                                 </p>
 
                             </div>
@@ -951,25 +946,25 @@
 
                                 <img
                                     class="after-service_archive_background"
-                                    src="./assets/08_after-service/temp/after-service_archive_care_background_temp.png"
+                                    src="./assets/08_after-service/5_archive/after-service_archive_kkamsik_background.png"
                                     alt=""
                                 >
 
                                 <img
                                     class="after-service_archive_card after-service_archive_card_01"
-                                    src="./assets/08_after-service/temp/after-service_archive_care_01_temp.png"
+                                    src="./assets/08_after-service/5_archive/after-service_archive_care_01.png"
                                     alt=""
                                 >
 
                                 <img
                                     class="after-service_archive_card after-service_archive_card_02"
-                                    src="./assets/08_after-service/temp/after-service_archive_care_02_temp.png"
+                                    src="./assets/08_after-service/5_archive/after-service_archive_care_02.png"
                                     alt=""
                                 >
 
                                 <img
                                     class="after-service_archive_card after-service_archive_card_03"
-                                    src="./assets/08_after-service/temp/after-service_archive_care_03_temp.png"
+                                    src="./assets/08_after-service/5_archive/after-service_archive_care_03.png"
                                     alt=""
                                 >
 
@@ -994,10 +989,11 @@
 
 
 
-        <!-- 09_memory -->
+       <!-- 09_memory -->
         <section id="memory" class="section memory">
 
             <div class="memory_inner grid_container">
+
                 <span class="memory_mark" aria-hidden="true"></span>
 
                 <p class="memory_copy">
@@ -1005,7 +1001,6 @@
                     보호자용 키링을 태그하면 그동안 남긴 기록과 기억을 다시 만날 수 있습니다.
                 </p>
 
-                <!-- 영상 영역: 현재는 임시 플레이스홀더. 실제 영상 수령 후 안쪽 요소만 교체 -->
                 <div class="memory_media">
                     <img
                         src="./assets/09_memory/memory_pic.png"
@@ -1014,9 +1009,11 @@
                 </div>
 
                 <div class="memory_description">
-                    <p class="memory_description_ko">* 보관한 키링을 태그하면 남겨둔 기록을 다시 확인할 수 있습니다.</p>
-                    <!-- <p class="memory_description_en">A short explanation of how to use the NFC keyring will appear here.</p> -->
+                    <p class="memory_description_ko">
+                        *함께 사용하던 NFC 키링을 일상 속 익숙한 공간에 보관하는 모습입니다.
+                    </p>
                 </div>
+
             </div>
 
         </section>
@@ -1026,158 +1023,290 @@
 
 
 
-        <!-- 10_application -->
-        <section id="application" class="section application">
+    <!-- 10_application -->
+    <section id="application" class="section application">
 
-            <div class="application_inner grid_container">
+        <div class="application_inner grid_container">
 
-                <span class="application_mark" aria-hidden="true"></span>
+            <span class="application_mark" aria-hidden="true"></span>
 
-                <!-- 오른쪽 상단 카피 (교체 예정) -->
-                <p class="application_copy">
-                    함께 사용하던 NFC 디바이스는<br>
-                    이별 이후에도 추억을 간직하는<br>
-                    오브젝트로 남습니다.
-                </p>
+            <!-- NFC 디바이스 -->
+            <div class="application_device">
+                <video
+                    class="application_device_video"
+                    src="./assets/10_application/keyring_motion.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                ></video>
+            </div>
 
-                <!-- 왼쪽 NFC 디바이스 : 360도 회전 영상 -->
-                <div class="application_device">
-                    <video
-                        class="application_device_video"
-                        src="./assets/10_application/temp/keyring_motion_temp.mp4"
-                        autoplay
-                        muted
-                        loop
-                        playsinline
-                        preload="auto"
-                        aria-label="아키 NFC 키링 360도 회전 영상"
-                    ></video>
-                </div>
+            <!-- 신청 폼 -->
+            <div class="application_panel">
 
-                <!-- NFC 신청 폼-->
-                <div class="application_form" role="group" aria-label="NFC 신청 시연용 입력 화면. 입력한 정보는 저장되거나 전송되지 않습니다.">
+                <div class="application_form">
 
                     <div class="application_form_inner">
 
+                        <p class="application_copy">
+                            함께한 기록을 언제든 다시 돌아볼 수 있도록, 아키의 NFC 키링을<br>
+                            신청해 보세요. 휴대폰을 키링에 가까이 대면 소중한<br>
+                            사진과 기록을 다시 확인할 수 있습니다.
+                        </p>
+
+
                         <!-- 보호자 정보 -->
                         <div class="application_form_group">
-                            <p class="application_form_group_title">보호자<br>정보</p>
+
+                            <p class="application_form_group_title">*보호자 정보</p>
 
                             <div class="application_form_fields">
-                                <input class="application_field" type="text" placeholder="이름" aria-label="보호자 이름" autocomplete="off">
-                                <input class="application_field" type="email" placeholder="이메일" aria-label="이메일" autocomplete="off">
+
+                                <input
+                                    class="application_field"
+                                    type="text"
+                                    placeholder="이름"
+                                    autocomplete="off"
+                                >
+
+                                <input
+                                    class="application_field"
+                                    type="tel"
+                                    placeholder="연락처"
+                                    autocomplete="off"
+                                >
+
+                                <div class="application_email_row">
+
+                                    <input
+                                        class="application_field"
+                                        type="text"
+                                        placeholder="이메일"
+                                        autocomplete="off"
+                                    >
+
+                                    <span class="application_email_symbol">@</span>
+
+                                    <div class="application_choice">
+                                        <span>직접 입력</span>
+
+                                        <img
+                                            class="application_arrow_icon"
+                                            src="./assets/10_application/application_arrow_icon.png"
+                                            alt=""
+                                        >
+                                    </div>
+
+                                </div>
+
                             </div>
+
                         </div>
+
 
                         <!-- 배송 정보 -->
                         <div class="application_form_group">
-                            <p class="application_form_group_title">배송<br>정보</p>
+
+                            <p class="application_form_group_title">*배송 정보</p>
 
                             <div class="application_form_fields">
-                                <input class="application_field" type="text" placeholder="받는 분" aria-label="받는 분" autocomplete="off">
-                                <input class="application_field" type="tel" placeholder="연락처" aria-label="연락처" autocomplete="off">
-                                <input class="application_field" type="text" placeholder="기본 주소" aria-label="기본 주소" autocomplete="off">
+
+                                <input
+                                    class="application_field"
+                                    type="text"
+                                    placeholder="받는 분"
+                                    autocomplete="off"
+                                >
+
+                                <input
+                                    class="application_field"
+                                    type="tel"
+                                    placeholder="연락처"
+                                    autocomplete="off"
+                                >
+
+                                <div class="application_address_row">
+
+                                    <input
+                                        class="application_field"
+                                        type="text"
+                                        placeholder="주소"
+                                        autocomplete="off"
+                                    >
+
+                                    <img
+                                        class="application_search_icon"
+                                        src="./assets/10_application/application_magnifier_icon.png"
+                                        alt=""
+                                    >
+
+                                </div>
+
+                                <input
+                                    class="application_field application_span_2"
+                                    type="text"
+                                    placeholder="상세 주소"
+                                    autocomplete="off"
+                                >
+
                             </div>
+
                         </div>
 
-                        <!-- 반려견 정보 -->
+
+                        <!-- 반려동물 정보 -->
                         <div class="application_form_group">
-                            <p class="application_form_group_title">반려견<br>정보</p>
+
+                            <p class="application_form_group_title">*반려동물 정보</p>
 
                             <div class="application_form_fields">
-                                <input class="application_field" type="text" placeholder="반려견 이름" aria-label="반려견 이름" autocomplete="off">
-                                <input class="application_field" type="text" placeholder="인식번호" aria-label="인식번호" autocomplete="off">
+
+                                <input
+                                    class="application_field"
+                                    type="text"
+                                    placeholder="반려동물 이름"
+                                    autocomplete="off"
+                                >
+
+                                <input
+                                    class="application_field"
+                                    type="text"
+                                    placeholder="동물등록번호"
+                                    autocomplete="off"
+                                >
+
+                                <div class="application_choice">
+                                    <span>반려동물 종류</span>
+
+                                    <img
+                                        class="application_arrow_icon"
+                                        src="./assets/10_application/application_arrow_icon.png"
+                                        alt=""
+                                    >
+                                </div>
+
+                                <div class="application_choice">
+                                    <span>성별</span>
+
+                                    <img
+                                        class="application_arrow_icon"
+                                        src="./assets/10_application/application_arrow_icon.png"
+                                        alt=""
+                                    >
+                                </div>
+
                             </div>
+
                         </div>
 
-                        <!-- 시연용 버튼 : '실제 신청 기능 없음' 안내 카피 별도 추가 -->
-                        <button type="button" class="application_submit" aria-label="NFC 신청, 현재 시연용 버튼">
-                            NFC 신청
+
+                        <button type="button" class="application_submit">
+                            신청하기
                         </button>
 
                     </div>
 
                 </div>
 
-                 <!-- 신청 안내 문구 -->
                 <p class="application_notice">
-                    * 본 신청 화면은 서비스 시연용으로, 실제로 접수되지 않습니다.
+                    *본 신청 화면은 서비스 시연용으로, 실제로 접수되지 않습니다.
                 </p>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
 
 
 
 
-       <!-- 11_footer -->
+    <!-- 11_footer -->
     <footer id="footer" class="footer">
 
         <div class="footer_inner grid_container">
 
-            <!-- 왼쪽 : 로고 + 인스타그램 -->
+            <!-- 왼쪽 정보 -->
             <div class="footer_left">
 
-                <!-- 최종 심볼/워드마크 어셋 전달 전 임시 표현 -->
-                <div class="footer_logo" aria-label="aquí">
-                    <span class="footer_logo_symbol" aria-hidden="true"></span>
-                    <span class="footer_logo_wordmark" aria-hidden="true">aquí</span>
+                <div class="footer_logo">
+                    <img
+                        src="./assets/11_footer/footer_symbol_typo.svg"
+                        alt="aquí"
+                    >
+                </div>
+
+                <div class="footer_disclosure">
+                    <p>
+                        일부 이미지와 영상은 AI 생성 도구를 활용해 제작되었습니다.<br>
+                        깜식이의 이야기는 서비스 소개를 위해 구성된 가상 시나리오입니다.
+                    </p>
                 </div>
 
                 <span class="footer_line" aria-hidden="true"></span>
 
-                <!-- 실제 인스타그램 주소 수령 시 href 추가하고 aria-disabled / tabindex 제거 -->
-                <a class="footer_instagram"
+                <a
+                    class="footer_instagram"
                     href="https://www.instagram.com/aqui_ing/?hl=ko"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                >
                     <span class="footer_instagram_text">Instagram</span>
-                    <!-- 최종 화살표 SVG 전달 전 임시 텍스트 -->
-                    <span class="footer_instagram_arrow" aria-hidden="true">↗</span>
+
+                    <img
+                        class="footer_instagram_arrow"
+                        src="./assets/11_footer/footer_arrow.svg"
+                        alt=""
+                    >
                 </a>
 
             </div>
 
-            <!-- 중앙 : AI 사용 및 가상 시나리오 안내 -->
-            <div class="footer_disclosure">
-                <p>일부 이미지와 영상은 AI 생성 도구를 활용해 제작되었습니다.</p>
-                <p>깜식이의 이야기는 서비스 소개를 위해 구성된 가상 시나리오입니다.</p>
-            </div>
 
-            <!-- 오른쪽 : 참여 인원 -->
+            <!-- 참여 인원 -->
             <div class="footer_credits">
 
-                <div class="footer_credit footer_credit_planner">
+                <div class="footer_credit">
                     <p class="footer_credit_title">Planner</p>
-                    <div class="footer_credit_names">
-                        <span>한수현</span>
-                        <span>송예현</span>
-                    </div>
+                    <p class="footer_credit_name">한수현</p>
                 </div>
 
-                <div class="footer_credit footer_credit_designer">
+                <div class="footer_credit">
+                    <p class="footer_credit_title">Planner</p>
+                    <p class="footer_credit_name">송예현</p>
+                </div>
+
+                <div class="footer_credit">
                     <p class="footer_credit_title">Designer</p>
-                    <div class="footer_credit_names">
-                        <span>강민하</span>
-                        <span>최은화</span>
-                        <span>황정인</span>
-                    </div>
+                    <p class="footer_credit_name">강민하</p>
                 </div>
 
-                <div class="footer_credit footer_credit_programmer">
+                <div class="footer_credit">
+                    <p class="footer_credit_title">Designer</p>
+                    <p class="footer_credit_name">최은화</p>
+                </div>
+
+                <div class="footer_credit">
+                    <p class="footer_credit_title">Designer</p>
+                    <p class="footer_credit_name">황정인</p>
+                </div>
+
+                <div class="footer_credit">
                     <p class="footer_credit_title">Programmer</p>
-                    <div class="footer_credit_names">
-                        <span>김예령</span>
-                    </div>
+                    <p class="footer_credit_name">김예령</p>
                 </div>
 
             </div>
 
-            <!-- 하단 중앙 : 저작권 -->
-            <p class="footer_copyright">© 2026 aquí. All rights reserved.</p>
+
+            <!-- Copyright -->
+            <p class="footer_copyright">
+                © 2026 aquí. All rights reserved.
+            </p>
 
         </div>
 
@@ -1193,6 +1322,10 @@
 
     <!-- top button -->
     <button type="button" id="topBtn" class="topBtn" aria-label="back to top of page">
+        <img
+        src="./assets/00_common/icons/top_button.png"
+        alt=""
+        >
     </button>
 
 

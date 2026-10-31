@@ -6,11 +6,55 @@ console.log("Capstone Design web is running.");
 
 // 탑 버튼
 const topBtn = document.querySelector("#topBtn");
+const overviewSection = document.querySelector("#overview");
 
+let topBtnRequestId = null;
+
+function updateTopButton() {
+
+    topBtnRequestId = null;
+
+    if (!topBtn || !overviewSection) return;
+
+    const viewportHeight = window.innerHeight;
+    const overviewTop = overviewSection.getBoundingClientRect().top;
+
+    const isVisible = overviewTop <= viewportHeight * 0.5;
+
+    topBtn.classList.toggle("is-visible", isVisible);
+    topBtn.disabled = !isVisible;
+}
+
+function requestTopButtonUpdate() {
+
+    if (topBtnRequestId !== null) return;
+
+    topBtnRequestId = requestAnimationFrame(updateTopButton);
+}
+
+window.addEventListener("scroll", requestTopButtonUpdate, { passive: true });
+window.addEventListener("resize", requestTopButtonUpdate);
+window.addEventListener("pageshow", requestTopButtonUpdate);
+
+updateTopButton();
+
+
+// TOP 클릭 시 Hero 영상 초기화
 topBtn.addEventListener("click", () => {
+
+    heroVideo.pause();
+    heroVideo.currentTime = 0;
+
+    heroPlayBtn.style.display = "";
+
+    heroScrollIndicator.classList.remove("is-visible");
+    heroScrollIndicator.disabled = true;
+
     window.scrollTo({
         top: 0,
+        behavior: "smooth"
     });
+
 });
 
 
@@ -30,18 +74,25 @@ heroPlayBtn.addEventListener("click", () => {
 
 
 
-// 01_hero ) 스크롤 유도 표지 등장 및 숨김
+// 01_hero ) 스크롤 유도 표지 등장 및 클릭 이동
 const heroScrollIndicator = document.querySelector("#hero .scroll_indicator");
-
 
 heroVideo.addEventListener("ended", () => {
     heroScrollIndicator.classList.add("is-visible");
+    heroScrollIndicator.disabled = false;
 });
 
 heroVideo.addEventListener("play", () => {
     heroScrollIndicator.classList.remove("is-visible");
+    heroScrollIndicator.disabled = true;
 });
 
+heroScrollIndicator.addEventListener("click", () => {
+    document.querySelector("#overview")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
 
 
 
@@ -271,8 +322,8 @@ heroVideo.addEventListener("play", () => {
 
     // 05 페이드 이후 ~ 디바이스 Shrink까지의 대기만 줄입니다.
     // Shrink 자체의 길이(0.096)와 06 이후 미디어 스와이프는 그대로 유지.
-    const shrinkStart = 0.170; // v11 0.270 → 페이드 이후 긴 스크롤 대기 단축
-    const shrinkEnd = 0.266;   // 구간 길이 0.096 유지: shrink 속도 자체는 동일
+    const shrinkStart = 0.190;
+    const shrinkEnd = 0.300;
     const swipeStarts = [0.585, 0.720, 0.855];
     const swipeLength = 0.100;          // v5 .082 / v6 .055
     const overlayDarkness = 0.90;       // 이전 미디어만 더 어둡게
@@ -304,6 +355,18 @@ heroVideo.addEventListener("play", () => {
     const activeAnimations = new Map();
     textParagraphs.forEach((p) => originalTexts.set(p, p.textContent.replace(/\s+/g, " ").trim()));
 
+    const deviceFixedLines = new Map(
+    textParagraphs
+        .filter((p) => /<br\s*\/?>/i.test(p.innerHTML))
+        .map((p) => [
+            p,
+            p.innerHTML
+                .split(/<br\s*\/?>/i)
+                .map((s) => s.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim())
+                .filter(Boolean)
+        ])
+    );
+
     // 실제 화면의 줄바꿈을 측정해서 줄별 <span>을 만듭니다.
     // HTML에는 기존 p만 남겨두면 됩니다.
     function splitIntoLines(paragraph) {
@@ -329,6 +392,28 @@ heroVideo.addEventListener("play", () => {
         }
         lines.push(source.slice(start).trim());
         range.detach?.();
+
+        const fixed = deviceFixedLines.get(paragraph);
+
+    if (fixed) {
+        const fits = fixed.every((text) => {
+        const test = document.createElement("span");
+        test.textContent = text;
+        test.style.cssText = "display:inline-block;white-space:nowrap;";
+
+        paragraph.appendChild(test);
+
+        const ok = test.getBoundingClientRect().width <= paragraph.clientWidth - 2;
+
+        test.remove();
+
+        return ok;
+    });
+
+    if (deviceParagraphs.includes(paragraph) || fits) {
+        lines.splice(0, lines.length, ...fixed);
+        }
+    }
 
         const fragment = document.createDocumentFragment();
         const result = [];
@@ -453,28 +538,19 @@ heroVideo.addEventListener("play", () => {
     let previousTarget = null;
 
     function measureDeviceOffset() {
-        const oldTransform = deviceCopy.style.transform;
-        deviceCopy.style.transform = "none";
-        const finalRect = deviceCopy.getBoundingClientRect();
-        const gridRect = deviceCopyGrid.getBoundingClientRect();
-        // '05 최초 위치' = 05 그리드 맨 윗선 (피그마 y≈35px).
-        // '05 마지막 위치' = 이미 v4에서 잡은 grid 10~12 / row 4~5.
-        deviceInitialOffset = Math.max(0, finalRect.top - gridRect.top);
-        deviceCopyHeight = finalRect.height;
-        const stageRect = stage.getBoundingClientRect();
-        deviceCopyInitialTop = gridRect.top - stageRect.top;
+    const oldTransform = deviceCopy.style.transform;
+    deviceCopy.style.transform = "none";
 
-        // 05 시안처럼 '정착한 카피'를 기존보다 소폭 아래로 배치합니다.
-        // (1920 기준 최대 약 50px, 노트북에서는 화면 비율에 따라 더 작게)
-        // 하지만 카피 전체가 보여야 하므로, 화면 아래쪽 여유가 없으면 올려 보정합니다.
-        const bottomGap = Math.min(42, Math.max(26, window.innerHeight * 0.045));
-        const finalBottomWithinStage = finalRect.bottom - stageRect.top;
-        const availableBelow = window.innerHeight - bottomGap - finalBottomWithinStage;
-        const desiredDrop = Math.min(50, window.innerHeight * 0.055, window.innerWidth * 0.03);
-        deviceCopyFinalShift = availableBelow >= 0
-            ? Math.min(desiredDrop, availableBelow)
-            : availableBelow;
-        deviceCopy.style.transform = oldTransform;
+    const finalRect = deviceCopy.getBoundingClientRect();
+    const gridRect = deviceCopyGrid.getBoundingClientRect();
+    const stageRect = stage.getBoundingClientRect();
+
+    deviceInitialOffset = Math.max(0, finalRect.top - gridRect.top);
+    deviceCopyHeight = finalRect.height;
+    deviceCopyInitialTop = gridRect.top - stageRect.top;
+    deviceCopyFinalShift = 0;
+
+    deviceCopy.style.transform = oldTransform;
     }
 
     function serviceIndexFor(p, previous = -1) {
@@ -808,13 +884,17 @@ function startServiceReveal(i, transitionId) {
     // 한국어/영어를 포함한 copy 전체가 화면 안에 들어온 뒤부터 움직여
     // 05 상단이 viewport 상단에 닿았을 때 최종 위치에 도착합니다.
     function getDeviceEntryProgress() {
-        const stageTop = sequence.getBoundingClientRect().top;
-        const viewport = Math.max(1, window.innerHeight);
-        const desiredBottomGap = Math.min(36, viewport * 0.035);
-        const startStageTop = Math.max(1,
-            viewport - deviceCopyInitialTop - deviceCopyHeight - desiredBottomGap);
-        return smooth(0, 1, (startStageTop - stageTop) / startStageTop);
+    const stageTop = sequence.getBoundingClientRect().top;
+    const viewport = Math.max(1, window.innerHeight);
+    const desiredBottomGap = Math.min(36, viewport * 0.035);
+    const startStageTop = Math.max(
+        1,
+        viewport - deviceCopyInitialTop - deviceCopyHeight - desiredBottomGap
+    );
+
+    return smooth(0, 1, (startStageTop - stageTop) / startStageTop);
     }
+
 
     function renderDeviceCopy(p) {
         const move = getDeviceEntryProgress();
@@ -863,7 +943,7 @@ function startServiceReveal(i, transitionId) {
         syncBeforeServiceVideos(p);
         const shrink = smooth(shrinkStart, shrinkEnd, p);
         stage.style.setProperty("--device_shrink", shrink.toFixed(4));
-        stage.style.setProperty("--device_nfc_scale", lerp(1, 1.08, shrink).toFixed(4));
+        stage.style.setProperty("--device_nfc_scale", lerp(1, 1.00, shrink).toFixed(4));
 
         panels.forEach((panel, i) => {
             if (i > 0) {
@@ -1185,7 +1265,43 @@ function startServiceReveal(i, transitionId) {
 })();
 
 
-// 08_after-service ) 07→08 진입 시 04와 같은 상단 구도 리빌
+
+
+
+// 07 ) 스크롤 유도 표지 처리
+(() => {
+    const bridge = document.querySelector("#bridge");
+    const video = bridge?.querySelector(".bridge_media_video");
+    const indicator = bridge?.querySelector(".bridge_scroll_indicator");
+    const next = document.querySelector("#after-service");
+    if (!video || !indicator || !next) return;
+
+    function syncIndicator() {
+        const visible = video.ended;
+        indicator.classList.toggle("is-visible", visible);
+        indicator.disabled = !visible;
+    }
+
+    video.addEventListener("ended", syncIndicator);
+    video.addEventListener("play", syncIndicator);
+    video.addEventListener("seeked", syncIndicator);
+    window.addEventListener("pageshow", syncIndicator);
+
+    indicator.addEventListener("click", () => {
+        next.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+            block: "start"
+        });
+    });
+
+    syncIndicator();
+})();
+
+
+
+
+
+// 08 ) 07→08 진입 시 04와 같은 상단 구도 리빌
 // 스크롤을 내리면 이미지가 아래로 이동하며 윗부분이 드러나고,
 // 올리면 반대로 가려집니다. 확대/축소, 04의 3단계 슬라이드 없음.
 (() => {
@@ -1254,71 +1370,56 @@ function startServiceReveal(i, transitionId) {
 // 08 ) transition 스크롤 제어
 (() => {
 
-    const transition = document.querySelector(
-        ".after-service_transition"
-    );
+    const transition = document.querySelector(".after-service_transition");
+    const mediaFrame = transition?.querySelector(".after-service_transition_media_frame");
 
-    if (!transition) return;
+    if (!transition || !mediaFrame) return;
 
-    // 이미지 윗부분이 잘리는 최대 거리
-    const maxPan = 200;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
-    let ticking = false;
-
-    const clamp = (value, min, max) => {
-        return Math.min(Math.max(value, min), max);
-    };
+    let requestId = null;
 
     function updateTransitionReveal() {
 
-        const rect = transition.getBoundingClientRect();
+        requestId = null;
 
-        const viewportHeight = window.innerHeight;
+        if (reducedMotion.matches) {
+            transition.style.setProperty("--transition-pan", "0px");
+            return;
+        }
 
-        // 이미지가 뷰포트에 들어오는 동안 진행
-        const revealDistance = Math.min(
-            rect.height,
-            viewportHeight
-        );
+        const viewportHeight = Math.max(1, window.innerHeight);
+        const mediaTop = mediaFrame.getBoundingClientRect().top;
 
         const progress = clamp(
-            (viewportHeight - rect.top) / revealDistance,
+            (viewportHeight - mediaTop) / viewportHeight,
             0,
             1
         );
 
-        // -60px → 0px
+        const maxPan = Math.min(viewportHeight * 0.03, 30);
         const pan = -maxPan * (1 - progress);
 
         transition.style.setProperty(
             "--transition-pan",
             `${pan.toFixed(2)}px`
         );
-
-        ticking = false;
     }
 
     function requestTransitionUpdate() {
 
-        if (ticking) return;
+        if (requestId !== null) return;
 
-        ticking = true;
-
-        requestAnimationFrame(updateTransitionReveal);
+        requestId = requestAnimationFrame(updateTransitionReveal);
     }
 
-    window.addEventListener(
-        "scroll",
-        requestTransitionUpdate,
-        { passive: true }
-    );
+    window.addEventListener("scroll", requestTransitionUpdate, { passive: true });
+    window.addEventListener("resize", requestTransitionUpdate);
+    window.addEventListener("pageshow", requestTransitionUpdate);
 
-    window.addEventListener(
-        "resize",
-        requestTransitionUpdate
-    );
+    reducedMotion.addEventListener?.("change", requestTransitionUpdate);
 
-    // 새로고침했을 때 현재 스크롤 위치 반영
     updateTransitionReveal();
 
 })();
@@ -1327,7 +1428,7 @@ function startServiceReveal(i, transitionId) {
 
 
 
-// 08_after-service ) 앱 프로토타입 재생 제어
+// 08 ) 앱 프로토타입 재생 제어
 // HOME: 영역이 화면에 있으면 루프 / Epilogue: 화면 중앙에 가장 가까운 폰 하나만 재생
 (() => {
     const section = document.querySelector("#after-service");
@@ -1412,4 +1513,105 @@ function startServiceReveal(i, transitionId) {
         scheduleFocus();
     });
     updateEpilogueFocus();
+})();
+
+
+
+
+
+// 08 ) 앱 프로토타입 영상 제어 (archive)
+(() => {
+    const archiveVideo = document.querySelector(
+        ".after-service_archive_video video"
+    );
+
+    if (!archiveVideo) return;
+
+    let isVisible = false;
+
+    function updateArchiveVideo() {
+
+        if (isVisible && !document.hidden) {
+
+            if (archiveVideo.paused) {
+                archiveVideo.play().catch((error) => {
+                    console.warn("[08 Archive] 영상 재생 실패:", error);
+                });
+            }
+
+        } else {
+
+            if (!archiveVideo.paused) {
+                archiveVideo.pause();
+            }
+
+        }
+    }
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+
+            if (!entry) return;
+
+            isVisible = entry.isIntersecting;
+
+            updateArchiveVideo();
+
+        },
+        {
+            threshold: 0.2
+        }
+    );
+
+    observer.observe(archiveVideo);
+
+    document.addEventListener(
+        "visibilitychange",
+        updateArchiveVideo
+    );
+
+})();
+
+
+
+
+
+// 09 ) 텍스트 / 이미지 등장 인터랙션
+(() => {
+
+    const memory = document.querySelector("#memory");
+    if (!memory) return;
+
+    const media = memory.querySelector(".memory_media");
+    const description = memory.querySelector(".memory_description");
+
+    if (!media || !description) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+        return;
+    }
+
+    memory.classList.add("is-motion-ready");
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+
+            if (!entry || !entry.isIntersecting) return;
+
+            memory.classList.add("is-visible");
+            description.classList.add("is-visible");
+
+            observer.disconnect();
+
+        },
+        {
+            threshold: 0.01,
+            rootMargin: "0px 0px 8% 0px"
+        }
+    );
+
+    observer.observe(media);
+
 })();
