@@ -1069,10 +1069,15 @@ p {
     .kkamsik_description_en { white-space: nowrap; }
 }
 
+@media (max-width: 1199px), (max-height: 700px) {
+    .kkamsik_desktop_break {
+        display: none;
+    }
+}
+
 /* 낮거나 좁은 노트북: 강제 줄바꿈 대신 자동 줄바꿈,
    5열 그리드의 마지막 행과 관계없이 하단에서부터 본문 높이를 확보 */
 @media (max-width: 1599px), (max-height: 899px) {
-    .kkamsik_desktop_break { display: none; }
     .kkamsik_intro { display: block; }
     .kkamsik_title {
         position: absolute;
@@ -2058,7 +2063,7 @@ p {
     right: clamp(26px, 2.083vw, 40px);
     margin: 0;
     font-family: var(--font-ko);
-    font-weight: 400;
+    font-weight: 600;
     font-size: clamp(23px, min(1.823vw, 3.425vh), 35px);
     line-height: 1.25;
     letter-spacing: -0.04em;
@@ -2090,7 +2095,7 @@ p {
 .after-service_intro_description_en {
     margin-top: clamp(12px, 1.04vw, 20px) !important;
     font-family: var(--font-en);
-    font-weight: 400;
+    font-weight: 300;
     font-size: clamp(12px, 0.9375vw, 18px);
     line-height: 1.3333;
     letter-spacing: -0.04em;
@@ -2536,7 +2541,7 @@ p {
     margin: 0;
 
     font-family: var(--font-ko);
-    font-weight: 500;
+    font-weight: 400;
     font-size: clamp(12px, 0.9375vw, 18px);
     line-height: 1.944444;
     letter-spacing: -0.04em;
@@ -2771,16 +2776,12 @@ p {
 
 .after-service_archive_side_top img {
     display: block;
-
-    width: 74.673913%;
+    width: auto;
     height: auto;
-
-    max-width: 687px;
-    max-height: 88%;
-
+    max-width: 80%;
+    max-height: 80%;
     object-fit: contain;
 }
-
 
 /* 그라디언트 */
 
@@ -3077,7 +3078,7 @@ p {
     margin: 0;
 
     font-family: var(--font-ko);
-    font-weight: 400;
+    font-weight: 300;
     font-size: clamp(13.33px, 1.041667vw, 20px);
     line-height: 1.8;
     letter-spacing: -0.03em;
@@ -3322,7 +3323,7 @@ p {
 
 
 /* 상단 카피 등장 인터랙션 */
-
+/* 
 .application.is-motion-ready .application_copy {
     opacity: 0;
     transform: translate3d(0, 18px, 0);
@@ -3335,7 +3336,7 @@ p {
 .application.is-motion-ready .application_copy.is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-}
+} */
 
 
 /* 폼 그룹 */
@@ -3416,7 +3417,7 @@ p {
 }
 
 .application_field::placeholder {
-    color: #F0F0F0;
+    color: #9d9d9d;
     opacity: 1;
 }
 
@@ -3468,6 +3469,8 @@ p {
 
     cursor: default;
     user-select: none;
+
+    color: #9d9d9d;
 }
 
 .application_choice span {
@@ -3567,7 +3570,7 @@ p {
     margin: clamp(8px, 0.625vw, 12px) 0 0;
 
     font-family: var(--font-ko);
-    font-weight: 400;
+    font-weight: 300;
 
     font-size: clamp(11px, 0.78125vw, 15px);
     line-height: clamp(22px, 1.875vw, 36px);
