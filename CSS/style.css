@@ -2015,18 +2015,17 @@ p {
     left: 0;
 }
 
-/* Figma x30 / y274, Instrument Serif Italic 100 */
 .after-service_chapter {
     position: absolute;
-    top: 36.07%;
+    top: 26.81%;
     left: 0;
     padding: 0;
 
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(54px, min(5.20833vw, 9.25926vh), 100px);
-    line-height: 1.3;
+    font-size: clamp(54px, min(5.208vw, 9.785vh), 100px);
+    line-height: 1;
     letter-spacing: -0.04em;
 
     white-space: nowrap;
@@ -2057,19 +2056,19 @@ p {
     left: clamp(26px, 2.083vw, 40px);
 }
 
-/* Figma 패널 안 x40 / y304, SUIT Medium 35 */
 .after-service_intro_title {
     position: absolute;
-    top: 37.16%;
+    top: 29.75%;
     left: clamp(26px, 2.083vw, 40px);
     right: clamp(26px, 2.083vw, 40px);
 
     margin: 0;
 
     font-family: var(--font-ko);
-    font-weight: 600;
-    font-size: clamp(23px, min(1.823vw, 3.24074vh), 35px);
+    font-weight: 500;
+    font-size: clamp(23px, min(1.823vw, 3.425vh), 35px);
     line-height: 1.426571;
+    /* line-height: 1.25; */
     letter-spacing: -0.04em;
 
     word-break: keep-all;
@@ -2775,10 +2774,13 @@ p {
 
 .after-service_archive_side_top img {
     display: block;
-    width: auto;
+
+    width: 75%;
     height: auto;
-    max-width: 80%;
+
+    max-width: none;
     max-height: 80%;
+
     object-fit: contain;
 }
 
@@ -3988,11 +3990,11 @@ p {
     justify-content: center;
 }
 
-.after-service_archive_side_top img {
+/* .after-service_archive_side_top img {
     display: block;
     width: auto;
     height: auto;
     max-width: 88%;
     max-height: 88%;
     object-fit: contain;
-}
+} */
