@@ -2018,15 +2018,17 @@ p {
 /* Figma x30 / y274, Instrument Serif Italic 100 */
 .after-service_chapter {
     position: absolute;
-    top: 26.81%;
+    top: 36.07%;
     left: 0;
     padding: 0;
+
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(54px, min(5.208vw, 9.785vh), 100px);
-    line-height: 1;
+    font-size: clamp(54px, min(5.20833vw, 9.25926vh), 100px);
+    line-height: 1.3;
     letter-spacing: -0.04em;
+
     white-space: nowrap;
     color: #fff;
 }
@@ -2058,15 +2060,18 @@ p {
 /* Figma 패널 안 x40 / y304, SUIT Medium 35 */
 .after-service_intro_title {
     position: absolute;
-    top: 29.75%;
+    top: 37.16%;
     left: clamp(26px, 2.083vw, 40px);
     right: clamp(26px, 2.083vw, 40px);
+
     margin: 0;
+
     font-family: var(--font-ko);
     font-weight: 600;
-    font-size: clamp(23px, min(1.823vw, 3.425vh), 35px);
-    line-height: 1.25;
+    font-size: clamp(23px, min(1.823vw, 3.24074vh), 35px);
+    line-height: 1.426571;
     letter-spacing: -0.04em;
+
     word-break: keep-all;
     color: #fff;
 }
@@ -3006,7 +3011,6 @@ p {
 
 
 /* 상단 카피 */
-
 .memory_copy {
     grid-column: 3 / 13;
     grid-row: 1;
@@ -3016,7 +3020,7 @@ p {
     margin: 0;
 
     font-family: var(--font-ko);
-    font-weight: 400;
+    font-weight: 300;
     font-size: clamp(18.67px, 1.458333vw, 28px);
     line-height: 1.5714286;
     letter-spacing: -0.04em;
@@ -3078,9 +3082,9 @@ p {
     margin: 0;
 
     font-family: var(--font-ko);
-    font-weight: 300;
-    font-size: clamp(13.33px, 1.041667vw, 20px);
-    line-height: 1.8;
+    font-weight: 200;
+    font-size: clamp(12px, 0.833333vw, 16px);
+    line-height: clamp(24px, 1.875vw, 36px);
     letter-spacing: -0.03em;
 
     word-break: keep-all;
@@ -3252,7 +3256,6 @@ p {
 
 
 /* 신청 폼 전체 */
-
 .application_panel {
     grid-column: 9 / 13;
     grid-row: 1 / 6;
@@ -3260,7 +3263,8 @@ p {
     width: 100%;
     min-width: 0;
 
-    margin-top: -4px;
+    margin-top: clamp(90px, 7.083333vw, 136px);
+    margin-left: clamp(4px, 0.364583vw, 7px);
 
     container-type: inline-size;
 }
@@ -3272,9 +3276,9 @@ p {
 
     width: 100%;
     min-width: 0;
-    min-height: clamp(700px, 46.354167vw, 890px);
+    min-height: clamp(630px, 39.7vw, 750px);
 
-    aspect-ratio: 607 / 890;
+    aspect-ratio: 607 / 750;
 
     overflow: hidden;
 
@@ -3297,46 +3301,33 @@ p {
     min-width: 0;
 
     padding: clamp(26px, 2.083333vw, 40px);
+    padding-bottom: clamp(20px, 1.197917vw, 23px);
 }
 
 
 /* 상단 소개 카피 */
-
 .application_copy {
-    width: 100%;
-    min-width: 0;
-    margin: 0;
+    grid-column: 1 / 4;
+    grid-row: 1;
 
-    margin-bottom: clamp(40px, 3.541667vw, 68px);
+    align-self: start;
+    justify-self: start;
+
+    width: min(100%, clamp(240px, 17.1875vw, 330px));
+    min-width: 0;
+
+    margin: clamp(48px, 3.75vw, 72px) 0 0;
 
     font-family: var(--font-ko);
     font-weight: 400;
-
-    font-size: clamp(12px, 0.78125vw, 15px);
-    line-height: 1.466667;
+    font-size: clamp(15px, 1.145833vw, 22px);
+    line-height: 1.454545;
     letter-spacing: -0.03em;
 
     color: #FFFFFF;
 
     word-break: keep-all;
 }
-
-
-/* 상단 카피 등장 인터랙션 */
-/* 
-.application.is-motion-ready .application_copy {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-
-    transition:
-        opacity 1s ease-out,
-        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.application.is-motion-ready .application_copy.is-visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-} */
 
 
 /* 폼 그룹 */
@@ -3351,7 +3342,7 @@ p {
 }
 
 .application_form_group_title {
-    margin: 0 0 clamp(12px, 1.041667vw, 20px);
+    margin: 0 0 clamp(16px, 1.25vw, 24px);
 
     font-family: var(--font-ko);
     font-weight: 500;
@@ -3365,7 +3356,6 @@ p {
 
 
 /* 입력창 그리드 */
-
 .application_form_fields {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3570,7 +3560,7 @@ p {
     margin: clamp(8px, 0.625vw, 12px) 0 0;
 
     font-family: var(--font-ko);
-    font-weight: 300;
+    font-weight: 200;
 
     font-size: clamp(11px, 0.78125vw, 15px);
     line-height: clamp(22px, 1.875vw, 36px);
@@ -3584,33 +3574,16 @@ p {
 
 
 /* 작은 데스크톱 */
-
 @media (max-width: 1440px) {
 
     .application_form_inner {
-        padding: clamp(24px, 2.083333vw, 30px);
-    }
+    padding:
+        clamp(24px, 2.083333vw, 30px)
+        clamp(28px, 2.361111vw, 34px);
+}
 
     .application_form_group + .application_form_group {
         margin-top: clamp(22px, 1.822917vw, 28px);
-    }
-
-    .application_copy {
-        margin-bottom: clamp(38px, 3.541667vw, 51px);
-    }
-
-}
-
-
-/* 모션 감소 설정 */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .application.is-motion-ready .application_copy,
-    .application.is-motion-ready .application_copy.is-visible {
-        opacity: 1;
-        transform: none;
-        transition: none;
     }
 
 }
@@ -3712,12 +3685,6 @@ p {
     margin: 0;
 }
 
-@media (max-width: 1440px) {
-    .footer_disclosure br {
-        display: none;
-    }
-}
-
 
 /* Instagram 구분선 */
 
@@ -3814,7 +3781,7 @@ p {
     margin: 0;
 
     font-family: var(--font-en);
-    font-weight: 500;
+    font-weight: 400;
 
     font-size: clamp(12px, 1.145833vw, 22px);
     line-height: clamp(23px, 1.822917vw, 35px);
@@ -3868,25 +3835,20 @@ p {
 #topBtn {
     position: fixed;
 
-    right: clamp(16px, 2.083333vw, 40px);
-    bottom: clamp(16px, 2.083333vw, 40px);
+    right: clamp(20px, 1.666667vw, 32px);
+    bottom: clamp(20px, 1.666667vw, 32px);
 
     z-index: 100;
 
     display: block;
 
-    width: clamp(72px, 6.666667vw, 128px);
-    aspect-ratio: 128 / 120;
-    height: auto;
+    width: 50px;
+    height: 50px;
 
     padding: 0;
     border: none;
 
     background-color: transparent;
-    background-image: url("../assets/00_common/icons/top_button.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
 
     cursor: pointer;
 
@@ -3894,6 +3856,15 @@ p {
     pointer-events: none;
 
     transition: opacity 0.55s ease;
+}
+
+#topBtn img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
 }
 
 #topBtn.is-visible {
