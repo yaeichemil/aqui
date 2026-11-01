@@ -2024,7 +2024,7 @@ p {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(54px, min(5.208vw, 9.785vh), 100px);
+    font-size: clamp(54px, min(4.9479vw, 9.3vh), 95px);
     line-height: 1;
     letter-spacing: -0.04em;
 
