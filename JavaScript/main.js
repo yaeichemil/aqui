@@ -1203,7 +1203,7 @@ function startServiceReveal(i, transitionId) {
 
 
 
-// 07_bridge ) 영상은 화면에 들어오면 재생, 반복 없이 끝 프레임에 정지
+// 07 ) 영상은 화면에 들어오면 재생, 반복 없이 끝 프레임에 정지
 // - 기존 07 텍스트의 스크롤 연동 opacity와는 독립적으로 작동.
 (() => {
     const video = document.querySelector("#bridge .bridge_media_video");
@@ -1587,5 +1587,68 @@ function startServiceReveal(i, transitionId) {
     );
 
     observer.observe(media);
+
+})();
+
+
+
+
+
+// 10 ) 키링 클릭 재생
+(() => {
+    const device = document.querySelector(".application_device");
+    const video = device?.querySelector(".application_device_video");
+
+    if (!device || !video) return;
+
+    const endCut = 0.6;
+
+    let isPlaying = false;
+    let firstEntryHandled = false;
+
+    const playOnce = async () => {
+        if (isPlaying) return;
+
+        isPlaying = true;
+        video.currentTime = 0;
+
+        try {
+            await video.play();
+        } catch (error) {
+            isPlaying = false;
+            console.error("키링 영상 재생 실패:", error);
+        }
+    };
+
+    video.addEventListener("timeupdate", () => {
+        if (!isPlaying || !Number.isFinite(video.duration)) return;
+
+        if (video.currentTime >= video.duration - endCut) {
+            video.pause();
+            isPlaying = false;
+        }
+    });
+
+    video.addEventListener("ended", () => {
+        isPlaying = false;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !firstEntryHandled) {
+            firstEntryHandled = true;
+            observer.disconnect();
+            playOnce();
+        }
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(device);
+
+    device.addEventListener("click", () => {
+        firstEntryHandled = true;
+        observer.disconnect();
+        playOnce();
+    });
 
 })();
