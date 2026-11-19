@@ -41,20 +41,10 @@ updateTopButton();
 
 // 탑 버튼 클릭 -> Hero 영상 초기화
 topBtn.addEventListener("click", () => {
-
-    heroVideo.pause();
-    heroVideo.currentTime = 0;
-
-    heroPlayBtn.style.display = "";
-
-    heroScrollIndicator.classList.remove("is-visible");
-    heroScrollIndicator.disabled = true;
-
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
 });
 
 
@@ -63,29 +53,41 @@ topBtn.addEventListener("click", () => {
 
 // 01_hero ) 영상 재생
 const heroVideo = document.querySelector(".hero_video");
-const heroPlayBtn = document.querySelector(".hero_playbutton");
-
-heroPlayBtn.addEventListener("click", () => {
-    heroPlayBtn.style.display = "none";
-    heroVideo.play();
-});
+const heroScrollIndicator = document.querySelector(
+    "#hero .scroll_indicator"
+);
 
 
+let heroLoopTimer = null;
 
 
+heroScrollIndicator.classList.add("is-visible");
+heroScrollIndicator.disabled = false;
 
-// 01_hero ) 스크롤 유도 표지 등장 및 클릭 이동
-const heroScrollIndicator = document.querySelector("#hero .scroll_indicator");
 
+function startHeroVideo() {
+    if (!heroVideo) return;
+
+    heroVideo.currentTime = 0;
+
+    const playPromise = heroVideo.play();
+
+    if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+            console.warn("Hero autoplay failed:", error);
+        });
+    }
+}
+
+// 영상 종료 후 1.5초 대기 → 다시 재생
 heroVideo.addEventListener("ended", () => {
-    heroScrollIndicator.classList.add("is-visible");
-    heroScrollIndicator.disabled = false;
+    clearTimeout(heroLoopTimer);
+
+    heroLoopTimer = setTimeout(() => {
+        startHeroVideo();
+    }, 2000);
 });
 
-heroVideo.addEventListener("play", () => {
-    heroScrollIndicator.classList.remove("is-visible");
-    heroScrollIndicator.disabled = true;
-});
 
 heroScrollIndicator.addEventListener("click", () => {
     document.querySelector("#overview")?.scrollIntoView({
@@ -93,6 +95,9 @@ heroScrollIndicator.addEventListener("click", () => {
         block: "start"
     });
 });
+
+
+startHeroVideo();
 
 
 
@@ -1244,31 +1249,30 @@ function startServiceReveal(i, transitionId) {
 
 // 07 ) 스크롤 유도 표지 처리
 (() => {
+
     const bridge = document.querySelector("#bridge");
-    const video = bridge?.querySelector(".bridge_media_video");
+
     const indicator = bridge?.querySelector(".bridge_scroll_indicator");
+
     const next = document.querySelector("#after-service");
-    if (!video || !indicator || !next) return;
 
-    function syncIndicator() {
-        const visible = video.ended;
-        indicator.classList.toggle("is-visible", visible);
-        indicator.disabled = !visible;
-    }
+    if (!indicator || !next) return;
 
-    video.addEventListener("ended", syncIndicator);
-    video.addEventListener("play", syncIndicator);
-    video.addEventListener("seeked", syncIndicator);
-    window.addEventListener("pageshow", syncIndicator);
+    indicator.classList.add("is-visible");
+    indicator.disabled = false;
 
     indicator.addEventListener("click", () => {
+
         next.scrollIntoView({
+
             behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+
             block: "start"
+
         });
+
     });
 
-    syncIndicator();
 })();
 
 
